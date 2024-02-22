@@ -17,7 +17,10 @@ function Produtos() {
             </header>
             <article className="ArticleProduto">
                 <form>
-                    <button href="/novoProduto" className="AddProduto">+</button>
+                    <button className="AddProduto" onClick={(e) => {
+                        e.preventDefault()
+                        window.location.href = "/cadastrarProduto"
+                    }}>+</button>
                     <input type="text"  className="InputProduto" placeholder="Procurar Produto..."/>
                     <button className="Search"><FaSearch /></button>
                 </form>

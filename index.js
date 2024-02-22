@@ -8,7 +8,7 @@ function createWindow() {
         height: 600,
 
     })
-    win.loadURL("http://localhost:3001/")
+    win.loadURL("http://localhost:3000/")
 
     // Define o menu personalizado para a janela
         const mainMenu = Menu.buildFromTemplate([]);

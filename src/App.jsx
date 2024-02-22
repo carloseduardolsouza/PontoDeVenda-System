@@ -41,6 +41,7 @@ import Clientes from "./screens/clientes/clientes";
 import Produtos from "./screens/produtos/produtos";
 import novaVenda from "./screens/novaVenda/novaVenda";
 import novoCliente from "./screens/novoCliente/novoCliente";
+import cadastrarProduto from "./screens/cadastrarProduto/cadastrarProduto"
 import detalhesClientes from "./screens/detalhesClientes/detalhesClientes";
 
 function App() {
@@ -192,6 +193,7 @@ function App() {
           <Route path="/novaVenda" Component={novaVenda} />
           <Route path="/novoCliente" Component={novoCliente} />
           <Route path="/detalhesClientes" Component={detalhesClientes}/>
+          <Route path="/cadastrarProduto" Component={cadastrarProduto}/>
         </Routes>
       </Router>
     </div>
