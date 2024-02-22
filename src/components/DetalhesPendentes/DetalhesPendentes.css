@@ -1,5 +1,4 @@
 #DetalhesPendentes {
-    background-color: #9c9c9c;
     width: 500px;
     height: 300px;
     padding: 10px;
@@ -7,8 +6,13 @@
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    border-radius: 10px;
-    box-shadow: 0px 1px 10px black;
+
+    background: rgba(255, 255, 255, 0.3); /* Cor com transparência */
+      border-radius: 10px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Sombra */
+      backdrop-filter: blur(10px); /* Desfoque */
+      -webkit-backdrop-filter: blur(10px); /* Desfoque para navegadores Webkit (Safari, Chrome, etc.) */
+      border: 1px solid rgba(255, 255, 255, 0.18); /* Borda */
 }
 
 .ExitPendentesDetalhes {
@@ -58,7 +62,7 @@
     position: absolute;
     cursor: pointer;
     inset: 0;
-    background: #9fccfa;
+    background: #d4ffdf;
     border-radius: 50px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
@@ -79,11 +83,11 @@
   }
   
   .switch input:checked + .slider {
-    background: #0974f1;
+    background: #09f147;
   }
   
   .switch input:focus + .slider {
-    box-shadow: 0 0 1px #0974f1;
+    box-shadow: 0 0 1px #09f147;
   }
   
   .switch input:checked + .slider:before {

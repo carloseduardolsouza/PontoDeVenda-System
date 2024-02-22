@@ -18,7 +18,7 @@ function clientes() {
                 <form>
                     <button href="#" className="AddCliente" onClick={(e) => {
                         e.preventDefault()
-                        window.location.href = "http://localhost:3000/novoCliente"
+                        window.location.href = "/novoCliente"
                     }}>+</button>
                     <input type="text"  className="InputClientes" placeholder="Procurar Cliente..."/>
                     <button className="Search"><FaSearch /></button>

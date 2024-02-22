@@ -20,6 +20,10 @@ function novoCliente() {
             <input type="number" className="InputNovoCliente"/>
             <p><strong>Endereço</strong></p>
             <input type="text" className="InputNovoCliente"/>
+            <p><strong>CPF</strong></p>
+            <input type="number" className="InputNovoCliente"/>
+            <p><strong>Email</strong></p>
+            <input type="text" className="InputNovoCliente"/>
             <p><strong>Gênero</strong></p>
             <select className="SelectNovoCliente">
                 <option value="Selecione o Genero">Selecione o Genero</option>
