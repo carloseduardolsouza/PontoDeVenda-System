@@ -1,0 +1,91 @@
+#DetalhesPendentes {
+    background-color: #9c9c9c;
+    width: 500px;
+    height: 300px;
+    padding: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 10px;
+    box-shadow: 0px 1px 10px black;
+}
+
+.ExitPendentesDetalhes {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.ExitPendentesDetalhes:hover {
+    background-color: red;
+    transition: .5s;
+    color: white;
+}
+
+.SairParaEntregaDetalhesPendentes {
+    padding: 3px;
+    border-radius: 3px;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    font-size: 17px;
+    position: absolute;
+    display: inline-block;
+    width: 3.5em;
+    height: 2em;
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: #9fccfa;
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2em;
+    width: 2em;
+    inset: 0;
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .switch input:checked + .slider {
+    background: #0974f1;
+  }
+  
+  .switch input:focus + .slider {
+    box-shadow: 0 0 1px #0974f1;
+  }
+  
+  .switch input:checked + .slider:before {
+    transform: translateX(1.6em);
+  }

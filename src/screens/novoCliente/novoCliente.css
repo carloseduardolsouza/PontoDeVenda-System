@@ -1,0 +1,50 @@
+#novoCliente {
+    margin-left: 55px;
+
+}
+
+#CENTRALIZAR {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ImageUser {
+    width: 270px;
+    height: 270px;
+}
+
+.MainNovoCliente {
+    display: flex;
+}
+
+.articleNovoCliente {
+    position: relative;
+    background-color: #e7e7e7;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.InputNovoCliente {
+    font-size: 20px;
+    padding: 3px;
+    width: 450px;
+}
+
+.CadastrarNovoCliente {
+    padding: 4px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    border-radius: 4px;
+    background-color: #49db49;
+    cursor: pointer;
+}
+
+.SelectNovoCliente {
+    font-size: 16px;
+}
+.DataNovoCliente {
+    font-size: 16px;
+}

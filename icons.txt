@@ -1,0 +1,23 @@
+vendas
+    import { RiMoneyDollarCircleFill } from "react-icons/ri";
+    import { RiMoneyDollarCircleLine } from "react-icons/ri";
+
+clientes
+    import { FaUser } from "react-icons/fa6";
+    import { FaRegUser } from "react-icons/fa6";
+
+produtos
+    import { MdSell } from "react-icons/md";
+    import { MdOutlineSell } from "react-icons/md";
+
+estoque
+    import { BsBox2Fill } from "react-icons/bs";
+    import { BsBox2 } from "react-icons/bs";
+
+contas a pagar
+    import { FaMoneyBill1 } from "react-icons/fa6";
+    import { FaRegMoneyBillAlt } from "react-icons/fa";
+
+estastiticas
+    import { BsBarChartLineFill } from "react-icons/bs";
+    import { BsBarChartLine } from "react-icons/bs";

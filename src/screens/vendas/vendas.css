@@ -1,0 +1,66 @@
+#VENDAS {
+    margin-left: 55px;
+}
+
+#TitleVendas {
+    margin-bottom: 20px;
+}
+
+.HeaderVendas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ArticleVendas > a {
+    padding: 7px;
+    border-radius: 30px;
+    margin: 15px;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.NovaVenda {
+    background-color: #0295ff;
+    color: white;
+}
+
+.NovoPedido {
+    color: black;
+    border: 1px solid #363636;
+    padding: 5px;
+}
+
+.AreaVendasButtons {
+    margin-top: 20px;
+}
+
+.AreaVendasButtons > button {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border: none;
+    font-size: 15px;
+    font-weight: 300;
+    background-color: white;
+}
+
+.TableVendas {
+    border: #363636 solid 2px;
+}
+
+.TableHeader {
+    display: flex;
+    justify-content: space-around;
+    width: 1300px;
+    margin: auto;
+}
+
+.itemTabelTitle {
+    width: 250px;
+    text-align: center;
+}
+
+.TableHeader > p {
+    font-weight: 600;
+}

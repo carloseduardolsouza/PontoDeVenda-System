@@ -1,0 +1,28 @@
+#ItensTableProdutos {
+    width: 600px;
+    background-color: #e7e7e7;
+    padding: 5px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    display: flex;
+}
+
+.ImageProduto {
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.DetalhesProdutos {
+    padding: 4px;
+    background-color: green;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    width: 50%;
+    cursor: pointer;
+    margin-top: 15px;
+}
