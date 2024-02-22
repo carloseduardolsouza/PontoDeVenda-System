@@ -59,15 +59,13 @@
 }
 
 .bttDeleteClienteInfo:hover {
-    border: 1px solid #ff0000;
-    color: #ff0000;
+    border: 1px solid white;
+    color: white;
+    background-color: #ff0000;
     transition: .5s;
 }
 
 .bttEditarClienteInfo {
-    position: absolute;
-    bottom: 100px;
-    left: 700px;
     font-size: 17px;
     padding: 5px;
     border-radius: 20px;
@@ -75,4 +73,11 @@
     cursor: pointer;
     width: 200px;
     background-color: #00000000; 
+}
+
+.bttEditarClienteInfo:hover {
+    border: 1px solid white;
+    background-color: #000000; 
+    color: white;
+    transition: .5s;
 }

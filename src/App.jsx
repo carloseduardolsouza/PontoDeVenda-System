@@ -83,7 +83,7 @@ function App() {
             <div className="MenuLateralBox Outline" onClick={() => menuOpen()}>
                 <RiMenu2Fill className="iconsMenuLateral"/>
             </div>
-            <Link to="/vendas" className="MenuLateralBox" onClick={() => {
+            <Link to="/" className="MenuLateralBox" onClick={() => {
                 setVendas(true)
                 setClientes(false)
                 setProdutos(false)
@@ -186,7 +186,7 @@ function App() {
             </div>
         </div>
         <Routes>
-          <Route path="/vendas" Component={Vendas}/>
+          <Route path="/" Component={Vendas}/>
           <Route path="/clientes" Component={Clientes}/>
           <Route path="/produtos" Component={Produtos} />
           <Route path="/novaVenda" Component={novaVenda} />
