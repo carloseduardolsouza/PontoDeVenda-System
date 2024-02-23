@@ -18,6 +18,8 @@ function DetalhesPendentes({data}) {
                 <p>{"R$ 230,00"}</p>
                 <p><strong>Pagamento</strong></p>
                 <p>{"PIX"}</p>
+                <p><strong>Ação a realizar</strong></p>
+                <p>{"Pagamento e entrega"}</p>
                 <label className="switch">
                     <input type="checkbox"/>
                     <span className="slider"></span>

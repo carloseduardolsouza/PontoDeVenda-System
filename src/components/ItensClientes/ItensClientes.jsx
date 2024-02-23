@@ -1,16 +1,23 @@
 import "./ItensClientes.css"
 
-function ItensClientes() {
-    const numero = "62993362090"
-    const urlWpp = `https://wa.me/${numero}`
+function ItensClientes({data}) {
+    const {
+        id,
+        name,
+        telefone,
+        endereço
+    } = data
+
+    const urlWpp = `https://wa.me/${telefone}`
+    const link = `/detalhesClientes/${id}`
 
     return ( 
         <div className="ItensClientes">
-            <p className="ItensClientesP">{"Carlos Eduardo Lourenço de Souza"}</p>
-            <a href={urlWpp} className="ItensClientesP" target="_blank">{"(62 9 9336-2090)"}</a>
-            <p className="ItensClientesP">{"R.2 , Qd.2 , Lt.13 , Jardim Petrópolis"}</p>
-            <p className="ItensClientesP">{"R$ 500,00"}</p>
-            <a href="/detalhesClientes" className="ItensClientesP button">Detalhes</a>
+            <p className="ItensClientesP">{name}</p>
+            <a href={urlWpp} className="ItensClientesP" target="_blank">{telefone}</a>
+            <p className="ItensClientesP">{endereço}</p>
+            <p className="ItensClientesP credito">{"R$ 500,00"}</p>
+            <a href={link} className="ItensClientesP button">Detalhes</a>
         </div>
      );
 }

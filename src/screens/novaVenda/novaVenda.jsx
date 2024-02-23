@@ -1,12 +1,35 @@
 import ProdutosNovaVenda from "../../components/ProdutosNovaVenda/ProdutosNovaVenda.jsx"
 
+import fetchapi from "../../api/fetchapi.js";
+import { useState , useEffect } from "react";
+
 import Select from "react-select";
 
 import "./novaVenda.css"
+import AçãoRealizada from "../../components/AçãoRealizada/AçãoRealizada.jsx";
 
-function novaVenda() {
+function NovaVenda() {
     const Data = new Date()
     const log = `${Data.getUTCDate()}/${Data.getUTCMonth() + 1}/${Data.getUTCFullYear()}`
+
+    const [resultClientes , setResultClientes] = useState([])
+    const [loadingClientes , setloadingClientes] = useState(true)
+
+    useEffect(() => {
+        fetchapi.ProcurarCliente('all').then((response) => {
+            setResultClientes(response)
+            setloadingClientes(false)
+        })
+    }, [])
+
+    console.log(resultClientes)
+
+    const options = []
+
+    resultClientes.map((resultClientes) => {
+        options.push({
+                value : resultClientes.id,
+                label : resultClientes.name})})
 
     return ( 
         <div id="NOVAVENDA">
@@ -17,7 +40,16 @@ function novaVenda() {
             <main className="MainNovaVenda">
                 <div>
                 <div>
-                    <Select className="SelectNovaVenda" placeholder="Cliente"/>
+                {loadingClientes && <AçãoRealizada/> || (
+                    <Select className="SelectNovaVenda" placeholder="Cliente" options={options}>
+                        {resultClientes.map((resultClientes) => (
+                            <option value={resultClientes.id} key={resultClientes.id} >{resultClientes.name}</option>
+                        ))}
+                        <option value={'cliente.id'} key={'cliente.id'} >{'cliente.name'}</option>
+                        <option value={'cliente.id'} key={'cliente.id'} >{'cliente.name'}</option>
+
+                    </Select>
+                )}
                         <label className="NovaVendaLabel">
                             <p className="NovanVendaStrong"><strong>Nome:</strong></p>
                             <p>{"Carlos Eduardo"}</p>
@@ -81,4 +113,4 @@ function novaVenda() {
     );
 }
 
-export default novaVenda;
+export default NovaVenda;

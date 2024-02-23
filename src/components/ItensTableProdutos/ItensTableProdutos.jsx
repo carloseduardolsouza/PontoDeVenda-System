@@ -1,5 +1,3 @@
-import Cores from "../Cores/Cores.jsx";
-
 import "./ItensTableProdutos.css"
 
 import { useState } from "react";

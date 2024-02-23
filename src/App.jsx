@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState } from "react";
 import Provider from "./context/provider";
 
 //menu
@@ -45,7 +45,7 @@ import cadastrarProduto from "./screens/cadastrarProduto/cadastrarProduto"
 import detalhesClientes from "./screens/detalhesClientes/detalhesClientes";
 
 function App() {
-  const [vendas , setVendas] = useState(true)
+    const [vendas , setVendas] = useState(true)
     const [clientes , setClientes] = useState(false)
     const [produtos , setProdutos] = useState(false)
     const [estoque , setEstoque] = useState(false)
@@ -183,7 +183,6 @@ function App() {
                 <p style={style}>Estatísticas</p>
             </Link>
             <div className="MenuLateralBox">
-
             </div>
         </div>
         <Routes>
@@ -192,7 +191,7 @@ function App() {
           <Route path="/produtos" Component={Produtos} />
           <Route path="/novaVenda" Component={novaVenda} />
           <Route path="/novoCliente" Component={novoCliente} />
-          <Route path="/detalhesClientes" Component={detalhesClientes}/>
+          <Route path="/detalhesClientes/:id" Component={detalhesClientes}/>
           <Route path="/cadastrarProduto" Component={cadastrarProduto}/>
         </Routes>
       </Router>

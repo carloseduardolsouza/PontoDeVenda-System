@@ -4,9 +4,8 @@ import propTypes from "prop-types"
 
 function Provider({children}) {
 
-
     const valores = {
-
+        
     }
     return ( 
         <AppContext.Provider value={valores}>
