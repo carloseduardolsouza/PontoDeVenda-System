@@ -67,7 +67,7 @@ function CadastrarProduto() {
 
     return (
         <div id="cadastrarProduto">
-        <h2>Detalhes Cliente</h2>
+        <h2>Cadastro de Produtos</h2>
         <header className="HeaderClientesInfo">
             <p onClick={() => render('Cadastro')} className="bttRenderNovoProduto" style={styleCadastro}>Cadastro</p>
             <p onClick={() => render('Tributação')} className="bttRenderNovoProduto" style={styleTributação}>Tributação</p>

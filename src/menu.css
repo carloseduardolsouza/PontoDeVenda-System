@@ -3,6 +3,7 @@
     width: 160px;
     height: 100vh;
     position: fixed;
+    z-index: 10;
 }
 
 .MenuLateralBox {
