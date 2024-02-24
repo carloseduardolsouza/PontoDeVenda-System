@@ -15,6 +15,10 @@ function NovaVenda() {
     const [resultClientes , setResultClientes] = useState([])
     const [loadingClientes , setloadingClientes] = useState(true)
 
+    const [id , setId] = useState()
+    const [nomeInfoClient , setNomeInfoClient] = useState("'NOME'")
+    const [telefoneInfoClient , setTelefoneInfoClient] = useState("'TELEFONE'")
+
     useEffect(() => {
         fetchapi.ProcurarCliente('all').then((response) => {
             setResultClientes(response)
@@ -22,14 +26,26 @@ function NovaVenda() {
         })
     }, [])
 
-    console.log(resultClientes)
-
     const options = []
 
     resultClientes.map((resultClientes) => {
         options.push({
                 value : resultClientes.id,
                 label : resultClientes.name})})
+
+    const renderInfoClient = async (e) => {
+        setloadingClientes(true)
+        setId(e.value)
+        const infoClient = await fetchapi.ProcurarClienteId(e.value)
+        const {
+            name,
+            telefone
+        } = infoClient[0]
+        setNomeInfoClient(name)
+        setTelefoneInfoClient(telefone)
+        setloadingClientes(false)
+
+    }
 
     return ( 
         <div id="NOVAVENDA">
@@ -41,22 +57,15 @@ function NovaVenda() {
                 <div>
                 <div>
                 {loadingClientes && <AçãoRealizada/> || (
-                    <Select className="SelectNovaVenda" placeholder="Cliente" options={options}>
-                        {resultClientes.map((resultClientes) => (
-                            <option value={resultClientes.id} key={resultClientes.id} >{resultClientes.name}</option>
-                        ))}
-                        <option value={'cliente.id'} key={'cliente.id'} >{'cliente.name'}</option>
-                        <option value={'cliente.id'} key={'cliente.id'} >{'cliente.name'}</option>
-
-                    </Select>
+                    <Select className="SelectNovaVenda" placeholder="Cliente" options={options} onChange={(e) => renderInfoClient(e)}/>
                 )}
                         <label className="NovaVendaLabel">
                             <p className="NovanVendaStrong"><strong>Nome:</strong></p>
-                            <p>{"Carlos Eduardo"}</p>
+                            <p>{nomeInfoClient}</p>
                         </label>
                         <label className="NovaVendaLabel">
                             <p className="NovanVendaStrong"><strong>Numero:</strong></p>
-                            <p>{"(62) 9 9336-2090"}</p>
+                            <p>{telefoneInfoClient}</p>
                         </label>
                     </div>
                     <Select className="SelectNovaVenda" placeholder="Produto"/>

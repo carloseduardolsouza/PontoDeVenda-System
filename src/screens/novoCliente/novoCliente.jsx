@@ -76,16 +76,16 @@ function NovoCliente() {
             <p>Nascimento: </p>
             <input type="date" className="DataNovoCliente" onChange={(event) => escreverDados("Nascimento", event)} value={nascimento}/>
             <button className="CadastrarNovoCliente" onClick={() => {
-                if(nascimento == "") {
+                if(nascimento == "" || nascimento == undefined || nascimento == null) {
                     setNascimento("desconhecido")
                 }
-                if(endereço == "") {
+                if(endereço == "" || endereço == undefined || endereço == null) {
                     setEndereço("desconhecido")
                 }
-                if(cpf == "") {
+                if(cpf == "" || cpf == undefined || cpf == null) {
                     setCpf("desconhecido")
                 }
-                if(email == "") {
+                if(email == "" || email == undefined || email == null) {
                     setEmail("desconhecido")
                 }
 

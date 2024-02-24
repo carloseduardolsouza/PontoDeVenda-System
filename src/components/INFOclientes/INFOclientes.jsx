@@ -25,6 +25,43 @@ function INFOclientes({data}) {
     } = data
 
     const [editar , setEditar] = useState(false)
+
+    const [nome , setNome] = useState(name)
+    const [nascimento , setNascimento] = useState(date_nascimento)
+    const [género , setGenero] = useState(genero)
+    const [telefones , setTelefones] = useState(telefone)
+    const [cpfs , setCpfs] = useState(cpf)
+    const [endereços , setEndereços] = useState(endereço)
+    const [emails , setEmails] = useState(email)
+    const [observações , setObservações] = useState(observação)
+
+    const escrever = (p,e) => {
+        if(p == "nome") {
+            setNome(e.target.value)
+        }
+        if(p == "nascimento") {
+            setNascimento(e.target.value)
+        }
+        if(p == "genero") {
+            setGenero(e.target.value)
+        }
+        if(p == "telefone") {
+            setTelefones(e.target.value)
+        }
+        if(p == "cpf") {
+            setCpfs(e.target.value)
+        }
+        if(p == "endereço") {
+            setEndereços(e.target.value)
+        }
+        if(p == "email") {
+            setEmails(e.target.value)
+        }
+        if(p == "observação") {
+            setObservações(e.target.value)
+        }
+    }
+
     return ( 
             <div id="DetalhesClienteINFORMAÇÃO">
             <div className="DivisãoDetalhesCliente">
@@ -38,17 +75,17 @@ function INFOclientes({data}) {
                 <p className="DetalhesClientesP"><strong>Codigo: </strong>0{id}</p>
                 <label>
                     <p className="DetalhesClientesP"><strong>Nome: </strong></p>
-                    <input type="text" value={name}/>
+                    <input type="text" value={nome} onChange={(e) => escrever("nome",e)}/>
                 </label>
 
                 <label>
                     <p className="DetalhesClientesP"><strong>Nascimento: </strong></p>
-                    <input type="date" value={date_nascimento}/>   
+                    <input type="date" value={nascimento} onChange={(e) => escrever("nascimento", e )}/>   
                 </label>
 
                 <label>
                     <p className="DetalhesClientesP"><strong>Genero: </strong></p>
-                    <select value={genero}>
+                    <select value={género} onChange={(e) => escrever("genero", e)}>
                         <option value="Masculino">Masculino</option>
                         <option value="Feminino">Feminino</option>
                     </select>
@@ -56,29 +93,43 @@ function INFOclientes({data}) {
 
                 <label>
                     <p className="DetalhesClientesP"><strong>Telefone: </strong></p>
-                    <input type="number" value={telefone}/>   
+                    <input type="number" value={telefones} onChange={(e) => escrever("telefone",e)}/>   
                 </label>
 
                 <label>
                     <p className="DetalhesClientesP"><strong>CPF: </strong></p>
-                    <input type="number" value={cpf}/>  
+                    <input type="number" value={cpfs} onChange={(e) => escrever("cpf",e)}/>  
                 </label>
 
                 <label>
                     <p className="DetalhesClientesP"><strong>Endereço: </strong></p>
-                    <input type="text" value={endereço}/>    
+                    <input type="text" value={endereços} onChange={(e) => escrever("endereço",e)}/>    
                 </label>
 
                 <label>
                     <p className="DetalhesClientesP"><strong>Email: </strong></p>
-                    <input type="email" value={email}/>    
+                    <input type="email" value={emails} onChange={(e) => escrever("email",e)}/>    
                 </label> 
 
                 <label>
                     <p className="DetalhesClientesP"><strong>Observação: </strong></p>
-                    <textarea  id="texto" rows="4" cols="58" value={observação}/>
+                    <textarea  id="texto" rows="4" cols="58" value={observações} onChange={(e) => escrever("observação",e)}/>
                 </label>
-                <button className="bttEditarClienteInfo" onClick={() => setEditar(false)}><FaCheckCircle /> Concluir</button>
+                <button className="bttEditarClienteInfo" onClick={() => {
+                    const dados = {
+                        "id": id,
+                        "nome" : nome,
+                        "date_nascimento" : nascimento,
+                        "genero" : género,
+                        "telefone" : telefones,
+                        "cpf" : cpfs,
+                        "endereço" : endereços,
+                        "email" : emails,
+                        "observação" : observações
+                    }
+                    fetchapi.AtualizarCliente(dados)
+                    setEditar(false)
+                }}><FaCheckCircle /> Concluir</button>
         </div>
             ) || (
                 <div className="alinhar">

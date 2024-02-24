@@ -19,7 +19,7 @@ const novoCliente = async (dados) => {
 }
 
 const procurarCliente = async (id) => {
-    if(id == "all") {
+    if(id === "all") {
         const query = `SELECT * FROM clientes`
         const [users] = await connection.execute(query)
         return users

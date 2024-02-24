@@ -8,9 +8,29 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+import fetchapi from "../../api/fetchapi"
+
 function CadastroProdutos() {
     const [images, setImages] = useState([]);
     const [openImagens , setOpenImagens] = useState(false)
+
+    const [produto , setProduto] = useState()
+    const [marca , setMarca] = useState()
+    const [descrição , setDescrição] = useState()
+
+    const escrever = (p , e) => {
+        if(p == "produto") {
+            setProduto(e.target.value)
+        }
+
+        if(p == "marca") {
+            setMarca(e.target.value)
+        }
+
+        if(p == "descrição") {
+            setDescrição(e.target.value)
+        }
+    }
 
   const HandleImageChange = (e) => {
     const files = Array.from(e.target.files);
@@ -21,6 +41,8 @@ function CadastroProdutos() {
 
     setImages((prevImages) => [...prevImages, ...imagesArray]);
     setOpenImagens(true)
+
+    console.log(images)
   };
 
   const settings = {
@@ -37,16 +59,16 @@ function CadastroProdutos() {
             <form className="AreaInputsNovoProduto">
                 <la>
                     <p>Nome: </p>
-                    <input type="text" className="nomeNovoProduto"/>
+                    <input type="text" className="nomeNovoProduto" onChange={(e) => escrever("produto", e)}/>
                 </la>
                     <la>
                         <p>Marca: </p>
-                        <input type="text" />
+                        <input type="text" onChange={(e) => escrever("marca" , e)}/>
                     </la>
 
                     <la>
                         <p>Descrição: </p>
-                        <textarea id="texto" rows="4" cols="50"></textarea>
+                        <textarea id="texto" rows="4" cols="50" onChange={(e) => escrever("descrição" , e)}></textarea>
                     </la>
 
                     <la>
@@ -55,16 +77,36 @@ function CadastroProdutos() {
                     </la>
 
                 <div className="LinhaDivisão"/>
-                <button className="bttCadastrarNovoProduto">Cadastrar</button>
+                <button className="bttCadastrarNovoProduto" onClick={() => {
+                    const dados = {
+                        "produto" : produto,
+                        "preçocompra" : "00",
+                        "margem" : "00",
+                        "preçovenda": "00",
+                        "emestoque" : "0",
+                        "descrição" : descrição,
+                        "imagem" : images,
+                        "marca" : marca,
+                        "comição" : "0",
+                        "defal" : "0",
+                        "ipi" : "0"
+                    }
+                    fetchapi.NovoProduto(dados)
+
+                    setProduto('')
+                    setDescrição('')
+                    setMarca('')
+                    setImages([])
+                }}>Cadastrar</button>
             </form>
 
                 {openImagens && (
                     <div className="imageProdutoOpen">
                         <div>
                             <Slider {...settings}>
-                                    {images.map((image, index) => (
-                                        <div key={index}>
-                                    <img src={image} alt={`Image ${index}`} style={{ width: '100%', maxHeight: '300px', margin: 'auto' }} className="zindex" />
+                                    {images.map((image) => (
+                                        <div>
+                                    <img src={image} style={{ width: '100%', maxHeight: '300px', margin: 'auto' }} className="zindex" />
                                     </div>
                                 ))}
                             </Slider>

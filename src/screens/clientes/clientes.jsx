@@ -24,6 +24,14 @@ function Clientes() {
         })
     }, [])
 
+    const renderClientes = async (e) => {
+        e.preventDefault()
+        setloadingClientes(true)
+        const client = await ProcurarClientesApi.ProcurarCliente(pesquisar)
+        setloadingClientes(false)
+        setResultClientes(client)
+    }
+
     return ( 
         <div id="CLIENTE">
             <header id="HeaderClientes">
@@ -31,8 +39,8 @@ function Clientes() {
                 <p>{log}</p>
             </header>
             <article className="ArticleClientes">
-                <form>
-                    <button href="#" className="AddCliente" onClick={(e) => {
+                <form onSubmit={(e) => renderClientes(e)}>
+                    <button className="AddCliente" type="button" onClick={(e) => {
                         e.preventDefault()
                         window.location.href = "/novoCliente"
                     }}>+</button>
