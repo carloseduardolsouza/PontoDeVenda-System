@@ -35,6 +35,7 @@
     right: 10px;
     top: 10px;
     padding: 3px;
+    animation: EntradaDetalhesProdutos .2s linear;
 
     background: rgba(255, 255, 255, 0.3); /* Cor com transparência */
       border-radius: 10px;
@@ -43,6 +44,15 @@
       -webkit-backdrop-filter: blur(10px); /* Desfoque para navegadores Webkit (Safari, Chrome, etc.) */
       border: 1px solid rgba(255, 255, 255, 0.18); /* Borda */
 }
+
+@keyframes EntradaDetalhesProdutos {
+    0% {
+      width: 1px;
+    }
+    100% {
+      width: 500px;
+    }
+  }
 
 .ExitDetalhesProduto {
     display: flex;

@@ -6,6 +6,7 @@
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
+    animation: EntradaDetalhesPendentes .2s linear;
 
     background: rgba(255, 255, 255, 0.3); /* Cor com transparência */
       border-radius: 10px;
@@ -13,6 +14,15 @@
       backdrop-filter: blur(10px); /* Desfoque */
       -webkit-backdrop-filter: blur(10px); /* Desfoque para navegadores Webkit (Safari, Chrome, etc.) */
       border: 1px solid rgba(255, 255, 255, 0.18); /* Borda */
+}
+
+@keyframes EntradaDetalhesPendentes {
+  0% {
+    width: 1px;
+  }
+  100% {
+    width: 500px;
+  }
 }
 
 .ExitPendentesDetalhes {

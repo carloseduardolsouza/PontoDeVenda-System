@@ -4,11 +4,10 @@ function createWindow() {
     const win = new BrowserWindow({
         title: "Ponto De Venda",
         webPreferences: false,
-        width: 800,
-        height: 600,
+        fullscreen: true,
 
     })
-    win.loadURL("http://localhost:3001/")
+    win.loadURL("http://localhost:3000/")
 
     // Define o menu personalizado para a janela
         const mainMenu = Menu.buildFromTemplate([]);
