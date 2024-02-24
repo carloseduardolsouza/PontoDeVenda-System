@@ -43,6 +43,7 @@ import novaVenda from "./screens/novaVenda/novaVenda";
 import novoCliente from "./screens/novoCliente/novoCliente";
 import cadastrarProduto from "./screens/cadastrarProduto/cadastrarProduto"
 import detalhesClientes from "./screens/detalhesClientes/detalhesClientes";
+import estoques from "./screens/estoque/estoque"
 
 function App() {
     const [vendas , setVendas] = useState(true)
@@ -193,6 +194,7 @@ function App() {
           <Route path="/novoCliente" Component={novoCliente} />
           <Route path="/detalhesClientes/:id" Component={detalhesClientes}/>
           <Route path="/cadastrarProduto" Component={cadastrarProduto}/>
+          <Route path="/estoque" Component={estoques}/>
         </Routes>
       </Router>
     </div>

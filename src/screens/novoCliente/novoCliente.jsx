@@ -9,22 +9,11 @@ import { useState } from "react"
 function NovoCliente() {
     const [nome ,setNome] = useState()
     const [numero ,setNumero] = useState()
-    const [endereço ,setEndereço] = useState('desconhecido')
-    const [cpf ,setCpf] = useState(10000000000)
-    const [email ,setEmail] = useState('desconhecido@gmail.com')
+    const [endereço ,setEndereço] = useState()
+    const [cpf ,setCpf] = useState()
+    const [email ,setEmail] = useState()
     const [genero ,setGenero] = useState('Selecione o Genero')
-    const [nascimento ,setNascimento] = useState('1000-10-10')
-
-    const dados = {
-        "nome" : nome,
-        "date_nascimento" : nascimento,
-        "genero" : genero,
-        "telefone" : numero,
-        "cpf" : cpf,
-        "endereço" : endereço,
-        "email" : email,
-        "observação" : "***"
-    }
+    const [nascimento ,setNascimento] = useState()
 
     const Data = new Date()
     const log = `${Data.getUTCDate()}/${Data.getUTCMonth() + 1}/${Data.getUTCFullYear()}`
@@ -69,15 +58,15 @@ function NovoCliente() {
         <img src={ImageUser} alt="Imagem User" className="ImageUser" />
         <article className="articleNovoCliente">
             <p><strong>Nome: </strong></p>
-            <input type="text" className="InputNovoCliente" onChange={(event) => escreverDados("nome" , event)} value={nome}/>
+            <input type="text" className="InputNovoCliente" onChange={(event) => escreverDados("nome" , event)} value={nome} placeholder="Nome" required/>
             <p><strong>Numero: </strong></p>
-            <input type="number" className="InputNovoCliente" onChange={(event) => escreverDados("numero", event)} value={numero}/>
+            <input type="number" className="InputNovoCliente" onChange={(event) => escreverDados("numero", event)} value={numero} placeholder="Numero" required/>
             <p><strong>Endereço</strong></p>
-            <input type="text" className="InputNovoCliente" onChange={(event) => escreverDados("Endereço", event)} value={endereço}/>
+            <input type="text" className="InputNovoCliente" onChange={(event) => escreverDados("Endereço", event)} value={endereço} placeholder="Endereço"/>
             <p><strong>CPF</strong></p>
-            <input type="number" className="InputNovoCliente" onChange={(event) => escreverDados("CPF", event)} value={cpf}/>
+            <input type="number" className="InputNovoCliente" onChange={(event) => escreverDados("CPF", event)} value={cpf} placeholder="CPF"/>
             <p><strong>Email</strong></p>
-            <input type="text" className="InputNovoCliente" onChange={(event) => escreverDados("Email", event)} value={email}/>
+            <input type="text" className="InputNovoCliente" onChange={(event) => escreverDados("Email", event)} value={email} placeholder="Email"/>
             <p><strong>Gênero</strong></p>
             <select className="SelectNovoCliente" onChange={(event) => escreverDados("Gênero", event)} value={genero}>
                 <option value="Selecione o Genero">Selecione o Genero</option>
@@ -87,14 +76,40 @@ function NovoCliente() {
             <p>Nascimento: </p>
             <input type="date" className="DataNovoCliente" onChange={(event) => escreverDados("Nascimento", event)} value={nascimento}/>
             <button className="CadastrarNovoCliente" onClick={() => {
-                setCpf('10000000000')
-                setEmail('desconhecido@gmail.com')
-                setEndereço('desconhecido')
-                setGenero('Selecione o Genero')
-                setNascimento('1000-10-10')
+                if(nascimento == "") {
+                    setNascimento("desconhecido")
+                }
+                if(endereço == "") {
+                    setEndereço("desconhecido")
+                }
+                if(cpf == "") {
+                    setCpf("desconhecido")
+                }
+                if(email == "") {
+                    setEmail("desconhecido")
+                }
+
+                const dados = {
+                    "nome" : nome,
+                    "date_nascimento" : nascimento,
+                    "genero" : genero,
+                    "telefone" : numero,
+                    "cpf" : cpf,
+                    "endereço" : endereço,
+                    "email" : email,
+                    "observação" : "***"
+                }
+
+                NovoClienteApi.NovoCliente(dados)
+
+                setCpf('')
+                setEmail('')
+                setEndereço('')
+                setGenero('')
+                setNascimento('')
                 setNome('')
                 setNumero('')
-                NovoClienteApi.NovoCliente(dados)
+
             }}>Cadastrar</button>
         </article>
         </main>

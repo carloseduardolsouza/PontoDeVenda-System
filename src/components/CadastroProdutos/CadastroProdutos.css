@@ -60,6 +60,12 @@ textarea {
     background-color: #00000000;
 }
 
+.bttCadastrarNovoProduto:hover {
+  background-color: #25b811;
+  color: white;
+  transition: .3s;
+}
+
 .imageProdutoOpen {
     display: flex;
     justify-content: center;
