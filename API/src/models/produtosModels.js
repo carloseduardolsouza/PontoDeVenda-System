@@ -1,6 +1,8 @@
 const connection = require('./connection')
 
-const novoProduto = async (dados) => {
+const fs = require('fs');
+
+const novoProduto = async (dados , imagens) => {
     const {
         produto,
         preçocompra,
@@ -8,7 +10,6 @@ const novoProduto = async (dados) => {
         preçovenda,
         emestoque,
         descrição,
-        imagem,
         marca,
         comição,
         defal,
@@ -16,7 +17,7 @@ const novoProduto = async (dados) => {
     } = dados
 
     const query = 'INSERT INTO produtos (produto , preçocompra , margem , preçovenda , emestoque , descrição , imagem , marca, comição, defal ,ipi) VALUES (?,?,?,?,?,?,?,?,?,?,?)'
-    const values = [produto , preçocompra , margem ,preçovenda, emestoque , descrição , imagem , marca, comição, defal ,ipi]
+    const values = [produto , preçocompra , margem ,preçovenda, emestoque , descrição , imagens , marca, comição, defal ,ipi]
 
     const cadastrarClientes = await connection.execute(query , values)
 }

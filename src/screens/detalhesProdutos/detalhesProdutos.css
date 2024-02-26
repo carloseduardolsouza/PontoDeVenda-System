@@ -1,0 +1,42 @@
+#detalhesProdutos {
+    margin-left: 55px;
+}
+
+.h2detalhesProdutos {
+    margin-bottom: 50px;
+}
+
+.descriçãoDetalhesProdutos {
+    max-width: 700px;
+    font-size: 20px;
+}
+
+.imageSub {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    background-size: cover;
+    border-radius: 4px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.areaSubImages {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ImagemdoProdutoDetalhes {
+    width: 350px;
+    height: 350px;
+    border-radius: 20px;
+    background-size: cover;
+    margin-right: 50px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.alinhares {
+    display: flex;
+    flex-direction: row;
+}

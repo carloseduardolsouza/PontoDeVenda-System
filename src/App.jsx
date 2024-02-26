@@ -1,6 +1,10 @@
 import {useState } from "react";
 import Provider from "./context/provider";
 
+//configurações
+    import { BsGear } from "react-icons/bs";
+    import { BsGearFill } from "react-icons/bs";
+
 //menu
     import { RiMenu2Fill } from "react-icons/ri";
 
@@ -44,6 +48,7 @@ import novoCliente from "./screens/novoCliente/novoCliente";
 import cadastrarProduto from "./screens/cadastrarProduto/cadastrarProduto"
 import detalhesClientes from "./screens/detalhesClientes/detalhesClientes";
 import estoques from "./screens/estoque/estoque"
+import detalhesProdutos from "./screens/detalhesProdutos/detalhesProdutos";
 
 function App() {
     const [vendas , setVendas] = useState(true)
@@ -53,6 +58,7 @@ function App() {
     const [contasPagar , setContasPagar] = useState(false)
     const [estatísticas , setEstatísticas] = useState(false)
     const [caixa , setCaixa] = useState(false)
+    const [configs , setConfigs] = useState(false)
 
     const [windowWidth , setWindowWidth] = useState('45px')
     const [windowDisplay , setWindowDisplay] = useState('none')
@@ -93,6 +99,7 @@ function App() {
                 setContasPagar(false)
                 setEstatísticas(false)
                 setCaixa(false)
+                setConfigs(false)
                 }}>
                 {(vendas && <RiMoneyDollarCircleFill className="iconsMenuLateral"/>) || (
                     <RiMoneyDollarCircleLine className="iconsMenuLateral"/>
@@ -107,6 +114,7 @@ function App() {
                 setContasPagar(false)
                 setEstatísticas(false)
                 setCaixa(false)
+                setConfigs(false)
             }}>
                 {(clientes && <FaUser className="iconsMenuLateral"/>) || (
                     <FaRegUser className="iconsMenuLateral"/>
@@ -121,6 +129,7 @@ function App() {
                 setContasPagar(false)
                 setEstatísticas(false)
                 setCaixa(false)
+                setConfigs(false)
             }}>
                 {(produtos && <MdSell className="iconsMenuLateral"/>) || (
                     <MdOutlineSell className="iconsMenuLateral"/>
@@ -135,6 +144,7 @@ function App() {
                 setContasPagar(false)
                 setEstatísticas(false)
                 setCaixa(false)
+                setConfigs(false)
             }}>
                 {(estoque && <BsBox2Fill className="iconsMenuLateral"/>) || (
                     <BsBox2 className="iconsMenuLateral"/>
@@ -149,6 +159,7 @@ function App() {
                 setContasPagar(true)
                 setEstatísticas(false)
                 setCaixa(false)
+                setConfigs(false)
             }}>
                 {(contasPagar && <FaMoneyBill1 className="iconsMenuLateral"/>) || (
                     <FaRegMoneyBillAlt className="iconsMenuLateral"/>
@@ -163,6 +174,7 @@ function App() {
                 setContasPagar(false)
                 setEstatísticas(false)
                 setCaixa(true)
+                setConfigs(false)
             }}>
                 {(caixa && <FaCashRegister className="iconsMenuLateral"/>) || (
                     <FaCashRegister className="iconsMenuLateral"/>
@@ -177,11 +189,28 @@ function App() {
                 setContasPagar(false)
                 setEstatísticas(true)
                 setCaixa(false)
+                setConfigs(false)
             }}>
                 {(estatísticas && <BsBarChartLineFill className="iconsMenuLateral"/>) || (
                     <BsBarChartLine className="iconsMenuLateral"/>
                     )}
                 <p style={style}>Estatísticas</p>
+            </Link>
+
+            <Link to="/configurações" className="MenuLateralBox Preferencias" onClick={() => {
+                setVendas(false)
+                setClientes(false)
+                setProdutos(false)
+                setEstoque(false)
+                setContasPagar(false)
+                setEstatísticas(false)
+                setCaixa(false)
+                setConfigs(true)
+            }}>
+                {(configs && <BsGearFill  className="iconsMenuLateral"/>) || (
+                    <BsGear className="iconsMenuLateral"/>
+                    )}
+                <p style={style}>Preferencias</p>
             </Link>
             <div className="MenuLateralBox">
             </div>
@@ -195,6 +224,7 @@ function App() {
           <Route path="/detalhesClientes/:id" Component={detalhesClientes}/>
           <Route path="/cadastrarProduto" Component={cadastrarProduto}/>
           <Route path="/estoque" Component={estoques}/>
+          <Route path="/detalhesProdutos/:id" Component={detalhesProdutos}/>
         </Routes>
       </Router>
     </div>

@@ -8,6 +8,7 @@ import { useState , useEffect } from "react";
 import fetchapi from "../../api/fetchapi";
 
 import { FaSearch } from "react-icons/fa";
+import { Form } from "react-router-dom";
 
 function Produtos() {
     const Data = new Date()
@@ -39,13 +40,13 @@ function Produtos() {
                 <p>{log}</p>
             </header>
             <article className="ArticleProduto">
-                <form>
+                <form onSubmit={(e) => renderClientes(e)}>
                     <button className="AddProduto" onClick={(e) => {
                         e.preventDefault()
                         window.location.href = "/cadastrarProduto"
-                    }}>+</button>
-                    <input type="text"  className="InputProduto" placeholder="Procurar Produto..."/>
-                    <button className="Search"><FaSearch /></button>
+                    }} type="button">+</button>
+                    <input type="text"  className="InputProduto" placeholder="Procurar Produto..." onChange={(e) => setPesquisar(e.target.value)}/>
+                    <button className="Search" type="submit"><FaSearch/></button>
                 </form>
             </article>
             <table className="tableProdutos">

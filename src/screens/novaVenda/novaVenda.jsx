@@ -12,29 +12,41 @@ function NovaVenda() {
     const Data = new Date()
     const log = `${Data.getUTCDate()}/${Data.getUTCMonth() + 1}/${Data.getUTCFullYear()}`
 
+    const [resultProdutos , setResultProdutos] = useState([])
     const [resultClientes , setResultClientes] = useState([])
-    const [loadingClientes , setloadingClientes] = useState(true)
+    const [loading , setloading] = useState(true)
 
     const [id , setId] = useState()
     const [nomeInfoClient , setNomeInfoClient] = useState("'NOME'")
     const [telefoneInfoClient , setTelefoneInfoClient] = useState("'TELEFONE'")
 
+    const [produto , setProduto] = useState("'Produto'")
+    const [precovenda , setPreçovenda] = useState("'Preço'")
+    const [emestoque , setEmestoque] = useState("'Em estoque'")
+
     useEffect(() => {
         fetchapi.ProcurarCliente('all').then((response) => {
             setResultClientes(response)
-            setloadingClientes(false)
+            setloading(false)
         })
     }, [])
 
-    const options = []
+    useEffect(() => {
+        fetchapi.ProcurarProdutos('all').then((response) => {
+            setResultProdutos(response)
+            setloading(false)
+        })
+    }, [])
+
+    const optionsClientes = []
 
     resultClientes.map((resultClientes) => {
-        options.push({
+        optionsClientes.push({
                 value : resultClientes.id,
                 label : resultClientes.name})})
 
     const renderInfoClient = async (e) => {
-        setloadingClientes(true)
+        setloading(true)
         setId(e.value)
         const infoClient = await fetchapi.ProcurarClienteId(e.value)
         const {
@@ -43,7 +55,30 @@ function NovaVenda() {
         } = infoClient[0]
         setNomeInfoClient(name)
         setTelefoneInfoClient(telefone)
-        setloadingClientes(false)
+        setloading(false)
+
+    }
+
+    const optionsProdutos = []
+
+    resultProdutos.map((resultProdutos) => {
+        optionsProdutos.push({
+                value : resultProdutos.id,
+                label : resultProdutos.produto})})
+
+    const renderInfoProduto = async (e) => {
+        setloading(true)
+        setId(e.value)
+        const infoClient = await fetchapi.ProcurarProdutosId(e.value)
+        const {
+            produto,
+            preçodevenda,
+            emestoque
+        } = infoClient[0]
+        setProduto(produto)
+        setPreçovenda(preçodevenda)
+        setEmestoque(emestoque)
+        setloading(false)
 
     }
 
@@ -56,8 +91,8 @@ function NovaVenda() {
             <main className="MainNovaVenda">
                 <div>
                 <div>
-                {loadingClientes && <AçãoRealizada/> || (
-                    <Select className="SelectNovaVenda" placeholder="Cliente" options={options} onChange={(e) => renderInfoClient(e)}/>
+                {loading && <AçãoRealizada/> || (
+                    <Select className="SelectNovaVenda" placeholder="Cliente" options={optionsClientes} onChange={(e) => renderInfoClient(e)}/>
                 )}
                         <label className="NovaVendaLabel">
                             <p className="NovanVendaStrong"><strong>Nome:</strong></p>
@@ -68,20 +103,20 @@ function NovaVenda() {
                             <p>{telefoneInfoClient}</p>
                         </label>
                     </div>
-                    <Select className="SelectNovaVenda" placeholder="Produto"/>
+                    <Select className="SelectNovaVenda" placeholder="Produto" options={optionsProdutos} onChange={(e) => renderInfoProduto(e)}/>
                     <div className="DivisãoNovaVenda">
                         <div>
                             <label className="NovaVendaLabel">
                                 <p className="NovanVendaStrong"><strong>Produto</strong></p>
-                                <p>{"Comoda Dhara"}</p>
+                                <p>{produto}</p>
                             </label>
                             <label className="NovaVendaLabel">
                                 <p className="NovanVendaStrong"><strong>Preço</strong></p>
-                                <p>{"R$ 550,00"}</p>
+                                <p>{precovenda}</p>
                             </label>
                             <label className="NovaVendaLabel">
                                 <p className="NovanVendaStrong"><strong>Em Estoque</strong></p>
-                                <p>{"10 unidades"}</p>
+                                <p>{emestoque}</p>
                             </label>
                         </div>
                         <div>

@@ -94,15 +94,37 @@ const AtualizarCliente = async (dados) => {
     }
 }
 
-const NovoProduto = async (dados) => {
+const NovoProduto = async (dados , imageReq) => {
+    try {
+        const formData = new FormData();
+        formData.append('dados', JSON.stringify(dados));
+        imageReq.forEach((image) => {
+            formData.append(`image`, image); // Adiciona cada imagem com uma chave diferente
+        });
+
+        const response = await fetch('http://localhost:3322/novoProduto', {
+            method: 'POST',
+            body: formData
+        });
+        
+        if (!response.ok) {
+            throw new Error('Erro ao tentar adicionar novo cliente');
+        }
+
+        return response;
+    } catch (error) {
+        // Aqui você pode tratar o erro da forma desejada
+        console.error('Erro ao tentar fazer a requisição:', error.message);
+        // Por exemplo, você pode exibir uma mensagem de erro para o usuário
+        alert('A API PROVAVELMENTE ESTA INATIVA, ATIVE E TENTE NOVAMENTE');
+    }
+}
+
+const NovoProdutoImage = async (dados) => {
     try {
         const response = await fetch('http://localhost:3322/novoProduto', {
             method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(dados)
+            body: dados,
         });
         
         if (!response.ok) {
@@ -155,6 +177,7 @@ export default {
     AtualizarCliente,
 
     NovoProduto,
+    NovoProdutoImage,
     ProcurarProdutos,
     ProcurarProdutosId
 }

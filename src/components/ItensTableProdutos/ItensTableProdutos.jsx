@@ -11,7 +11,7 @@ function ItensTableProdutos({data}) {
     const [openDetalhes , setOpenDetalhes] = useState(false)
 
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
@@ -27,8 +27,9 @@ function ItensTableProdutos({data}) {
         imagem
     } = data
 
-    console.log(imagem)
-      
+    const imagesemColchetes = imagem.slice(1, -1)
+    const image = imagesemColchetes.split(',')
+
     return ( 
         <div id="ItensTableProdutos">
             {openDetalhes && (
@@ -38,19 +39,10 @@ function ItensTableProdutos({data}) {
                     <p>{descrição}</p>
                 </div>
             )}
-            <div className="ImageProduto">
-                            <Slider {...settings}>
-                                    {imagem.map((image, index) => (
-                                        <div key={index}>
-                                    <img src={image} alt={`Image ${index}`} style={{ width: '100%', maxHeight: '300px', margin: 'auto' }} className="zindex" />
-                                    </div>
-                                ))}
-                            </Slider>
-                        </div>
-
             <div 
                 className="ImageProduto"
-                style={{backgroundImage: `url(${imagem})`}}
+                onClick={(e) => {window.location.href = `/detalhesProdutos/${id}`}}
+                style={{backgroundImage: `url(http://localhost:3322/imagens/${image[0].slice(1, -1)})`}}
             />
 
             <div>

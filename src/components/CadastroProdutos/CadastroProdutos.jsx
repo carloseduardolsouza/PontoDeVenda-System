@@ -14,6 +14,8 @@ function CadastroProdutos() {
     const [images, setImages] = useState([]);
     const [openImagens , setOpenImagens] = useState(false)
 
+    const [imageReq , setImageReq] = useState()
+
     const [produto , setProduto] = useState()
     const [marca , setMarca] = useState()
     const [descrição , setDescrição] = useState()
@@ -34,6 +36,7 @@ function CadastroProdutos() {
 
   const HandleImageChange = (e) => {
     const files = Array.from(e.target.files);
+    setImageReq(files)
 
     const imagesArray = files.map((file) => {
       return URL.createObjectURL(file);
@@ -41,9 +44,30 @@ function CadastroProdutos() {
 
     setImages((prevImages) => [...prevImages, ...imagesArray]);
     setOpenImagens(true)
-
-    console.log(images)
   };
+
+  const CadastrarProduto = async (e) => {
+    e.preventDefault()
+        const dados = {
+            "produto" : produto,
+            "preçocompra" : "00",
+            "margem" : "00",
+            "preçovenda": "00",
+            "emestoque" : "0",
+            "descrição" : descrição,
+            "imagem" : "",
+            "marca" : marca,
+            "comição" : "0",
+            "defal" : "0",
+            "ipi" : "0"
+        }
+        fetchapi.NovoProduto(dados , imageReq)
+
+        setProduto('')
+        setDescrição('')
+        setMarca('')
+        setImages([])
+  }
 
   const settings = {
     dots: true,
@@ -59,16 +83,16 @@ function CadastroProdutos() {
             <form className="AreaInputsNovoProduto">
                 <la>
                     <p>Nome: </p>
-                    <input type="text" className="nomeNovoProduto" onChange={(e) => escrever("produto", e)}/>
+                    <input type="text" className="nomeNovoProduto" onChange={(e) => escrever("produto", e)} value={produto}/>
                 </la>
                     <la>
                         <p>Marca: </p>
-                        <input type="text" onChange={(e) => escrever("marca" , e)}/>
+                        <input type="text" onChange={(e) => escrever("marca" , e)} value={marca}/>
                     </la>
 
                     <la>
                         <p>Descrição: </p>
-                        <textarea id="texto" rows="4" cols="50" onChange={(e) => escrever("descrição" , e)}></textarea>
+                        <textarea id="texto" rows="4" cols="50" onChange={(e) => escrever("descrição" , e)} value={descrição}/>
                     </la>
 
                     <la>
@@ -77,27 +101,7 @@ function CadastroProdutos() {
                     </la>
 
                 <div className="LinhaDivisão"/>
-                <button className="bttCadastrarNovoProduto" onClick={() => {
-                    const dados = {
-                        "produto" : produto,
-                        "preçocompra" : "00",
-                        "margem" : "00",
-                        "preçovenda": "00",
-                        "emestoque" : "0",
-                        "descrição" : descrição,
-                        "imagem" : images,
-                        "marca" : marca,
-                        "comição" : "0",
-                        "defal" : "0",
-                        "ipi" : "0"
-                    }
-                    fetchapi.NovoProduto(dados)
-
-                    setProduto('')
-                    setDescrição('')
-                    setMarca('')
-                    setImages([])
-                }}>Cadastrar</button>
+                <button className="bttCadastrarNovoProduto" onClick={(e) => CadastrarProduto(e)}>Cadastrar</button>
             </form>
 
                 {openImagens && (
