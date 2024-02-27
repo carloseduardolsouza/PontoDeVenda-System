@@ -50,6 +50,11 @@ import detalhesClientes from "./screens/detalhesClientes/detalhesClientes";
 import estoques from "./screens/estoque/estoque"
 import detalhesProdutos from "./screens/detalhesProdutos/detalhesProdutos";
 import gerenciarEstoque from "./screens/gerenciarEstoque/gerenciarEstoque";
+import contasaPagar from "./screens/contasPagar/contasPagar"
+import caixaa from "./screens/caixa/caixa"
+import estatísticass from "./screens/estatísticas/estatísticas"
+import configurações from "./screens/configurações/configurações"
+
 
 function App() {
     const [vendas , setVendas] = useState(true)
@@ -101,7 +106,7 @@ function App() {
                 setEstatísticas(false)
                 setCaixa(false)
                 setConfigs(false)
-                }}>
+            }}>
                 {(vendas && <RiMoneyDollarCircleFill className="iconsMenuLateral"/>) || (
                     <RiMoneyDollarCircleLine className="iconsMenuLateral"/>
                     )}
@@ -227,6 +232,10 @@ function App() {
           <Route path="/estoque" Component={estoques}/>
           <Route path="/detalhesProdutos/:id" Component={detalhesProdutos}/>
           <Route path="/gerenciarEstoque" Component={gerenciarEstoque}/>
+          <Route path="/contasPagar" Component={contasaPagar}/>
+          <Route path="/caixa" Component={caixaa}/>
+          <Route path="/estatísticas" Component={estatísticass}/>
+          <Route path="/configurações" Component={configurações}/>
         </Routes>
       </Router>
     </div>

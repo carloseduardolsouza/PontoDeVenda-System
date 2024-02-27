@@ -6,11 +6,6 @@
     margin-bottom: 50px;
 }
 
-.descriçãoDetalhesProdutos {
-    max-width: 700px;
-    font-size: 20px;
-}
-
 .imageSub {
     width: 100px;
     height: 100px;
@@ -39,4 +34,13 @@
 .alinhares {
     display: flex;
     flex-direction: row;
+}
+
+.AreaInfoProdutosDetalhes p {
+    max-width: 700px;
+    font-size: 20px;
+}
+
+#strong {
+    margin-top: 20px;
 }

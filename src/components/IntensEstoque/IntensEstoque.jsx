@@ -1,13 +1,21 @@
 import "./IntensEstoque.css"
+import services from "../../services/services"
 
-function IntensEstoque() {
+function IntensEstoque({data}) {
+    const {
+        id,
+        produto,
+        preçocompra,
+        margem,
+        emestoque
+    } = data
     return ( 
         <div className="ItensTableEstoque">
-            <p className="RespostTableEstoque">{"COMODA CAPRI"}</p>
-            <p className="RespostTableEstoque">{"R$ 100,00"}</p>
-            <p className="RespostTableEstoque">{"100%"}</p>
-            <p className="RespostTableEstoque">{"10"}</p>
-            <p className="RespostTableEstoque">{"002"}</p>
+            <p className="RespostTableEstoque">{produto}</p>
+            <p className="RespostTableEstoque">{services.formatarCurrency(preçocompra)}</p>
+            <p className="RespostTableEstoque">{margem}%</p>
+            <p className="RespostTableEstoque">{emestoque}</p>
+            <p className="RespostTableEstoque">{id}</p>
         </div>
      );
 }

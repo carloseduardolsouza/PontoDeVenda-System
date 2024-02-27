@@ -28,6 +28,7 @@
     background-color: #e7e7e7;
     padding: 15px;
     border-radius: 10px;
+    z-index: 1;
 }
 
 .InputNovoCliente {

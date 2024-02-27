@@ -3,12 +3,11 @@ import "./INFOclientes.css"
 import { MdDeleteOutline } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
-
-import ImageUser from "../../assets/user.jpg"
-
+import ImageUser from "../../assets/user.jpg";
 import fetchapi from "../../api/fetchapi";
-
+import Deletando from "../Deletando/Deletando";
 import { useState } from "react";
+import services from "../../services/services"
 
 function INFOclientes({data}) {
     const {
@@ -34,6 +33,8 @@ function INFOclientes({data}) {
     const [endereços , setEndereços] = useState(endereço)
     const [emails , setEmails] = useState(email)
     const [observações , setObservações] = useState(observação)
+
+    const [deletando , setDeletando] = useState(false)
 
     const escrever = (p,e) => {
         if(p == "nome") {
@@ -62,8 +63,22 @@ function INFOclientes({data}) {
         }
     }
 
+    const Deletarcliente = () => {
+        setDeletando(true)
+        fetchapi.DeletarCliente(id)
+
+        setTimeout(() => {
+            setDeletando(false);
+        }, 1500)
+
+        setTimeout(() => {
+            window.location.href = "/clientes"
+        }, 2000)
+    }
+
     return ( 
             <div id="DetalhesClienteINFORMAÇÃO">
+                {deletando && <Deletando/> }
             <div className="DivisãoDetalhesCliente">
                 <img src={ImageUser} alt="Usuario" className="ImageUserDetalhesCliente"/>
                 <h2>{name}</h2>
@@ -135,15 +150,15 @@ function INFOclientes({data}) {
                 <div className="alinhar">
                     <p className="DetalhesClientesP"><strong>Codigo: </strong>0{id}</p>
                     <p className="DetalhesClientesP"><strong>Nome: </strong>{name}</p>
-                    <p className="DetalhesClientesP"><strong>Nascimento: </strong>{date_nascimento}</p>
+                    <p className="DetalhesClientesP"><strong>Nascimento: </strong>{services.formatarDataNascimento(date_nascimento)}</p>
                     <p className="DetalhesClientesP"><strong>Genero: </strong>{genero}</p>
-                    <p className="DetalhesClientesP"><strong>Telefone: </strong>{telefone}</p>
-                    <p className="DetalhesClientesP"><strong>CPF: </strong>{cpf}</p>
+                    <p className="DetalhesClientesP"><strong>Telefone: </strong>{services.formatarNumeroCelular(telefone)}</p>
+                    <p className="DetalhesClientesP"><strong>CPF: </strong>{services.formatarCPF(cpf)}</p>
                     <p className="DetalhesClientesP"><strong>Endereço: </strong>{endereço}</p>
                     <p className="DetalhesClientesP"><strong>Email: </strong>{email}</p>
                     <p className="DetalhesClientesP"><strong>Observação: </strong>{observação}</p>
                     <button className="bttEditarClienteInfo" onClick={() => setEditar(true)}><FaEdit /> Editar</button>
-                    <button className="bttDeleteClienteInfo" onClick={() => {fetchapi.DeletarCliente(id)}}><MdDeleteOutline/> Excluir Cliente</button>
+                    <button className="bttDeleteClienteInfo" onClick={() => Deletarcliente()}><MdDeleteOutline/> Excluir Cliente</button>
             </div>
             )}
         </div>

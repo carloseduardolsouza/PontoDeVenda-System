@@ -4,19 +4,63 @@ import ImageUser from "../../assets/user.jpg"
 
 import NovoClienteApi from "../../api/fetchapi"
 
+import Concluindo from "../../components/Concluindo/Concluindo"
 import { useState } from "react"
 
 function NovoCliente() {
-    const [nome ,setNome] = useState()
-    const [numero ,setNumero] = useState()
-    const [endereço ,setEndereço] = useState()
-    const [cpf ,setCpf] = useState()
-    const [email ,setEmail] = useState()
+    const [nome ,setNome] = useState('')
+    const [numero ,setNumero] = useState('')
+    const [endereço ,setEndereço] = useState('')
+    const [cpf ,setCpf] = useState('')
+    const [email ,setEmail] = useState('')
     const [genero ,setGenero] = useState('Selecione o Genero')
-    const [nascimento ,setNascimento] = useState()
+    const [nascimento ,setNascimento] = useState('')
+
+    const [concluido , setConcluindo] = useState(false)
 
     const Data = new Date()
     const log = `${Data.getUTCDate()}/${Data.getUTCMonth() + 1}/${Data.getUTCFullYear()}`
+
+    const CadastrarCliente = (e) => {
+        e.preventDefault()
+        if(nascimento == "" || nascimento == undefined || nascimento == null) {
+            setNascimento("desconhecido")
+        }
+        if(endereço == "" || endereço == undefined || endereço == null) {
+            setEndereço("desconhecido")
+        }
+        if(cpf == "" || cpf == undefined || cpf == null) {
+            setCpf("desconhecido")
+        }
+        if(email == "" || email == undefined || email == null) {
+            setEmail("desconhecido")
+        }
+        
+        const dados = {
+            "nome" : nome,
+            "date_nascimento" : nascimento,
+            "genero" : genero,
+            "telefone" : numero,
+            "cpf" : cpf,
+            "endereço" : endereço,
+            "email" : email,
+            "observação" : "***"
+        }
+        setConcluindo(true)
+        NovoClienteApi.NovoCliente(dados)
+        
+        setCpf('')
+        setEmail('')
+        setEndereço('')
+        setGenero('')
+        setNascimento('')
+        setNome('')
+        setNumero('')
+        
+        setTimeout(() => {
+            setConcluindo(false);
+        }, 1500)
+    }
 
     const escreverDados = (param , e) => {
         if(param == "nome") {
@@ -56,7 +100,7 @@ function NovoCliente() {
 
         <main className="MainNovoCliente">
         <img src={ImageUser} alt="Imagem User" className="ImageUser" />
-        <article className="articleNovoCliente">
+        <form className="articleNovoCliente" onSubmit={(e) => CadastrarCliente(e)}>
             <p><strong>Nome: </strong></p>
             <input type="text" className="InputNovoCliente" onChange={(event) => escreverDados("nome" , event)} value={nome} placeholder="Nome" required/>
             <p><strong>Numero: </strong></p>
@@ -75,43 +119,9 @@ function NovoCliente() {
             </select>
             <p>Nascimento: </p>
             <input type="date" className="DataNovoCliente" onChange={(event) => escreverDados("Nascimento", event)} value={nascimento}/>
-            <button className="CadastrarNovoCliente" onClick={() => {
-                if(nascimento == "" || nascimento == undefined || nascimento == null) {
-                    setNascimento("desconhecido")
-                }
-                if(endereço == "" || endereço == undefined || endereço == null) {
-                    setEndereço("desconhecido")
-                }
-                if(cpf == "" || cpf == undefined || cpf == null) {
-                    setCpf("desconhecido")
-                }
-                if(email == "" || email == undefined || email == null) {
-                    setEmail("desconhecido")
-                }
-
-                const dados = {
-                    "nome" : nome,
-                    "date_nascimento" : nascimento,
-                    "genero" : genero,
-                    "telefone" : numero,
-                    "cpf" : cpf,
-                    "endereço" : endereço,
-                    "email" : email,
-                    "observação" : "***"
-                }
-
-                NovoClienteApi.NovoCliente(dados)
-
-                setCpf('')
-                setEmail('')
-                setEndereço('')
-                setGenero('')
-                setNascimento('')
-                setNome('')
-                setNumero('')
-
-            }}>Cadastrar</button>
-        </article>
+            <button className="CadastrarNovoCliente" type="submit">Cadastrar</button>
+            {concluido && <Concluindo/>}
+        </form>
         </main>
         </div>
     </div>

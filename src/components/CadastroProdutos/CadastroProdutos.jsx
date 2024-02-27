@@ -8,6 +8,8 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+import Concluindo from "../../components/Concluindo/Concluindo"
+
 import fetchapi from "../../api/fetchapi"
 
 function CadastroProdutos() {
@@ -19,6 +21,8 @@ function CadastroProdutos() {
     const [produto , setProduto] = useState()
     const [marca , setMarca] = useState()
     const [descrição , setDescrição] = useState()
+
+    const [concluido , setConcluindo] = useState(false)
 
     const escrever = (p , e) => {
         if(p == "produto") {
@@ -48,6 +52,16 @@ function CadastroProdutos() {
 
   const CadastrarProduto = async (e) => {
     e.preventDefault()
+    console.log(imageReq)
+    if(descrição == '' || descrição == undefined || descrição == null) {
+        setDescrição("***")
+    }
+
+    if(marca == '' || marca == undefined || marca == null) {
+        setMarca("***")
+    }
+    
+
         const dados = {
             "produto" : produto,
             "preçocompra" : "00",
@@ -61,12 +75,18 @@ function CadastroProdutos() {
             "defal" : "0",
             "ipi" : "0"
         }
+        setConcluindo(true)
         fetchapi.NovoProduto(dados , imageReq)
 
         setProduto('')
         setDescrição('')
         setMarca('')
         setImages([])
+        setOpenImagens(false)
+
+        setTimeout(() => {
+            setConcluindo(false);
+        }, 1500)
   }
 
   const settings = {
@@ -80,10 +100,11 @@ function CadastroProdutos() {
 
     return ( 
         <div id="CadastroProdutos">
-            <form className="AreaInputsNovoProduto">
+            <form className="AreaInputsNovoProduto" onSubmit={(e) => CadastrarProduto(e)}>
+                {concluido && <Concluindo/>}
                 <la>
                     <p>Nome: </p>
-                    <input type="text" className="nomeNovoProduto" onChange={(e) => escrever("produto", e)} value={produto}/>
+                    <input type="text" className="nomeNovoProduto" onChange={(e) => escrever("produto", e)} value={produto} required/>
                 </la>
                     <la>
                         <p>Marca: </p>
@@ -101,7 +122,7 @@ function CadastroProdutos() {
                     </la>
 
                 <div className="LinhaDivisão"/>
-                <button className="bttCadastrarNovoProduto" onClick={(e) => CadastrarProduto(e)}>Cadastrar</button>
+                <button className="bttCadastrarNovoProduto" type="submit">Cadastrar</button>
             </form>
 
                 {openImagens && (

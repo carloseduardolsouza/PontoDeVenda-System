@@ -3,6 +3,7 @@ import fetchapi from "../../api/fetchapi";
 import { useParams } from 'react-router-dom';
 
 import Loading from "../../components/AçãoRealizada/AçãoRealizada"
+import services from "../../services/services"
 
 import { useState , useEffect } from "react";
 
@@ -44,12 +45,12 @@ function DetalhesProdutos() {
                     </div>
                 </div>
 
-                <div>
+                <div className="AreaInfoProdutosDetalhes">
                     <h1>{resultProdutos.produto}</h1>
-                    <p><strong>Descrição:</strong></p>
-                    <p className="descriçãoDetalhesProdutos">{resultProdutos.descrição}</p>
-                    <p><strong>Categoria: </strong>{resultProdutos.marca}</p>
-                    <p><strong>Preço: </strong>{resultProdutos.preço}</p>
+                    <p id="strong"><strong>Descrição:</strong></p>
+                    <p>{resultProdutos.descrição}</p>
+                    <p id="strong"><strong>Categoria: </strong>{resultProdutos.marca}</p>
+                    <p id="strong"><strong>Preço: </strong>{services.formatarCurrency(resultProdutos.preçovenda)}</p>
                 </div>
             </div>
         </div>

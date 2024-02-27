@@ -2,6 +2,7 @@ import ProdutosNovaVenda from "../../components/ProdutosNovaVenda/ProdutosNovaVe
 
 import fetchapi from "../../api/fetchapi.js";
 import { useState , useEffect } from "react";
+import services from "../../services/services.js"
 
 import Select from "react-select";
 
@@ -72,11 +73,11 @@ function NovaVenda() {
         const infoClient = await fetchapi.ProcurarProdutosId(e.value)
         const {
             produto,
-            preçodevenda,
+            preçovenda,
             emestoque
         } = infoClient[0]
         setProduto(produto)
-        setPreçovenda(preçodevenda)
+        setPreçovenda(+preçovenda)
         setEmestoque(emestoque)
         setloading(false)
 
@@ -100,7 +101,7 @@ function NovaVenda() {
                         </label>
                         <label className="NovaVendaLabel">
                             <p className="NovanVendaStrong"><strong>Numero:</strong></p>
-                            <p>{telefoneInfoClient}</p>
+                            <p>{services.formatarNumeroCelular(telefoneInfoClient)}</p>
                         </label>
                     </div>
                     <Select className="SelectNovaVenda" placeholder="Produto" options={optionsProdutos} onChange={(e) => renderInfoProduto(e)}/>
@@ -112,7 +113,7 @@ function NovaVenda() {
                             </label>
                             <label className="NovaVendaLabel">
                                 <p className="NovanVendaStrong"><strong>Preço</strong></p>
-                                <p>{precovenda}</p>
+                                <p>{services.formatarCurrency(precovenda)}</p>
                             </label>
                             <label className="NovaVendaLabel">
                                 <p className="NovanVendaStrong"><strong>Em Estoque</strong></p>
