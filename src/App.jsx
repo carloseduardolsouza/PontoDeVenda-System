@@ -49,6 +49,7 @@ import cadastrarProduto from "./screens/cadastrarProduto/cadastrarProduto"
 import detalhesClientes from "./screens/detalhesClientes/detalhesClientes";
 import estoques from "./screens/estoque/estoque"
 import detalhesProdutos from "./screens/detalhesProdutos/detalhesProdutos";
+import gerenciarEstoque from "./screens/gerenciarEstoque/gerenciarEstoque";
 
 function App() {
     const [vendas , setVendas] = useState(true)
@@ -225,6 +226,7 @@ function App() {
           <Route path="/cadastrarProduto" Component={cadastrarProduto}/>
           <Route path="/estoque" Component={estoques}/>
           <Route path="/detalhesProdutos/:id" Component={detalhesProdutos}/>
+          <Route path="/gerenciarEstoque" Component={gerenciarEstoque}/>
         </Routes>
       </Router>
     </div>

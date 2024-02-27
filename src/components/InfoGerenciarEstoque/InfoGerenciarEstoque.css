@@ -1,0 +1,35 @@
+#InfoGerenciarEstoque {
+    display: flex;
+}
+
+.EditarGerenciarEstoque {
+    width: 150px;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 5px;
+    background-color: #00000000;
+}
+
+.EditarGerenciarEstoque:hover {
+    color: white;
+    background-color: black;
+    transition: .3s;
+}
+
+.ImageGerenciarEstoque {
+    width: 400px;
+    height: 400px;
+    background-size: cover;
+    border-radius: 10px;
+}
+
+.areaInfoGerenciarEstoque {
+    margin-left: 40px;
+    max-width: 700px;
+}
+
+.areaInfoGerenciarEstoque p {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
