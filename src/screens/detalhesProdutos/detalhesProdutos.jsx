@@ -37,7 +37,7 @@ function DetalhesProdutos() {
                     />
                     <div className="areaSubImages">
                     {resultImageProdutos.map((imagem , index) => (
-                        <div className="imageSub" style={{ backgroundImage: `url(http://localhost:3322/imagens/${imagem})` }}
+                        <div className="imageSub" style={{ backgroundImage: `url("http://localhost:3322/imagens/${imagem}")` }}
                         onClick={() => setIndice(index)}
                         />
                         ))}

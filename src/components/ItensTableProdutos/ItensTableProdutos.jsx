@@ -42,7 +42,7 @@ function ItensTableProdutos({data}) {
             <div 
                 className="ImageProduto"
                 onClick={(e) => {window.location.href = `/detalhesProdutos/${id}`}}
-                style={{backgroundImage: `url(http://localhost:3322/imagens/${image[0].slice(1, -1)})`}}
+                style={{backgroundImage: `url("http://localhost:3322/imagens/${image[0].slice(1, -1)}")`}}
             />
 
             <div>

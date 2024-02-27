@@ -22,7 +22,7 @@ function InfoGerenciarEstoque({ data }) {
     return (
         <div id="InfoGerenciarEstoque">
             <div>
-                <div className="ImageGerenciarEstoque" style={{backgroundImage: `url(http://localhost:3322/imagens/${imagensSalvas[0]})`}}/>
+                <div className="ImageGerenciarEstoque" style={{backgroundImage: `url("http://localhost:3322/imagens/${imagensSalvas[0]}")`}}/>
             </div>
 
             <div className="areaInfoGerenciarEstoque">
