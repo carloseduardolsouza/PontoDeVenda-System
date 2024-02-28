@@ -8,6 +8,7 @@ import fetchapi from "../../api/fetchapi";
 import Deletando from "../Deletando/Deletando";
 import { useState } from "react";
 import services from "../../services/services"
+import Concluindo from "../Concluindo/Concluindo"
 
 function INFOclientes({data}) {
     const {
@@ -35,6 +36,7 @@ function INFOclientes({data}) {
     const [observações , setObservações] = useState(observação)
 
     const [deletando , setDeletando] = useState(false)
+    const [concluindo , setConcluindo] = useState(false)
 
     const escrever = (p,e) => {
         if(p == "nome") {
@@ -79,6 +81,7 @@ function INFOclientes({data}) {
     return ( 
             <div id="DetalhesClienteINFORMAÇÃO">
                 {deletando && <Deletando/> }
+                {concluindo && <Concluindo/>}
             <div className="DivisãoDetalhesCliente">
                 <img src={ImageUser} alt="Usuario" className="ImageUserDetalhesCliente"/>
                 <h2>{name}</h2>
@@ -142,7 +145,13 @@ function INFOclientes({data}) {
                         "email" : emails,
                         "observação" : observações
                     }
+                    setConcluindo(true)
                     fetchapi.AtualizarCliente(dados)
+                    
+                    setTimeout(() => {
+                        setConcluindo(false);
+                        window.location.reload()
+                    }, 1500)
                     setEditar(false)
                 }}><FaCheckCircle /> Concluir</button>
         </div>

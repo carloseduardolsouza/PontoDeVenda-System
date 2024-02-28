@@ -1,3 +1,4 @@
-1 - arrumar animação de cliente atualizado
-2 - arrumar ordem de imagens em produtos para qual vai ser capa
-3 - 
+1 - arrumar ordem de imagens em produtos para qual vai ser capa
+2 - quebra de api quando cadastra um produto sem imagem
+3 - arrumar front de gerenciar estoque
+4 - dar funcionalidade a gerenciar estoque

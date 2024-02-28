@@ -9,6 +9,7 @@ import InfoGerenciarEstoque from "../../components/InfoGerenciarEstoque/InfoGere
 import PreçosProdutos from "../../components/PreçosProdutos/PreçosProdutos"
 import FornecedoresProdutos from "../../components/FornecedoresProdutos/FornecedoresProdutos"
 import OpçõesProdutos from "../../components/OpçõesProdutos/OpçõesProdutos"
+import Alerta from "../../components/Alerta/Alerta"
 
 function GerenciarEstoque() {
     const [resultProdutos , setResultProdutos] = useState([])
@@ -25,6 +26,8 @@ function GerenciarEstoque() {
     const [tributação , setTributação] = useState(false)
     const [fornecedores , setFornecedores] = useState(false)
     const [opções , setOpções] = useState(false)
+
+    const [alerta , setAlerta] = useState(false)
 
     const [openedSelect , setOpenedSelect] = useState(true)
 
@@ -119,7 +122,7 @@ function GerenciarEstoque() {
             setStyleOpções({textDecoration: 'underline 3px #0295ff'})
         }
     }
-
+    
     return ( 
         <div id="gerenciarEstoque">
             <h2>Gerenciar Estoque</h2>
@@ -129,9 +132,17 @@ function GerenciarEstoque() {
                 <p onClick={() => render('Fornecedores')} className="bttRenderNovoProduto" style={styleFornecedores}>Gerenciar Estoque</p>
                 <p onClick={() => render('Opções')} className="bttRenderNovoProduto" style={styleOpções}>Opções</p>
             </header>
+            {alerta && <Alerta parametro={"Selecione um item para gerenciar"} functio={setAlerta}/>}
             {loading && <Loading/> ||
                 openedSelect &&
-                    <div className="inputGerenciarEstoque">
+                <form className="inputGerenciarEstoque" onSubmit={(e) => {
+                    if(iD == "" || iD == undefined || iD == null) {
+                        e.preventDefault()
+                        setAlerta(true)
+                        return
+                    }
+                    setOpenedSelect(false);
+                    setCadastro(true)}}>
                         <Select
                         className="SelectProductGerenciarEstoque"
                         options={optionsProdutos}
@@ -144,8 +155,8 @@ function GerenciarEstoque() {
                         <p><strong>Preço de venda: </strong>{services.formatarCurrency(preçovenda)}</p>
                         <p><strong>em estoque: </strong>{emestoque}</p>
                         <p><strong>Comição: </strong>{comição}</p>
-                        <button className="SelecionarProdutoGerenciarEstoque" onClick={() => {setOpenedSelect(false); setCadastro(true)}}>Selecionar</button>
-                    </div>
+                        <button className="SelecionarProdutoGerenciarEstoque" type="submit">Selecionar</button>
+                    </form>
                     ||
                      
                     cadastro && (
