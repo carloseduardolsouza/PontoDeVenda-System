@@ -1,26 +1,99 @@
-.linha {
-    width: 100%;
-    height: 1px;
-    background-color: #4d4d4d;
+.AreaInfoGerenciarEstoque {
+    background-color: #eeeeee;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 900px;
+    position: relative;
+    margin: auto;
+    height: 150px;
 }
 
-#PreçosProdutos p {
+.AreaInfoGerenciarEstoque p {
     font-size: 20px;
+    margin-bottom: 10px;
 }
 
-.preçovendamarkup {
+.AreaInfoGerenciarEstoque label {
     display: flex;
     justify-content: space-around;
 }
 
-.inputsPreçosProdutos {
+#Markup {
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
+}
+
+.gerenTabelEstoque {
+    margin-top: 20px;
+}
+
+.bttReposiçãoGerenciarEstoque {
+    width: 100px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: #0295ff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+}
+
+.detailhes {
+    width: 130px;
+}
+
+.setInfoGerenceiarEstoque label {
+    display: flex;
+    max-width: 300px;
+    margin-left: 100px;
+}
+
+.setInfoGerenceiarEstoque > label > input {
+    width: 100%;
+    margin-left: 15px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.setInfoGerenceiarEstoque > label > p {
     font-size: 18px;
 }
 
-.calcularPreçosProdutos {
+.setInfoGerenceiarEstoque {
+    max-width: 900px;
+    margin: auto;
+    background-color: #eeeeee;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.calcularBttsetInfoGerenceiarEstoque {
     width: 200px;
-    padding: 5px;
-    margin-top: 20px;
-    cursor: pointer;
     border-radius: 20px;
+    border: 1px solid #0295ff;
+    color: #0295ff;
+    cursor: pointer;
+}
+
+.calcularBttsetInfoGerenceiarEstoque:hover {
+    color: white;
+    background-color: #0295ff;
+    transition: .3s;
+}
+
+.lançarBttsetInfoGerenceiarEstoque {
+    width: 200px;
+    border-radius: 20px;
+    border: 1px solid green;
+    color: green;
+    cursor: pointer;
+    height: 40px;
+    margin-top: 30px;
+}
+
+.lançarBttsetInfoGerenceiarEstoque:hover {
+    color: white;
+    background-color: green;
+    transition: .3s;
 }

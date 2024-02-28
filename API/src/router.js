@@ -21,5 +21,6 @@ router.get('/imagens/:nomeImagem', produtosControllers.proverImagens);
 router.post("/novoProduto" , upload.array('image') , produtosControllers.novoProduto)
 router.get("/procurarProdutos/:id" , produtosControllers.procurarProdutos)
 router.get("/procurarProdutosId/:id" , produtosControllers.procurarProdutosId)
+router.put("/editarProduto/:id" , produtosControllers.editarProduto)
 
 module.exports = router;

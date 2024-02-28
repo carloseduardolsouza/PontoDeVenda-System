@@ -155,6 +155,31 @@ const ProcurarProdutosId = async (p) => {
     }
 }
 
+const AtualizarProduto = async (dados) => {
+    try {
+        const {id} = dados
+        const response = await fetch(`http://localhost:3322/editarProduto/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dados)
+        });
+        
+        if (!response.ok) {
+            throw new Error('Erro ao tentar adicionar novo cliente');
+        }
+
+        return response;
+    } catch (error) {
+        // Aqui você pode tratar o erro da forma desejada
+        console.error('Erro ao tentar fazer a requisição:', error.message);
+        // Por exemplo, você pode exibir uma mensagem de erro para o usuário
+        alert('A API PROVAVELMENTE ESTA INATIVA, ATIVE E TENTE NOVAMENTE');
+    }
+}
+
 
 export default {
     NovoCliente,
@@ -165,5 +190,6 @@ export default {
 
     NovoProduto,
     ProcurarProdutos,
-    ProcurarProdutosId
+    ProcurarProdutosId,
+    AtualizarProduto
 }

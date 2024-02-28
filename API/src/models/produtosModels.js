@@ -40,8 +40,39 @@ const procurarProdutosId = async (id) => {
     return produto
 }
 
+const editarProduto = async (id , dados) => {
+    const {
+        produto,
+        preçocompra,
+        margem,
+        preçovenda,
+        emestoque,
+        descrição,
+        marca,
+        comição,
+        defal,
+        ipi,
+        type
+    } = dados
+
+    if(type == "basico") {
+        const query = 'UPDATE produtos SET descrição = ? ,marca = ? WHERE id = ?';
+        const [editarProduto] = await connection.execute(query, [descrição , marca, id]); 
+        return editarProduto;
+    }
+    if(type == "estoque") {
+        const query = 'UPDATE produtos SET  preçocompra = ?, margem = ?, preçovenda = ?, emestoque = ? WHERE id = ?';
+    
+        const [editarProduto] = await connection.execute(query, [ preçocompra, margem , preçovenda, emestoque, id]); 
+        
+        return editarProduto;
+    }
+
+}
+
 module.exports = {
     novoProduto,
     procurarProdutos,
-    procurarProdutosId
+    procurarProdutosId,
+    editarProduto
 }

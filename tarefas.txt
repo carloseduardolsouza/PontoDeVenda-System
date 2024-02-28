@@ -1,4 +1,6 @@
 1 - arrumar ordem de imagens em produtos para qual vai ser capa
 2 - quebra de api quando cadastra um produto sem imagem
-3 - arrumar front de gerenciar estoque
-4 - dar funcionalidade a gerenciar estoque
+3 - fazer opções em gerenciar produtos
+4 - arrumar as atualização com efeitos interativos de gerenciar estoque
+
+    5 - fazer tabela de vendar e dar funcionalidade em todas que precisa da tabelda de vendas

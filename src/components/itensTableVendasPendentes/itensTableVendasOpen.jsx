@@ -28,7 +28,7 @@ function ItensTableVendas() {
             <p className="RespostTable">{"R$ 00,00"}</p>
             <p className="RespostTable">{"R$ 230,00"}</p>
             <p className="RespostTable">{"PIX"}</p>
-            <button className="RespostTable bttnRespostTableAbertos" onClick={() => {setOpenDetalhesPendes(true)}}>Detalhes</button>
+            <button className="RespostTable bttnRespostTableAbertoss" onClick={() => {setOpenDetalhesPendes(true)}}>Detalhes</button>
         </div>
      );
 }

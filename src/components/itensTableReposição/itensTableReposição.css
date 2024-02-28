@@ -13,20 +13,14 @@
     padding: 3px;
 }
 
-.RespostTable > button {
+.buitão {
     border-radius: 9px;
     cursor: pointer;
     padding: 3px;
-    width: 100%;
+    background-color: #0295ff;
+    color: white;
     margin-right: 5px;
     border: none;
     text-align: center;
-}
-
-.ItensTableVendas button {
-    color: white;
-    background-color: #0295ff;
-    border-radius: 7px;
-    border: none;
-    cursor: pointer;
+    width: 130px;
 }

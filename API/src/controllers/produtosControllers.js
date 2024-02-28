@@ -44,9 +44,16 @@ const procurarProdutosId = async (req, res) => {
     return res.status(200).json(produtos)
 }
 
+const editarProduto = async (req , res) => {
+    const {id} = req.params
+    const editarCliente = await produtosModels.editarProduto(id , req.body)
+    return res.status(200).json()
+}
+
 module.exports = {
     novoProduto,
     proverImagens,
     procurarProdutos,
-    procurarProdutosId
+    procurarProdutosId,
+    editarProduto
 }
