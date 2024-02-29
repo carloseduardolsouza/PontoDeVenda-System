@@ -1,12 +1,41 @@
 import "./InfoGerenciarEstoque.css";
+import { FaEdit } from "react-icons/fa";
+import { MdDeleteOutline } from "react-icons/md";
 import { useState, useEffect } from "react";
 import fetchapi from "../../api/fetchapi";
+import Deletando from "../Deletando/Deletando"
+import Concluindo from "../Concluindo/Concluindo"
+import Loading from "../AçãoRealizada/AçãoRealizada"
 
-function InfoGerenciarEstoque({ data }) {
+function InfoGerenciarEstoque({id}) {
+    const [deleted , setDeleted] = useState(false)
+    const [updateProduct , setUpdateProduct] = useState(false)
+    const [loading , setloading] = useState(true)
+    const [resultProdutos , setResultProdutos] = useState([])
+    
+    const [description , setDescription] = useState()
+    const [categ , setCateg] = useState()
+
+
+    const [imagensSalvas, setImagensSalvas] = useState([]);
+    const [conclied , setConcluied] = useState(false)
+    
+    useEffect(() => {
+        fetchapi.ProcurarProdutosId(id).then((response) => {
+            setResultProdutos(response[0])
+            
+            const imagens = response[0].imagem.slice(1, -1).split(",").map((imagem) => {
+                return imagem.trim().replace(/"/g, ""); // Remove as aspas duplas
+            });
+            setImagensSalvas(imagens)
+            setCateg(response[0].marca)
+            setDescription(response[0].descrição)
+            setloading(false)
+        })
+    }, [])
+
     const {
-        id,
         produto,
-        descrição,
         preçovenda,
         preçocompra,
         ipi,
@@ -15,25 +44,10 @@ function InfoGerenciarEstoque({ data }) {
         emestoque,
         margem,
         imagem,
-        marca,
-    } = data;
+    } = resultProdutos
 
-    const [description , setDescription] = useState(descrição)
-    const [categ , setCateg] = useState(marca)
-
-
-    const [updateProduct , setUpdateProduct] = useState(false)
-
-    const [imagensSalvas, setImagensSalvas] = useState([]);
-
-    useEffect(() => {
-        const imagens = imagem.slice(1, -1).split(",").map((imagem) => {
-            return imagem.trim().replace(/"/g, ""); // Remove as aspas duplas
-        });
-        setImagensSalvas(imagens);
-    }, [imagem]);
-
-    const concluir = () => {
+    const concluir = async () => {
+        setConcluied(true)
         const array = {
             "id": id,
             "produto" : produto,
@@ -49,37 +63,65 @@ function InfoGerenciarEstoque({ data }) {
             "ipi" : ipi,
             "type" : "basico"
         }
-        fetchapi.AtualizarProduto(array)
-        setUpdateProduct(false)
+        await fetchapi.AtualizarProduto(array)
+        await fetchapi.ProcurarProdutosId(id).then((response) => {
+            const {
+                descrição,
+                marca
+            } = response[0]
+            setDescription(descrição)
+            setCateg(marca)
+        })
+        setTimeout(() => {
+            setConcluied(false)
+            setUpdateProduct(false)
+        },1500)
+    }
+
+    const deletarProduto = async () => {
+        fetchapi.DeletarProduto(id)
+        setDeleted(true)
+
+        setTimeout(() => {
+            window.location.href = "/estoque"
+        },2000)
     }
 
     return (
-        <div id="InfoGerenciarEstoque">
-            <div>
-                <div className="ImageGerenciarEstoque" style={{backgroundImage: `url("http://localhost:3322/imagens/${imagensSalvas[0]}")`}}/>
-            </div>
+        <div>
+            {loading && <Loading/> ||
+            <div id="InfoGerenciarEstoque">
+                {conclied && <Concluindo/>}
+                <div>
+                    <div className="ImageGerenciarEstoque" style={{backgroundImage: `url("http://localhost:3322/imagens/${imagensSalvas[0]}")`}}/>
+                </div>
+    
+                <div className="areaInfoGerenciarEstoque">
+                    {deleted && <Deletando/>}
+                    {updateProduct && 
+                        <div>
+                            <h2>{produto}</h2>
+                            <p><strong>Key: </strong>{id}</p>
+                            <p><strong>Descrição: </strong></p>
+                            <textarea id="texto" rows="6" cols="60" value={description} onChange={(e) => setDescription(e.target.value)}/>
+                            <p><strong>Categoria: </strong></p>
+                            <input type="text" value={categ} className="inputMarcaInfoEstoque" onChange={(e) => setCateg(e.target.value)}/> <br />
+                            <button className="EditarGerenciarEstoque" onClick={() => concluir()}>Concluir</button>
+                        </div> ||
+    
+                        <div>
+                            <h2>{produto}</h2>
+                            <p><strong>Key: </strong>{id}</p>
+                            <p><strong>Descrição: </strong>{description}</p>
+                            <p><strong>Categoria: </strong>{categ}</p>
+                            <button className="EditarGerenciarEstoque" onClick={() => setUpdateProduct(true)}><FaEdit /> Editar</button>
+                            <button className="ExcluirGerenciarEstoque" onClick={() => deletarProduto()}><MdDeleteOutline/> Excluir produto</button>
+                        </div>
+                    }
 
-            <div className="areaInfoGerenciarEstoque">
-                {updateProduct && 
-                    <div>
-                        <h2>{produto}</h2>
-                        <p><strong>Key: </strong>{id}</p>
-                        <p><strong>Descrição: </strong></p>
-                        <textarea id="texto" rows="6" cols="60" value={description} onChange={(e) => setDescription(e.target.value)}/>
-                        <p><strong>Categoria: </strong></p>
-                        <input type="text" value={categ} className="inputMarcaInfoEstoque" onChange={(e) => setCateg(e.target.value)}/> <br />
-                        <button className="EditarGerenciarEstoque" onClick={() => concluir()}>Concluir</button>
-                    </div> ||
-
-                    <div>
-                        <h2>{produto}</h2>
-                        <p><strong>Key: </strong>{id}</p>
-                        <p><strong>Descrição: </strong>{descrição}</p>
-                        <p><strong>Categoria: </strong>{marca}</p>
-                        <button className="EditarGerenciarEstoque" onClick={() => setUpdateProduct(true)}>Editar</button>
-                    </div>
-                }
             </div>
+            </div>
+    }
         </div>
     );
 }

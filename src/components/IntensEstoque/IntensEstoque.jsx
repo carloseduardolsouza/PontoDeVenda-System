@@ -11,7 +11,9 @@ function IntensEstoque({data}) {
     } = data
     return ( 
         <div className="ItensTableEstoque">
-            <p className="RespostTableEstoque">{produto}</p>
+            <p className="RespostTableEstoque LinkTableEstoque" onClick={() => {
+                window.location.href = `/gerenciarEstoque/${id}`
+            }}>{produto}</p>
             <p className="RespostTableEstoque">{services.formatarCurrency(preçocompra)}</p>
             <p className="RespostTableEstoque">{margem}%</p>
             <p className="RespostTableEstoque">{emestoque}</p>

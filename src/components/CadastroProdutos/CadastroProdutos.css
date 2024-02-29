@@ -60,6 +60,17 @@ textarea {
     background-color: #00000000;
 }
 
+button.disabled {
+  width: 200px;
+    padding: 10px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: no-drop;
+    border: 1px solid #204f1a;
+    color: #204f1a;
+    background-color: #00000000;
+}
+
 .bttCadastrarNovoProduto:hover {
   background-color: #25b811;
   color: white;

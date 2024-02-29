@@ -22,5 +22,6 @@ router.post("/novoProduto" , upload.array('image') , produtosControllers.novoPro
 router.get("/procurarProdutos/:id" , produtosControllers.procurarProdutos)
 router.get("/procurarProdutosId/:id" , produtosControllers.procurarProdutosId)
 router.put("/editarProduto/:id" , produtosControllers.editarProduto)
+router.delete("/deletarProduto/:id" , produtosControllers.deletarProduto)
 
 module.exports = router;

@@ -12,15 +12,34 @@
     background-color: #00000000;
 }
 
-.inputMarcaInfoEstoque {
-    width: 100%;
-    font-size: 20px;
+.ExcluirGerenciarEstoque {
+    width: 150px;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 5px;
+    margin-top: 20px;
+    border: 1px solid red;
+    color: red;
+    background-color: #00000000;
+    margin-left: 50px;
+}
+
+.ExcluirGerenciarEstoque:hover {
+    background-color: red;
+    color: white;
+    transition: .3s;
 }
 
 .EditarGerenciarEstoque:hover {
     color: white;
     background-color: black;
     transition: .3s;
+}
+
+.inputMarcaInfoEstoque {
+    width: 100%;
+    font-size: 20px;
 }
 
 .ImageGerenciarEstoque {

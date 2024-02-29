@@ -2,7 +2,7 @@ import "./CadastroProdutos.css"
 
 import { FaCamera } from "react-icons/fa";
 
-import { useState } from "react";
+import { useState , useRef  } from "react";
 
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -13,6 +13,8 @@ import Concluindo from "../../components/Concluindo/Concluindo"
 import fetchapi from "../../api/fetchapi"
 
 function CadastroProdutos() {
+    const fileInputRef = useRef(null);
+
     const [images, setImages] = useState([]);
     const [openImagens , setOpenImagens] = useState(false)
 
@@ -23,6 +25,8 @@ function CadastroProdutos() {
     const [descrição , setDescrição] = useState()
 
     const [concluido , setConcluindo] = useState(false)
+
+    const [isDisabled, setIsDisabled] = useState(true);
 
     const escrever = (p , e) => {
         if(p == "produto") {
@@ -47,6 +51,7 @@ function CadastroProdutos() {
     });
 
     setImages((prevImages) => [...prevImages, ...imagesArray]);
+    setIsDisabled(false)
     setOpenImagens(true)
   };
 
@@ -78,11 +83,17 @@ function CadastroProdutos() {
         setConcluindo(true)
         fetchapi.NovoProduto(dados , imageReq)
 
+        if (fileInputRef.current) {
+            fileInputRef.current.value = ''; // Limpa a seleção do arquivo
+          }
+
         setProduto('')
         setDescrição('')
         setMarca('')
+        setImageReq([])
         setImages([])
         setOpenImagens(false)
+        setIsDisabled(true)
 
         setTimeout(() => {
             setConcluindo(false);
@@ -118,11 +129,11 @@ function CadastroProdutos() {
 
                     <la>
                         <p>Imagens: </p>
-                        <input type="file" multiple className="imageProduto" id="inputImageProduto" onChange={HandleImageChange}/>
+                        <input type="file" multiple className="imageProduto" id="inputImageProduto" ref={fileInputRef} onChange={HandleImageChange}/>
                     </la>
 
                 <div className="LinhaDivisão"/>
-                <button className="bttCadastrarNovoProduto" type="submit">Cadastrar</button>
+                <button className={isDisabled ? 'disabled' : 'bttCadastrarNovoProduto'} disabled={isDisabled} type="submit">Cadastrar</button>
             </form>
 
                 {openImagens && (

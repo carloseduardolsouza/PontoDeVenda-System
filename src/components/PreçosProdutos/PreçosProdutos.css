@@ -13,6 +13,24 @@
     margin-bottom: 10px;
 }
 
+.ExitLançarCompraEstoque {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border-radius: 5px;
+    width: 20px;
+    cursor: pointer;
+    height: 20px;
+    color: red;
+    border: 1px solid red;
+}
+
+.ExitLançarCompraEstoque:hover {
+    background-color: red;
+    color: white;
+    transition: .3s;
+}
+
 .AreaInfoGerenciarEstoque label {
     display: flex;
     justify-content: space-around;
@@ -60,6 +78,7 @@
 }
 
 .setInfoGerenceiarEstoque {
+    position: relative;
     max-width: 900px;
     margin: auto;
     background-color: #eeeeee;

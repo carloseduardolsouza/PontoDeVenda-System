@@ -12,3 +12,8 @@
     margin-bottom: 4px;
     padding: 3px;
 }
+
+.LinkTableEstoque {
+    text-decoration: underline;
+    cursor: pointer;
+}

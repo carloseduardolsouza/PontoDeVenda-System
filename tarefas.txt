@@ -1,5 +1,7 @@
 1 - arrumar ordem de imagens em produtos para qual vai ser capa
-2 - quebra de api quando cadastra um produto sem imagem
+2 - fazer opções em gerenciar estoque
+    - comição
+    - fornecedores
 3 - fazer opções em gerenciar produtos
 4 - arrumar as atualização com efeitos interativos de gerenciar estoque
 5 - area de detalhes de compras em gerenciar estoque

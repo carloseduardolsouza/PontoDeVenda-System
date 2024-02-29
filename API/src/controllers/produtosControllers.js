@@ -46,8 +46,14 @@ const procurarProdutosId = async (req, res) => {
 
 const editarProduto = async (req , res) => {
     const {id} = req.params
-    const editarCliente = await produtosModels.editarProduto(id , req.body)
+    const editarProduto = await produtosModels.editarProduto(id , req.body)
     return res.status(200).json()
+}
+
+const deletarProduto = async (req, res) => {
+   const {id} = req.params
+    const deletarProduto = await produtosModels.deletarProduto(id)
+    return res.status(200).json(deletarProduto)
 }
 
 module.exports = {
@@ -55,5 +61,6 @@ module.exports = {
     proverImagens,
     procurarProdutos,
     procurarProdutosId,
-    editarProduto
+    editarProduto,
+    deletarProduto
 }

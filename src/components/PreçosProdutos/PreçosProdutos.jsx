@@ -1,38 +1,42 @@
 import "./PreçosProdutos.css"
-import { useState } from "react";
+import { useState , useEffect } from "react";
 
+import Loading from "../AçãoRealizada/AçãoRealizada"
 import services from "../../services/services"
 import fetchapi from "../../api/fetchapi";
 
+import Concluindo from "../Concluindo/Concluindo"
+
 import ItensTableReposição from "../itensTableReposição/itensTableReposição";
 
-function PreçosProdutos({data}) {
-    const {
-        id,
-        produto,
-        preçocompra,
-        margem,
-        preçovenda,
-        emestoque,
-        defal,
-        descrição,
-        imagem,
-        marca,
-        comição,
-        ipi
-    } = data
-
+function PreçosProdutos({id}) {
     const [quantidade , setQuantidade] = useState()
-    const [preço , setPreço] = useState()
-    const [markup , setMarkup] = useState()
-    const [preçodevenda , setPreçodevenda] = useState(0)
+    const [noestoque , setNoestoque] = useState('')
+    const [markup , setMarkup] = useState('')
+    const [preçodevenda , setPreçodevenda] = useState('')
+    const [preço , setPreço] = useState('')
+    const [loading , setloading] = useState(true)
+    const [resultProdutos , setResultProdutos] = useState()
 
-
+    const [conclued , setConclued] = useState(false)
 
     const Data = new Date()
     const log = `${Data.getUTCDate()}/${Data.getUTCMonth() + 1}/${Data.getUTCFullYear()}`
 
     const [reposição , setReposição] = useState(false)
+
+    useEffect(() => {
+        fetchapi.ProcurarProdutosId(id).then((response) => {
+            setResultProdutos(response[0])
+
+            setNoestoque(response[0].emestoque)
+            setMarkup(response[0].margem)
+            setPreço(response[0].preçocompra)
+            setPreçodevenda(response[0].preçovenda)
+        
+            setloading(false)
+        })
+    }, [])
 
     const calcular = () => {
         const calculo = (markup / 100) * preço
@@ -40,7 +44,20 @@ function PreçosProdutos({data}) {
         setPreçodevenda(resultado)
     }
 
-    const lançarnoestoque = () => {
+    const lançarnoestoque = async (e) => {
+
+        e.preventDefault()
+        const {
+            id,
+            produto,
+            defal,
+            descrição,
+            imagem,
+            marca,
+            comição,
+            ipi
+        } = resultProdutos
+
         const array = {
             "id": id,
             "produto" : produto,
@@ -56,18 +73,37 @@ function PreçosProdutos({data}) {
             "ipi" : ipi,
             "type" : "estoque"
         }
+        
+        await fetchapi.AtualizarProduto(array)
+        await fetchapi.ProcurarProdutosId(id).then((respponse) => {
+            const {
+                preçocompra,
+                preçovenda,
+                margem,
+                emestoque
+            } = respponse[0]
+            setMarkup(margem)
+            setPreçodevenda(preçovenda)
+            setPreço(preçocompra)
+            setNoestoque(emestoque)
 
-        fetchapi.AtualizarProduto(array)
-
-        setPreçodevenda(0)
-        setReposição(false)
+        })
+        setConclued(true)
+        setTimeout(() => {
+            setConclued(false)
+            setReposição(false)
+        },1500)
     }
     return ( 
         <div>
+            {loading && <Loading/> ||
+            <div>
+                {conclued && <Concluindo/>}
             {reposição && 
-            <form className="setInfoGerenceiarEstoque" onSubmit={() => lançarnoestoque()}>
+            <form className="setInfoGerenceiarEstoque" onSubmit={(e) => lançarnoestoque(e)}>
+                <button className="ExitLançarCompraEstoque" onClick={() => setReposição(false)}>X</button>
                 <h2>{log}</h2>
-                <h3>{produto}</h3>
+                <h3>{resultProdutos.produto}</h3>
                 <label>
                     <p>Quantidade: </p>
                     <input type="number" onChange={(e) => setQuantidade(+e.target.value)} required/>
@@ -90,13 +126,13 @@ function PreçosProdutos({data}) {
             <button className="bttReposiçãoGerenciarEstoque" onClick={() => setReposição(true)}>Reposição</button>
             <div className="AreaInfoGerenciarEstoque">
                 <label>
-                    <p><strong>Produto:  </strong>{produto}</p>
+                    <p><strong>Produto:  </strong>{resultProdutos.produto}</p>
                     <p><strong>Ultima reposição:  </strong>{"10/10/2005"}</p>
                 </label>
-                <p><strong>Preço de compra:  </strong>{services.formatarCurrency(preçocompra)}</p>
-                <p><strong>Preço de venda:  </strong>{services.formatarCurrency(preçovenda)}</p>
-                <p><strong>Quantidade:  </strong>{emestoque} unidades</p>
-                <p id="Markup"><strong>Markup:  </strong>{margem}%</p>
+                <p><strong>Preço de compra:  </strong>{services.formatarCurrency(preço)}</p>
+                <p><strong>Preço de venda:  </strong>{services.formatarCurrency(preçodevenda)}</p>
+                <p><strong>Em estoque:  </strong>{noestoque} unidades</p>
+                <p id="Markup"><strong>Markup:  </strong>{markup}%</p>
             </div>
             <div>
                 <table className="gerenTabelEstoque TableVendas">
@@ -113,6 +149,8 @@ function PreçosProdutos({data}) {
             </div>
             </div>
             }
+            </div>
+}
         </div>
      );
 }

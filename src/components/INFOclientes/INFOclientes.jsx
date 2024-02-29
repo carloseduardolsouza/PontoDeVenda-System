@@ -70,10 +70,6 @@ function INFOclientes({data}) {
         fetchapi.DeletarCliente(id)
 
         setTimeout(() => {
-            setDeletando(false);
-        }, 1500)
-
-        setTimeout(() => {
             window.location.href = "/clientes"
         }, 2000)
     }

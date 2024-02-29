@@ -70,9 +70,16 @@ const editarProduto = async (id , dados) => {
 
 }
 
+const deletarProduto = async (id) => {
+    const query = `DELETE FROM produtos WHERE id = ${id}`
+
+    const deletarCliente = await connection.execute(query)
+}
+
 module.exports = {
     novoProduto,
     procurarProdutos,
     procurarProdutosId,
-    editarProduto
+    editarProduto,
+    deletarProduto
 }

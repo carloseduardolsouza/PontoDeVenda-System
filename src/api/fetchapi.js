@@ -180,6 +180,25 @@ const AtualizarProduto = async (dados) => {
     }
 }
 
+const DeletarProduto = async (p) => {
+    try {
+        const response = await fetch(`http://localhost:3322/deletarProduto/${p}`, {
+            method: 'DELETE'
+        });
+
+        if (response.ok) {
+            // Cliente excluído com sucesso
+            console.log('Produto excluído com sucesso');
+        } else {
+            // Se a resposta não estiver ok, lançar um erro
+            throw new Error('Falha ao excluir Produto');
+        }
+    } catch (error) {
+        // Captura e trata erros de requisição
+        alert('A API PROVAVELMENTE ESTA INATIVA, ATIVE E TENTE NOVAMENTE');
+    }
+};
+
 
 export default {
     NovoCliente,
@@ -191,5 +210,6 @@ export default {
     NovoProduto,
     ProcurarProdutos,
     ProcurarProdutosId,
-    AtualizarProduto
+    AtualizarProduto,
+    DeletarProduto
 }

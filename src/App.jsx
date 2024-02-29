@@ -231,7 +231,7 @@ function App() {
           <Route path="/cadastrarProduto" Component={cadastrarProduto}/>
           <Route path="/estoque" Component={estoques}/>
           <Route path="/detalhesProdutos/:id" Component={detalhesProdutos}/>
-          <Route path="/gerenciarEstoque" Component={gerenciarEstoque}/>
+          <Route path="/gerenciarEstoque/:id" Component={gerenciarEstoque}/>
           <Route path="/contasPagar" Component={contasaPagar}/>
           <Route path="/caixa" Component={caixaa}/>
           <Route path="/estatísticas" Component={estatísticass}/>
