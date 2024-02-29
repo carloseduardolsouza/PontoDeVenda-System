@@ -2,5 +2,12 @@
 2 - quebra de api quando cadastra um produto sem imagem
 3 - fazer opções em gerenciar produtos
 4 - arrumar as atualização com efeitos interativos de gerenciar estoque
+5 - area de detalhes de compras em gerenciar estoque
+6 - deixar funcional area de nova venda (apenas fazer fetch na api)
+    - colocar pra ver o total do pedido
+    - integrar geração de recibo
+7 - arrumar fetch de lançar compra para somar com oque tem em estoque
+8 - fazer detalhes de vendas 
+9 - fazer pagina vendas a receber 
 
-    5 - fazer tabela de vendar e dar funcionalidade em todas que precisa da tabelda de vendas
+    1 - fazer tabela de vendar e dar funcionalidade em todas que precisa da tabelda de vendas

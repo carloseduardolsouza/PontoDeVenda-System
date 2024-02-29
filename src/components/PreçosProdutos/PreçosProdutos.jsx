@@ -95,7 +95,7 @@ function PreçosProdutos({data}) {
                 </label>
                 <p><strong>Preço de compra:  </strong>{services.formatarCurrency(preçocompra)}</p>
                 <p><strong>Preço de venda:  </strong>{services.formatarCurrency(preçovenda)}</p>
-                <p><strong>Em estoque:  </strong>{emestoque} unidades</p>
+                <p><strong>Quantidade:  </strong>{emestoque} unidades</p>
                 <p id="Markup"><strong>Markup:  </strong>{margem}%</p>
             </div>
             <div>
