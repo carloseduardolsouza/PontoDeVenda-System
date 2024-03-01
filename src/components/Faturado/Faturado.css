@@ -1,0 +1,60 @@
+#Faturado {
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    animation: entrada .3s;
+    padding: 10px;
+    overflow-y: scroll; /* Adicionando barra de rolagem vertical */ 
+
+    background: #ffffff4d; /* Cor com transparência */
+      border-radius: 10px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Sombra */
+      backdrop-filter: blur(10px); /* Desfoque */
+      -webkit-backdrop-filter: blur(10px); /* Desfoque para navegadores Webkit (Safari, Chrome, etc.) */
+      border: 1px solid rgba(255, 255, 255, 0.18); /* Borda */
+}
+
+#Faturado header {
+    background-color: #8b8b8b55;
+    padding: 5px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.line {
+    width: 95%;
+    height: 1px;
+    background-color: black;
+    margin-bottom: 30px;
+}
+
+.alignhButton {
+    display: flex;
+    justify-content: space-around;
+}
+
+.bttFaturado {
+    width: 40%;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid black;
+    background-color: #00000000;
+    cursor: pointer;
+}
+
+#labelDisplayFles {
+    display: flex;
+    justify-content: space-between;
+}
+
+@keyframes entrada {
+    0% {
+        width: 1px;
+    }
+    100% {
+        width: 500px;
+    }
+}

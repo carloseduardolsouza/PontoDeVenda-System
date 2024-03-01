@@ -3,6 +3,9 @@ import ProdutosNovaVenda from "../../components/ProdutosNovaVenda/ProdutosNovaVe
 import fetchapi from "../../api/fetchapi.js";
 import { useState , useEffect } from "react";
 import services from "../../services/services.js"
+import Alerta from "../../components/Alerta/Alerta.jsx"
+import Faturado from "../../components/Faturado/Faturado.jsx";
+import Concluindo from "../../components/Concluindo/Concluindo.jsx"
 
 import Select from "react-select";
 
@@ -16,14 +19,18 @@ function NovaVenda() {
     const [resultProdutos , setResultProdutos] = useState([])
     const [resultClientes , setResultClientes] = useState([])
     const [loading , setloading] = useState(true)
+    const [concluindo , setConcluindo] = useState(false)
+
+    const [faturado , setFaturado] = useState(false)
 
     const [id , setId] = useState()
     const [nomeInfoClient , setNomeInfoClient] = useState("'NOME'")
     const [telefoneInfoClient , setTelefoneInfoClient] = useState("'TELEFONE'")
     const [idCliente , setIdCliente] = useState()
+    const [INFOclient , setINFOclient] = useState({"name": "DESCONHECIDO","telefone": "DESCONHECIDO"})
 
-    const [desconto , setDesconto] = useState()
-    const [quantidade , setQuantidade] = useState()
+    const [desconto , setDesconto] = useState(0)
+    const [quantidade , setQuantidade] = useState(1)
     const [pagamento , setPagamento] = useState()
     const [preçoComDesconto , setPreçoComDesconto] = useState(0)
     const [percem , setPercem] = useState(false)
@@ -31,6 +38,8 @@ function NovaVenda() {
     const [produto , setProduto] = useState("'Produto'")
     const [precovenda , setPreçovenda] = useState("'Preço'")
     const [emestoque , setEmestoque] = useState("'Em estoque'")
+
+    const [alert , setAlert] = useState(false)
 
     const [venda , setVenda] = useState([])
 
@@ -68,6 +77,7 @@ function NovaVenda() {
         setIdCliente(id)
         setTelefoneInfoClient(telefone)
         setloading(false)
+        setINFOclient(infoClient[0])
 
     }
 
@@ -91,10 +101,13 @@ function NovaVenda() {
         setPreçovenda(+preçovenda)
         setEmestoque(emestoque)
         setloading(false)
-
     }
 
     const calcularPrice = () => {
+        if(id == "" || id == undefined || id == null) {
+            setAlert(true)
+            return
+        }
         if(percem) {
             var preçodaporcentagem = (desconto / 100) * (precovenda * quantidade)
             var porcentagemPorcentagem = (precovenda * quantidade) - preçodaporcentagem
@@ -106,17 +119,33 @@ function NovaVenda() {
     }
 
     const LançarAVenda = () => {
+        if(id == "" || id == undefined || id == null) {
+            setAlert(true)
+            return
+        }
+        
         const objectVenda= {
             "Produto" : produto,
             "Quantidade" : quantidade,
-            "Preço" : precovenda,
+            "Preço" : preçoComDesconto,
             "Desconto" : desconto,
         }
         setVenda([...venda , objectVenda])
-        console.log(venda)
         setDesconto(0)
-        setQuantidade(0)
-        setPagamento('')
+        setQuantidade(1)
+        setPreçoComDesconto(0)
+        setPagamento()
+        setId()
+        setProduto()
+        setPreçovenda()
+        setEmestoque()
+    }
+
+    const FaturarSistema = () => {
+        setConcluindo(true)
+        setTimeout(() => {
+            window.location.reload()
+        },1500)
     }
 
     return ( 
@@ -128,6 +157,7 @@ function NovaVenda() {
             <main className="MainNovaVenda">
                 <div>
                 <div>
+                {alert && <Alerta parametro={"Selecione um Produto"} functio={setAlert}/>}
                 {loading && <AçãoRealizada/> || (
                     <Select className="SelectNovaVenda" placeholder="Cliente" options={optionsClientes} onChange={(e) => renderInfoClient(e)}/>
                 )}
@@ -142,7 +172,9 @@ function NovaVenda() {
                     </div>
                     <Select className="SelectNovaVenda" placeholder="Produto" options={optionsProdutos} onChange={(e) => renderInfoProduto(e)}/>
                     <div className="DivisãoNovaVenda">
+                        {faturado && <Faturado functio={setFaturado} data={venda} fetch={FaturarSistema} cliente={INFOclient}/>}
                         <div>
+                            {concluindo && <Concluindo/>}
                             <label className="NovaVendaLabel">
                                 <p className="NovanVendaStrong"><strong>Produto</strong></p>
                                 <p>{produto}</p>
@@ -191,7 +223,7 @@ function NovaVenda() {
                 </div>
                 <div className="ProdutosNovaVenda">
                     {venda.map((venda) => <ProdutosNovaVenda data={venda}/>)}
-                    <button className="FaturarNovaVenda">Faturar</button>
+                    <button className="FaturarNovaVenda" onClick={() => setFaturado(true)}>Faturar</button>
                 </div>
             </main>
         </div>

@@ -101,7 +101,7 @@
     color: white;
     border: none;
     border-radius: 10px;
-    box-shadow: 1px 1px 10px black;
+    box-shadow: -5px 5px 3px #0000006a;
     padding: 5px;
     background-color: #0295ff;
 }
