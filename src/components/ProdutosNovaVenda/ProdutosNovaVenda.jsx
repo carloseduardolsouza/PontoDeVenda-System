@@ -1,12 +1,19 @@
 import "./ProdutosNovaVenda.css"
+import services from "../../services/services";
 
-function ProdutosNovaVenda() {
+function ProdutosNovaVenda({data}) {
+    const {
+        Produto,
+        Quantidade,
+        Preço,
+        Desconto
+    } = data
     return ( 
         <div id="ProdutosNovaVenda">
-            <p><strong>Produto: </strong> {"Comoda Dhara"}</p>
-            <p><strong>Quantidade: </strong> {"1"}</p>
-            <p><strong>Preço: </strong> {"R$ 230,00"}</p>
-            <p><strong>Desconto: </strong> {"R$ 00,00"}</p>
+            <p><strong>Produto: </strong> {Produto}</p>
+            <p><strong>Quantidade: </strong> {Quantidade}</p>
+            <p><strong>Preço: </strong> {services.formatarCurrency(Preço)}</p>
+            <p><strong>Desconto: </strong> {Desconto}</p>
         </div>
      );
 }

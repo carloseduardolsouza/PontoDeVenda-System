@@ -3,7 +3,6 @@
     - comição
     - fornecedores
 3 - fazer opções em gerenciar produtos
-4 - arrumar as atualização com efeitos interativos de gerenciar estoque
 5 - area de detalhes de compras em gerenciar estoque
 6 - deixar funcional area de nova venda (apenas fazer fetch na api)
     - colocar pra ver o total do pedido

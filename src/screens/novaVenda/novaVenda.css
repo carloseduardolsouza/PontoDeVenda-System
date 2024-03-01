@@ -13,6 +13,23 @@
     display: flex;
 }
 
+.NovaVendaLabel input {
+    font-size: 20px;
+    width: 200px;
+}
+
+.NovaVendaLabel > label {
+    display: flex;
+}
+
+.NovaVendaLabel > label > p {
+    font-size: 20px;
+}
+
+#checkBoxNovaVenda {
+    width: 20px;
+}
+
 .NovanVendaStrong {
     font-size: 19px;
     margin-right: 8px;
@@ -70,13 +87,14 @@
     padding: 5px;
     border-radius: 10px;
     margin-left: 15px;
+    overflow-y: scroll; /* Adicionando barra de rolagem vertical */ 
 }
 
 .FaturarNovaVenda {
     position: absolute;
     cursor: pointer;
     right: 10px;
-    bottom: 20px;
+    top: 10px;
     width: 300px;
     height: 30px;
     font-weight: 600;

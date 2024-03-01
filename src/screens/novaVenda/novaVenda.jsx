@@ -20,10 +20,19 @@ function NovaVenda() {
     const [id , setId] = useState()
     const [nomeInfoClient , setNomeInfoClient] = useState("'NOME'")
     const [telefoneInfoClient , setTelefoneInfoClient] = useState("'TELEFONE'")
+    const [idCliente , setIdCliente] = useState()
+
+    const [desconto , setDesconto] = useState()
+    const [quantidade , setQuantidade] = useState()
+    const [pagamento , setPagamento] = useState()
+    const [preçoComDesconto , setPreçoComDesconto] = useState(0)
+    const [percem , setPercem] = useState(false)
 
     const [produto , setProduto] = useState("'Produto'")
     const [precovenda , setPreçovenda] = useState("'Preço'")
     const [emestoque , setEmestoque] = useState("'Em estoque'")
+
+    const [venda , setVenda] = useState([])
 
     useEffect(() => {
         fetchapi.ProcurarCliente('all').then((response) => {
@@ -52,9 +61,11 @@ function NovaVenda() {
         const infoClient = await fetchapi.ProcurarClienteId(e.value)
         const {
             name,
-            telefone
+            telefone,
+            id
         } = infoClient[0]
         setNomeInfoClient(name)
+        setIdCliente(id)
         setTelefoneInfoClient(telefone)
         setloading(false)
 
@@ -81,6 +92,31 @@ function NovaVenda() {
         setEmestoque(emestoque)
         setloading(false)
 
+    }
+
+    const calcularPrice = () => {
+        if(percem) {
+            var preçodaporcentagem = (desconto / 100) * (precovenda * quantidade)
+            var porcentagemPorcentagem = (precovenda * quantidade) - preçodaporcentagem
+            setPreçoComDesconto(porcentagemPorcentagem)
+        } else {
+            var porcentagemReais = (precovenda * quantidade) - desconto
+            setPreçoComDesconto(porcentagemReais)
+        }
+    }
+
+    const LançarAVenda = () => {
+        const objectVenda= {
+            "Produto" : produto,
+            "Quantidade" : quantidade,
+            "Preço" : precovenda,
+            "Desconto" : desconto,
+        }
+        setVenda([...venda , objectVenda])
+        console.log(venda)
+        setDesconto(0)
+        setQuantidade(0)
+        setPagamento('')
     }
 
     return ( 
@@ -122,16 +158,20 @@ function NovaVenda() {
                         </div>
                         <div>
                             <label className="NovaVendaLabel">
-                                <p className="NovanVendaStrong"><strong>Desconto</strong></p>
-                                <input type="number" />
+                                <p className="NovanVendaStrong"><strong>Quantidade</strong></p>
+                                <input type="number" onChange={(e) => setQuantidade(e.target.value)} value={quantidade}/>
                             </label>
                             <label className="NovaVendaLabel">
-                                <p className="NovanVendaStrong"><strong>Quantidade</strong></p>
-                                <input type="number" />
+                                <p className="NovanVendaStrong"><strong>Desconto</strong></p>
+                                <input type="number" onChange={(e) => setDesconto(e.target.value)} value={desconto}/>
+                                <label>
+                                    <input id="checkBoxNovaVenda" type="checkbox" checked={percem} onChange={() => setPercem(!percem)}/>
+                                    <p>%</p>
+                                </label>
                             </label>
                             <label className="NovaVendaLabel">
                                 <p className="NovanVendaStrong"><strong>Meio de Pagamento</strong></p>
-                                <select>
+                                <select onChange={(e) => setPagamento(e.target.value)} value={pagamento}>
                                     <option value="MEIO DE PAGAMENTO">MEIO DE PAGAMENTO</option>
                                     <option value="PIX">PIX</option>
                                     <option value="CARTÃO DE CRÉDITO">CARTÃO DE CRÉDITO</option>
@@ -142,15 +182,15 @@ function NovaVenda() {
                         </div>
                     </div>
                     
-                    <button className="calcularNovaVenda">Calcular</button>
+                    <button className="calcularNovaVenda" onClick={() => calcularPrice()}>Calcular</button>
 
                     <div className="PreçoNovaVenda">
-                        <h1>Preço : {"R$ 1.340,00"}</h1>
-                        <button className="lançarPreçoNovaVenda">Lançar</button>
+                        <h1>Preço : {services.formatarCurrency(preçoComDesconto)}</h1>
+                        <button className="lançarPreçoNovaVenda" onClick={() => LançarAVenda()}>Lançar</button>
                     </div>
                 </div>
                 <div className="ProdutosNovaVenda">
-                    <ProdutosNovaVenda/>
+                    {venda.map((venda) => <ProdutosNovaVenda data={venda}/>)}
                     <button className="FaturarNovaVenda">Faturar</button>
                 </div>
             </main>

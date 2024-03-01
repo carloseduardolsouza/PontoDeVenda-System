@@ -96,9 +96,9 @@ function PreçosProdutos({id}) {
     }
     return ( 
         <div>
+            {conclued && <Concluindo/>}
             {loading && <Loading/> ||
             <div>
-                {conclued && <Concluindo/>}
             {reposição && 
             <form className="setInfoGerenceiarEstoque" onSubmit={(e) => lançarnoestoque(e)}>
                 <button className="ExitLançarCompraEstoque" onClick={() => setReposição(false)}>X</button>
