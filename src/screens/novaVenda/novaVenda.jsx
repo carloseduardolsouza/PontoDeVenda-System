@@ -1,7 +1,7 @@
 import ProdutosNovaVenda from "../../components/ProdutosNovaVenda/ProdutosNovaVenda.jsx"
 
 import fetchapi from "../../api/fetchapi.js";
-import { useState , useEffect } from "react";
+import { useState , useEffect , useRef} from "react";
 import services from "../../services/services.js"
 import Alerta from "../../components/Alerta/Alerta.jsx"
 import Faturado from "../../components/Faturado/Faturado.jsx";
@@ -56,6 +56,12 @@ function NovaVenda() {
             setloading(false)
         })
     }, [])
+
+    function gerarNumeroUnico() {
+        return new Date().getTime(); // Retorna o timestamp atual
+    }
+
+    const localeVenda = gerarNumeroUnico()
 
     const optionsClientes = []
 
@@ -123,13 +129,20 @@ function NovaVenda() {
             setAlert(true)
             return
         }
+        if(preçoComDesconto == 0) {
+            setAlert(true)
+            return
+        }
         
         const objectVenda= {
             "Produto" : produto,
             "Quantidade" : quantidade,
             "Preço" : preçoComDesconto,
             "Desconto" : desconto,
+            "Time" : '',
+            "Total" : ''
         }
+
         setVenda([...venda , objectVenda])
         setDesconto(0)
         setQuantidade(1)
@@ -141,11 +154,16 @@ function NovaVenda() {
         setEmestoque()
     }
 
-    const FaturarSistema = () => {
-        setConcluindo(true)
-        setTimeout(() => {
-            window.location.reload()
-        },1500)
+    const Feature = () => {
+        if(venda.length == 0) {
+            setAlert(true)
+            return
+        }
+
+        venda.map((venda) => {
+            venda.Time = localeVenda
+        })
+        setFaturado(true)
     }
 
     return ( 
@@ -172,7 +190,7 @@ function NovaVenda() {
                     </div>
                     <Select className="SelectNovaVenda" placeholder="Produto" options={optionsProdutos} onChange={(e) => renderInfoProduto(e)}/>
                     <div className="DivisãoNovaVenda">
-                        {faturado && <Faturado functio={setFaturado} data={venda} fetch={FaturarSistema} cliente={INFOclient}/>}
+                        {faturado && <Faturado functio={setFaturado} data={venda} cliente={INFOclient} concluind={setConcluindo}/>}
                         <div>
                             {concluindo && <Concluindo/>}
                             <label className="NovaVendaLabel">
@@ -223,7 +241,7 @@ function NovaVenda() {
                 </div>
                 <div className="ProdutosNovaVenda">
                     {venda.map((venda) => <ProdutosNovaVenda data={venda}/>)}
-                    <button className="FaturarNovaVenda" onClick={() => setFaturado(true)}>Faturar</button>
+                    <button className="FaturarNovaVenda" onClick={() => Feature()}>Faturar</button>
                 </div>
             </main>
         </div>

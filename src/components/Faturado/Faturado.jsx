@@ -1,7 +1,23 @@
 import "./Faturado.css";
 import services from "../../services/services";
 
-function Faturado({ functio , data , fetch , cliente}) {
+function Faturado({ functio , data , cliente , concluind}) {
+    var calc = 0
+    data.map((produto, index) => {
+        calc += produto.Preço
+    })
+    
+    data.map((produto , index) => {
+        produto.Total = calc
+        console.log(produto)
+    })  
+
+    const FaturarSistema = () => {
+        concluind(true)
+        setTimeout(() => {
+            window.location.reload()
+        },1500)
+    }
     return ( 
         <div id="Faturado">
             <header>
@@ -22,10 +38,10 @@ function Faturado({ functio , data , fetch , cliente}) {
                 ))}
             </main>
 
-            <h2>TOTAL: {"R$ 300,00"}</h2>
+            <h2>TOTAL: {services.formatarCurrency(calc)}</h2>
             <div className="alignhButton">
                 <button className="bttFaturado" onClick={() => functio(false)}>Voltar</button>
-                <button className="bttFaturado" onClick={() => fetch()}>Faturar</button>
+                <button className="bttFaturado" onClick={() => FaturarSistema()}>Faturar</button>
             </div>
         </div>
      );
