@@ -3,13 +3,28 @@ import "./vendas.css"
 import ItensTable from "../../components/itensTableVendas/itensTableVendas"
 import ItensTablePendentes from "../../components/itensTableVendasPendentes/itensTableVendasOpen"
 
-import { useState } from "react"
+import { FaFilter } from "react-icons/fa";
+import fetchapi from "../../api/fetchapi";
+import Loading from "../../components/AçãoRealizada/AçãoRealizada"
+
+import { useState , useEffect } from "react"
+import itensTableVendas from "../../components/itensTableVendas/itensTableVendas";
 
 function Vendas() {
     const Data = new Date()
     const log = `${Data.getUTCDate()}/${Data.getUTCMonth() + 1}/${Data.getUTCFullYear()}`
 
     const [históricoOpen , setHistóricoOpen] = useState(true)
+
+    const [resultVendas , setResultVendas] = useState([])
+    const [loadingVendas , setloadingVendas] = useState(true)
+
+    useEffect(() => {
+        fetchapi.ProcurarVendas().then((response) => {
+            setResultVendas(response)
+            setloadingVendas(false)
+        })
+    }, [])
     return ( 
         <div id="VENDAS">
             <header className="HeaderVendas">
@@ -25,6 +40,11 @@ function Vendas() {
                     <button style={{textDecoration: 'underline #0295ff 3px'}} onClick={() => {setHistóricoOpen(false)}}>Pedidos em aberto</button>
                 </div>
                 {históricoOpen && (
+                    <div>
+                    <form>
+                        <input type="date" className="FilterDateVendas"/>
+                        <button className="FilterICONDateVendas"><FaFilter /></button>
+                    </form>
                     <table className="TableVendas">
                         <div className="TableHeader">
                             <p className="itemTabelTitle">Produto</p>
@@ -32,28 +52,11 @@ function Vendas() {
                             <p className="itemTabelTitle">Quantidade</p>
                             <p className="itemTabelTitle">Desconto</p>
                             <p className="itemTabelTitle">Total</p>
-                            <p className="itemTabelTitle">Pagamento</p>
                             <p className="itemTabelTitle">Data</p>
                         </div>
-                        <ItensTable/>
-                        <ItensTable/>
-                        <ItensTable/>
-                        <ItensTable/>
-                        <ItensTable/>
-                        <ItensTable/>
-                        <ItensTable/>
-                        <ItensTable/>
-                        <ItensTable/>
-                        <ItensTable/>
-                        <ItensTable/>
-                        <ItensTable/>
-                        <ItensTable/>
-                        <ItensTable/>
-                        <ItensTable/>
-                        <ItensTable/>
-                        <ItensTable/>
-                        <ItensTable/>
+                        {loadingVendas && <Loading/> || resultVendas.reverse().map((vendas) => <ItensTable data={vendas}/>)}
                     </table>
+                    </div>
                 ) || (
                         <table className="TableVendas">
                         <div className="TableHeader">

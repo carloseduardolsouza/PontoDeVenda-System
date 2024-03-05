@@ -13,7 +13,6 @@ function Estoque() {
     const [pesquisar , setPesquisar] = useState('all')
     const [resultEstoque , setResultEstoque] = useState([])
     const [loadingEstoque , setloadingEstoque] = useState(true)
-    const [] = useState()
 
     useEffect(() => {
         fetchapi.ProcurarProdutos(pesquisar).then((response) => {

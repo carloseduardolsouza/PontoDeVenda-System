@@ -123,7 +123,7 @@ function PreçosProdutos({id}) {
 
 
             <div>
-            <button className="bttReposiçãoGerenciarEstoque" onClick={() => setReposição(true)}>Reposição</button>
+            <button className="bttReposiçãoGerenciarEstoque" onClick={() => setReposição(true)}>Gerenciar Estoque</button>
             <div className="AreaInfoGerenciarEstoque">
                 <label>
                     <p><strong>Produto:  </strong>{resultProdutos.produto}</p>

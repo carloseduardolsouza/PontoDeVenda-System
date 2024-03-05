@@ -9,6 +9,7 @@ const router = express.Router();
 
 const clientesControllers = require('./controllers/clientesControllers')
 const produtosControllers = require('./controllers/produtosControllers');
+const vendasControllers = require('./controllers/vendasControllers')
 
 router.post("/novoCliente" , clientesControllers.novoCliente)
 router.get("/procurarCliente/:id" , clientesControllers.procurarCliente)
@@ -23,5 +24,10 @@ router.get("/procurarProdutos/:id" , produtosControllers.procurarProdutos)
 router.get("/procurarProdutosId/:id" , produtosControllers.procurarProdutosId)
 router.put("/editarProduto/:id" , produtosControllers.editarProduto)
 router.delete("/deletarProduto/:id" , produtosControllers.deletarProduto)
+
+router.get("/procurarVendaId/:id" , vendasControllers.procurarVendaId)
+router.get("/procurarVenda" , vendasControllers.procurarVenda)
+router.post("/novaVenda" , vendasControllers.novaVenda)
+router.delete("/deletarVenda/:id" , vendasControllers.deletarVenda)
 
 module.exports = router;

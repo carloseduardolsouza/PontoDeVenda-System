@@ -8,6 +8,7 @@
     animation: entrada .3s;
     padding: 10px;
     overflow-y: scroll; /* Adicionando barra de rolagem vertical */ 
+    z-index: 1;
 
     background: #ffffff4d; /* Cor com transparência */
       border-radius: 10px;

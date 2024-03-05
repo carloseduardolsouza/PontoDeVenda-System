@@ -1,7 +1,7 @@
 import ProdutosNovaVenda from "../../components/ProdutosNovaVenda/ProdutosNovaVenda.jsx"
 
 import fetchapi from "../../api/fetchapi.js";
-import { useState , useEffect , useRef} from "react";
+import { useState , useEffect } from "react";
 import services from "../../services/services.js"
 import Alerta from "../../components/Alerta/Alerta.jsx"
 import Faturado from "../../components/Faturado/Faturado.jsx";
@@ -27,6 +27,7 @@ function NovaVenda() {
     const [nomeInfoClient , setNomeInfoClient] = useState("'NOME'")
     const [telefoneInfoClient , setTelefoneInfoClient] = useState("'TELEFONE'")
     const [idCliente , setIdCliente] = useState()
+    const [idProduto , setIdProduto] = useState()
     const [INFOclient , setINFOclient] = useState({"name": "DESCONHECIDO","telefone": "DESCONHECIDO"})
 
     const [desconto , setDesconto] = useState(0)
@@ -40,7 +41,7 @@ function NovaVenda() {
     const [emestoque , setEmestoque] = useState("'Em estoque'")
 
     const [alert , setAlert] = useState(false)
-
+    const [desable , setDesable] = useState(false)
     const [venda , setVenda] = useState([])
 
     useEffect(() => {
@@ -99,6 +100,7 @@ function NovaVenda() {
         setId(e.value)
         const infoClient = await fetchapi.ProcurarProdutosId(e.value)
         const {
+            id,
             produto,
             preçovenda,
             emestoque
@@ -107,6 +109,7 @@ function NovaVenda() {
         setPreçovenda(+preçovenda)
         setEmestoque(emestoque)
         setloading(false)
+        setIdProduto(id)
     }
 
     const calcularPrice = () => {
@@ -135,12 +138,24 @@ function NovaVenda() {
         }
         
         const objectVenda= {
-            "Produto" : produto,
-            "Quantidade" : quantidade,
-            "Preço" : preçoComDesconto,
-            "Desconto" : desconto,
-            "Time" : '',
-            "Total" : ''
+            "date": log,
+            "id_cliente" : +idCliente,
+            "id_produto" : +idProduto,
+            "pagamento" : pagamento,
+            "produto" : produto,
+            "quantidade" : +quantidade,
+            "preço" : +preçoComDesconto,
+            "desconto" : +desconto,
+            "rastreio" : '',
+            "total" : ''
+        }
+
+        if(idCliente == "" || idCliente == undefined || idCliente == null) {
+            objectVenda.id_cliente = 1
+        }
+
+        if(pagamento == "" || pagamento == undefined || pagamento == null) {
+            objectVenda.pagamento = "Dinhero"
         }
 
         setVenda([...venda , objectVenda])
@@ -159,10 +174,13 @@ function NovaVenda() {
             setAlert(true)
             return
         }
+        const ratrear = `${Data.getDate()}${Data.getMonth()}${Data.getFullYear()}`
 
+        console.log(ratrear)
         venda.map((venda) => {
-            venda.Time = localeVenda
+            venda.rastreio = `${ratrear}-${localeVenda}`
         })
+        setDesable(true)
         setFaturado(true)
     }
 
@@ -177,7 +195,7 @@ function NovaVenda() {
                 <div>
                 {alert && <Alerta parametro={"Selecione um Produto"} functio={setAlert}/>}
                 {loading && <AçãoRealizada/> || (
-                    <Select className="SelectNovaVenda" placeholder="Cliente" options={optionsClientes} onChange={(e) => renderInfoClient(e)}/>
+                    <Select className="SelectNovaVenda" placeholder="Cliente" options={optionsClientes} onChange={(e) => renderInfoClient(e)} isDisabled={desable}/>
                 )}
                         <label className="NovaVendaLabel">
                             <p className="NovanVendaStrong"><strong>Nome:</strong></p>
@@ -188,9 +206,9 @@ function NovaVenda() {
                             <p>{services.formatarNumeroCelular(telefoneInfoClient)}</p>
                         </label>
                     </div>
-                    <Select className="SelectNovaVenda" placeholder="Produto" options={optionsProdutos} onChange={(e) => renderInfoProduto(e)}/>
+                    <Select className="SelectNovaVenda" placeholder="Produto" options={optionsProdutos} onChange={(e) => renderInfoProduto(e)} isDisabled={desable}/>
                     <div className="DivisãoNovaVenda">
-                        {faturado && <Faturado functio={setFaturado} data={venda} cliente={INFOclient} concluind={setConcluindo}/>}
+                        {faturado && <Faturado functio={setFaturado} data={venda} cliente={INFOclient} concluind={setConcluindo} desabilitar={setDesable}/>}
                         <div>
                             {concluindo && <Concluindo/>}
                             <label className="NovaVendaLabel">
@@ -206,22 +224,22 @@ function NovaVenda() {
                                 <p>{emestoque}</p>
                             </label>
                         </div>
-                        <div>
+                        <form>
                             <label className="NovaVendaLabel">
                                 <p className="NovanVendaStrong"><strong>Quantidade</strong></p>
-                                <input type="number" onChange={(e) => setQuantidade(e.target.value)} value={quantidade}/>
+                                <input type="number" onChange={(e) => setQuantidade(e.target.value)} value={quantidade} disabled={desable}/>
                             </label>
                             <label className="NovaVendaLabel">
                                 <p className="NovanVendaStrong"><strong>Desconto</strong></p>
-                                <input type="number" onChange={(e) => setDesconto(e.target.value)} value={desconto}/>
+                                <input type="number" onChange={(e) => {setDesconto(e.target.value)}} value={desconto} disabled={desable}/>
                                 <label>
-                                    <input id="checkBoxNovaVenda" type="checkbox" checked={percem} onChange={() => setPercem(!percem)}/>
+                                    <input id="checkBoxNovaVenda" type="checkbox" checked={percem} onChange={() => setPercem(!percem)} disabled={desable}/>
                                     <p>%</p>
                                 </label>
                             </label>
                             <label className="NovaVendaLabel">
                                 <p className="NovanVendaStrong"><strong>Meio de Pagamento</strong></p>
-                                <select onChange={(e) => setPagamento(e.target.value)} value={pagamento}>
+                                <select onChange={(e) => setPagamento(e.target.value)} value={pagamento} disabled={desable} required>
                                     <option value="MEIO DE PAGAMENTO">MEIO DE PAGAMENTO</option>
                                     <option value="PIX">PIX</option>
                                     <option value="CARTÃO DE CRÉDITO">CARTÃO DE CRÉDITO</option>
@@ -229,19 +247,20 @@ function NovaVenda() {
                                     <option value="DINHEIRO">DINHEIRO</option>
                                 </select>
                             </label>
-                        </div>
+                        </form>
                     </div>
                     
-                    <button className="calcularNovaVenda" onClick={() => calcularPrice()}>Calcular</button>
+                    <button className="calcularNovaVenda" onClick={() => calcularPrice()} disabled={desable}>Calcular</button>
+                    {/*AREA DE VENDEDOR*/}
 
                     <div className="PreçoNovaVenda">
                         <h1>Preço : {services.formatarCurrency(preçoComDesconto)}</h1>
-                        <button className="lançarPreçoNovaVenda" onClick={() => LançarAVenda()}>Lançar</button>
+                        <button className="lançarPreçoNovaVenda" onClick={() => LançarAVenda()} disabled={desable}>Lançar</button>
                     </div>
                 </div>
                 <div className="ProdutosNovaVenda">
                     {venda.map((venda) => <ProdutosNovaVenda data={venda}/>)}
-                    <button className="FaturarNovaVenda" onClick={() => Feature()}>Faturar</button>
+                    <button className="FaturarNovaVenda" onClick={() => Feature()} disabled={desable}>Faturar</button>
                 </div>
             </main>
         </div>

@@ -1,12 +1,12 @@
 .ItensTableVendas {
     display: flex;
     justify-content: space-around;
-    width: 1300px;
+    width: 100%;
     margin: auto;
 }
 
 .RespostTable {
-    width: 250px;
+    width: 100%;
     background-color: #eeeeee;
     text-align: center;
     margin-bottom: 4px;

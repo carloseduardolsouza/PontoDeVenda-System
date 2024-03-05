@@ -7,7 +7,7 @@ function createWindow() {
         fullscreen: true,
 
     })
-    win.loadURL("http://localhost:4000/")
+    win.loadURL("http://localhost:3000/")
 
     // Define o menu personalizado para a janela
         const mainMenu = Menu.buildFromTemplate([]);

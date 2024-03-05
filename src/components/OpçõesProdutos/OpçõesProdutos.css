@@ -1,0 +1,44 @@
+.editOpçõesProdutosTrue {
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.editOpçõesProdutosTrue strong,
+.editOpçõesProdutosTrue input {
+    font-size: 20px;
+}
+
+.editOpçõesProdutosTrue button {
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: white;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.editOpçõesProdutosFalse {
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.editOpçõesProdutosFalse p {
+    font-size: 20px;
+}
+
+.editOpçõesProdutosFalse button {
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: white;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
