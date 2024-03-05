@@ -22,9 +22,23 @@ const deletarVenda = async (req, res) => {
     return res.status(200).json(deletarVenda)
 }
 
+const procurarVendaCliente = async (req , res) => {
+    const {id} = req.params
+    const procurarVendaCliente = await vendasModels.procurarVendaCliente(id)
+    return res.status(200).json(procurarVendaCliente)
+}
+
+const editarVenda = async (req , res) => {
+    const {id} = req.params
+    const editarVenda = await vendasModels.editarVenda(id , req.body)
+    return res.status(200).json()
+}
+
 module.exports = {
     procurarVendaId,
     novaVenda,
     procurarVenda,
-    deletarVenda
+    deletarVenda,
+    procurarVendaCliente,
+    editarVenda
 }

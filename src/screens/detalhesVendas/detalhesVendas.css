@@ -1,0 +1,90 @@
+#detalhesVenda {
+    margin-left: 55px;
+}
+
+.detalhesVendaInfoCliente {
+    margin: 30px 0px;
+    padding: 5px;
+    width: 100%;
+
+    background: #eee; /* Cor com transparência */
+      border-radius: 10px;
+      backdrop-filter: blur(10px); /* Desfoque */
+      -webkit-backdrop-filter: blur(10px); /* Desfoque para navegadores Webkit (Safari, Chrome, etc.) */
+      border: 1px solid rgba(255, 255, 255, 0.18); /* Borda */
+}
+
+.detalhesVendaAreaButton {
+    display: flex;
+    width: 550px;
+    justify-content: space-around;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.detalhesVendaButton {
+    padding: 5px;
+    width: 150px;
+    cursor: pointer;
+    border-radius: 15px;
+
+}
+
+.InfoVenda {
+    background-color: #eeee;
+    width: 700px;
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.InfoVenda h3 {
+    margin-top: 10px;
+}
+
+.displayflexdetalhesVenda {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.infosdetalhesVenda {
+    margin-right: 350px;
+}
+
+.NFE-sVenda {
+    background-color: #00000000;
+    border: solid 1.3px #0295ff;
+    color: #0295ff;
+}
+
+.NFE-sVenda:hover {
+    background-color: #0295ff;
+    color: white;
+    transition: .3s;
+}
+
+.DeletarVenda {
+    background-color: #00000000;
+    border: solid 1.3px red;
+    color: red;
+}
+
+.DeletarVenda:hover {
+    background-color: red;
+    color: white;
+    transition: .3s;
+}
+
+.EditarVenda {
+    background-color: #00000000;
+    border: solid 1.3px black;
+    color: black;
+}
+
+.EditarVenda:hover {
+    background-color: black;
+    color: white;
+    transition: .3s;
+}

@@ -143,6 +143,7 @@ function NovaVenda() {
             "id_produto" : +idProduto,
             "pagamento" : pagamento,
             "produto" : produto,
+            "preço_und" : precovenda,
             "quantidade" : +quantidade,
             "preço" : +preçoComDesconto,
             "desconto" : +desconto,
@@ -184,8 +185,14 @@ function NovaVenda() {
         setFaturado(true)
     }
 
+    const handleKeyDown = (event) => {
+        if (event.key == "F2") {
+            Feature()
+        }
+      };
+
     return ( 
-        <div id="NOVAVENDA">
+        <div id="NOVAVENDA" tabIndex={0} onKeyDown={handleKeyDown}>
             <header>
                 <h2>Nova Venda</h2>
                 <p>{log}</p>
@@ -260,7 +267,7 @@ function NovaVenda() {
                 </div>
                 <div className="ProdutosNovaVenda">
                     {venda.map((venda) => <ProdutosNovaVenda data={venda}/>)}
-                    <button className="FaturarNovaVenda" onClick={() => Feature()} disabled={desable}>Faturar</button>
+                    <button className="FaturarNovaVenda" onClick={() => Feature()} disabled={desable}>(F2) - Faturar</button>
                 </div>
             </main>
         </div>

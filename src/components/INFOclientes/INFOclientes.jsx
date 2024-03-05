@@ -81,7 +81,7 @@ function INFOclientes({data}) {
             <div className="DivisãoDetalhesCliente">
                 <img src={ImageUser} alt="Usuario" className="ImageUserDetalhesCliente"/>
                 <h2>{name}</h2>
-                <p>{"R$ 2.000,00"}</p>
+                <p>{"R$ 00,00"}</p>
                 <button className="bttContaCliente">Conta do Cliente</button>
             </div>
             {editar && (

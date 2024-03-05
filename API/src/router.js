@@ -26,7 +26,9 @@ router.put("/editarProduto/:id" , produtosControllers.editarProduto)
 router.delete("/deletarProduto/:id" , produtosControllers.deletarProduto)
 
 router.get("/procurarVendaId/:id" , vendasControllers.procurarVendaId)
+router.get("/procurarVendaCliente/:id" , vendasControllers.procurarVendaCliente)
 router.get("/procurarVenda" , vendasControllers.procurarVenda)
+router.put("/editarVenda/:id" , vendasControllers.editarVenda)
 router.post("/novaVenda" , vendasControllers.novaVenda)
 router.delete("/deletarVenda/:id" , vendasControllers.deletarVenda)
 

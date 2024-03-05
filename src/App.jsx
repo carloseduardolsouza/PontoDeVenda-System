@@ -54,6 +54,7 @@ import contasaPagar from "./screens/contasPagar/contasPagar"
 import caixaa from "./screens/caixa/caixa"
 import estatísticass from "./screens/estatísticas/estatísticas"
 import configurações from "./screens/configurações/configurações"
+import detalhesVendas from "./screens/detalhesVendas/detalhesVendas";
 
 
 function App() {
@@ -236,6 +237,7 @@ function App() {
           <Route path="/caixa" Component={caixaa}/>
           <Route path="/estatísticas" Component={estatísticass}/>
           <Route path="/configurações" Component={configurações}/>
+          <Route path="/detalhesVenda/:rastreio" Component={detalhesVendas}/>
         </Routes>
       </Router>
     </div>

@@ -234,6 +234,17 @@ const ProcurarVendas = async () => {
     }
 }
 
+const procurarVendaCliente = async (id) => {
+    try {
+        const response = await fetch(`http://localhost:3322/procurarVendaCliente/${id}`).then((response) => {return response});
+        const data = await response.json()
+        return data
+    } catch (error) {
+        alert('A API PROVAVELMENTE ESTA INATIVA, ATIVE E TENTE NOVAMENTE');
+        return []
+    }
+}
+
 
 export default {
     NovoCliente,
@@ -249,6 +260,7 @@ export default {
     DeletarProduto,
 
     NovaVenda,
-    ProcurarVendas
+    ProcurarVendas,
+    procurarVendaCliente
 
 }

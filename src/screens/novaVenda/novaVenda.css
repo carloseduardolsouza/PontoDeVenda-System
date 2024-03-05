@@ -2,6 +2,10 @@
     margin-left: 55px;
 }
 
+#NOVAVENDA:focus {
+    outline: none;
+}
+
 .SelectNovaVenda {
     margin-top: 15px;
     margin-bottom: 15px;

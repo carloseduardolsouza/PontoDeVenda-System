@@ -5,18 +5,19 @@ function itensTableVendas({data}) {
     const {
         produto,
         preço,
+        preço_und,
         quantidade,
         desconto,
-        total,
-        date
+        date,
+        rastreio
     } = data
     return ( 
         <div className="ItensTableVendas">
-            <p className="RespostTable">{produto}</p>
-            <p className="RespostTable">{services.formatarCurrency(preço)}</p>
+            <a href={`/detalhesVenda/${rastreio}`} className="RespostTable">{produto}</a>
+            <p className="RespostTable">{services.formatarCurrency(preço_und)}</p>
             <p className="RespostTable">{quantidade}</p>
             <p className="RespostTable">{desconto}</p>
-            <p className="RespostTable">{services.formatarCurrency(total)}</p>
+            <p className="RespostTable">{services.formatarCurrency(preço)}</p>
             <p className="RespostTable">{date}</p>
         </div>
      );

@@ -8,13 +8,14 @@ import fetchapi from "../../api/fetchapi";
 import Loading from "../../components/AçãoRealizada/AçãoRealizada"
 
 import { useState , useEffect } from "react"
-import itensTableVendas from "../../components/itensTableVendas/itensTableVendas";
+import ItensTabelVendasAReceber from "../../components/ItensTabelVendasAReceber/ItensTabelVendasAReceber";
 
 function Vendas() {
     const Data = new Date()
     const log = `${Data.getUTCDate()}/${Data.getUTCMonth() + 1}/${Data.getUTCFullYear()}`
 
     const [históricoOpen , setHistóricoOpen] = useState(true)
+    const [vendasReceber , setVendasReceber] = useState(false)
 
     const [resultVendas , setResultVendas] = useState([])
     const [loadingVendas , setloadingVendas] = useState(true)
@@ -36,8 +37,9 @@ function Vendas() {
             </article>
             <main>
                 <div className="AreaVendasButtons">
-                    <button style={{textDecoration: 'underline #0295ff 3px'}} onClick={() => {setHistóricoOpen(true)}}>Histórico</button>
-                    <button style={{textDecoration: 'underline #0295ff 3px'}} onClick={() => {setHistóricoOpen(false)}}>Pedidos em aberto</button>
+                    <button style={{textDecoration: 'underline #0295ff 3px'}} onClick={() => {setHistóricoOpen(true) ; setVendasReceber(false)}}>Histórico</button>
+                    <button style={{textDecoration: 'underline #0295ff 3px'}} onClick={() => {setHistóricoOpen(false) ; setVendasReceber(false)}}>Pedidos em aberto</button>
+                    <button style={{textDecoration: 'underline #0295ff 3px'}} onClick={() => {setHistóricoOpen(false) ; setVendasReceber(true)}}>Vendas Receber</button>
                 </div>
                 {históricoOpen && (
                     <div>
@@ -57,6 +59,18 @@ function Vendas() {
                         {loadingVendas && <Loading/> || resultVendas.reverse().map((vendas) => <ItensTable data={vendas}/>)}
                     </table>
                     </div>
+                ) || vendasReceber && (
+                    <table className="TableVendas">
+                        <div className="TableHeader">
+                            <p className="itemTabelTitle">Cliente</p>
+                            <p className="itemTabelTitle">produto</p>
+                            <p className="itemTabelTitle">N.Parcela</p>
+                            <p className="itemTabelTitle">valor</p>
+                            <p className="itemTabelTitle">vencimento</p>
+                            <p className="itemTabelTitle">Ações</p>
+                        </div>
+                        <ItensTabelVendasAReceber/>
+                    </table>
                 ) || (
                         <table className="TableVendas">
                         <div className="TableHeader">
