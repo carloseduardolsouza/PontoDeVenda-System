@@ -26,7 +26,7 @@ const procurarProdutos = async (id) => {
     if(id === "all") {
         const query = `SELECT * FROM produtos`
         const [produto] = await connection.execute(query)
-        return produto
+        return produto.reverse()
     } else {
         const query = `SELECT * FROM produtos WHERE produto LIKE '%${id}%'`
         const [produto] = await connection.execute(query)
