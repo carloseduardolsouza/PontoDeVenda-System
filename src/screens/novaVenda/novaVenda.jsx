@@ -156,7 +156,7 @@ function NovaVenda() {
         }
 
         if(pagamento == "" || pagamento == undefined || pagamento == null) {
-            objectVenda.pagamento = "Dinhero"
+            objectVenda.pagamento = "Dinheiro"
         }
 
         setVenda([...venda , objectVenda])
@@ -177,9 +177,8 @@ function NovaVenda() {
         }
         const ratrear = `${Data.getDate()}${Data.getMonth()}${Data.getFullYear()}`
 
-        console.log(ratrear)
         venda.map((venda) => {
-            venda.rastreio = `${ratrear}-${localeVenda}`
+            venda.rastreio = `${ratrear}${localeVenda}`
         })
         setDesable(true)
         setFaturado(true)

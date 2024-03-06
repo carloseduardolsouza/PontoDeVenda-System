@@ -1,7 +1,7 @@
 const connection = require('./connection')
 
 const procurarVendaId = async (id) => {
-    const query = `SELECT * FROM vendas WHERE id = ${id}`
+    const query = `SELECT * FROM vendas WHERE rastreio = ${id}`
     const [vendas] = await connection.execute(query)
     return vendas
 }
@@ -40,7 +40,7 @@ const procurarVendaCliente = async (id) => {
 }
 
 const deletarVenda = async (id) => {
-    const query = `DELETE FROM vendas WHERE id = ${id}`
+    const query = `DELETE FROM vendas WHERE rastreio = ${id}`
 
     const deletarVenda = await connection.execute(query)
 }

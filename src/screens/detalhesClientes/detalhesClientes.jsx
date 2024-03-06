@@ -59,7 +59,6 @@ function DetalhesClientes() {
             setloadingClientesDetalhes(false)
         })
     }, [])
-    console.log(resultClientesDetalhes)
 
     return ( 
         <div id="DETALHESCLIENTES">

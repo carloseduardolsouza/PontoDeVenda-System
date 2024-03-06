@@ -234,6 +234,17 @@ const ProcurarVendas = async () => {
     }
 }
 
+const ProcurarVendasId = async (rastreio) => {
+    try {
+        const response = await fetch(`http://localhost:3322/procurarVendaId/${rastreio}`).then((response) => {return response});
+        const data = await response.json()
+        return data
+    } catch (error) {
+        alert('A API PROVAVELMENTE ESTA INATIVA, ATIVE E TENTE NOVAMENTE');
+        return []
+    }
+}
+
 const procurarVendaCliente = async (id) => {
     try {
         const response = await fetch(`http://localhost:3322/procurarVendaCliente/${id}`).then((response) => {return response});
@@ -244,6 +255,25 @@ const procurarVendaCliente = async (id) => {
         return []
     }
 }
+
+const DeletarVenda = async (p) => {
+    try {
+        const response = await fetch(`http://localhost:3322/deletarVenda/${p}`, {
+            method: 'DELETE'
+        });
+
+        if (response.ok) {
+            // Cliente excluído com sucesso
+            console.log('Cliente excluído com sucesso');
+        } else {
+            // Se a resposta não estiver ok, lançar um erro
+            throw new Error('Falha ao excluir cliente');
+        }
+    } catch (error) {
+        // Captura e trata erros de requisição
+        alert('A API PROVAVELMENTE ESTA INATIVA, ATIVE E TENTE NOVAMENTE');
+    }
+};
 
 
 export default {
@@ -261,6 +291,8 @@ export default {
 
     NovaVenda,
     ProcurarVendas,
-    procurarVendaCliente
+    ProcurarVendasId,
+    procurarVendaCliente,
+    DeletarVenda
 
 }
