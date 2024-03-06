@@ -22,7 +22,7 @@ const procurarCliente = async (id) => {
     if(id === "all") {
         const query = `SELECT * FROM clientes`
         const [users] = await connection.execute(query)
-        return users
+        return users.reverse()
     } else {
         const query = `SELECT * FROM clientes WHERE name LIKE '%${id}%'`
         const [users] = await connection.execute(query)

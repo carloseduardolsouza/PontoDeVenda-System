@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+
 function formatarCurrency(numero) {
     // Converter para número, se possível
     const numeroComoNumero = parseFloat(numero);
@@ -29,9 +31,17 @@ function formatarDataNascimento(data) {
   return dataFormatada
 }
 
+function formatarData( data, formato = 'dd/MM/yyyy' ) {
+  const dataObj = new Date(data);
+  const dataFormatada = format(dataObj, formato);
+
+  return <span>{dataFormatada}</span>;
+}
+
 export default {
     formatarCurrency,
     formatarDataNascimento,
     formatarCPF,
-    formatarNumeroCelular
+    formatarNumeroCelular,
+    formatarData
 }

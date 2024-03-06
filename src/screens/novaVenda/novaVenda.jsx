@@ -18,16 +18,20 @@ function NovaVenda() {
 
     const [resultProdutos , setResultProdutos] = useState([])
     const [resultClientes , setResultClientes] = useState([])
+    const [resultVendedores , setResultVendedores] = useState([])
     const [loading , setloading] = useState(true)
     const [concluindo , setConcluindo] = useState(false)
+    const [statusVenda , setStatusVenda] = useState("concluida")
 
     const [faturado , setFaturado] = useState(false)
+    const [nomeVendedor , setNomeVendedor] = useState("'Vendedor...'")
 
     const [id , setId] = useState()
     const [nomeInfoClient , setNomeInfoClient] = useState("'NOME'")
     const [telefoneInfoClient , setTelefoneInfoClient] = useState("'TELEFONE'")
     const [idCliente , setIdCliente] = useState()
     const [idProduto , setIdProduto] = useState()
+    const [idVendedor , setIdVendedor] = useState()
     const [INFOclient , setINFOclient] = useState({"name": "DESCONHECIDO","telefone": "DESCONHECIDO"})
 
     const [desconto , setDesconto] = useState(0)
@@ -57,6 +61,30 @@ function NovaVenda() {
             setloading(false)
         })
     }, [])
+
+    useEffect(() => {
+        fetchapi.ProcurarVendores('all').then((response) => {
+            setResultVendedores(response)
+            setloading(false)
+        })
+    }, [])
+
+    const optionsVendedores = []
+
+    resultVendedores.map((resultVendedores) => {
+        optionsVendedores.push({
+                value : resultVendedores.id,
+                label : resultVendedores.nome})})
+
+    const renderInfoVendedores = async (e) => {
+        setloading(true)
+        setIdVendedor(e.value)
+        const infoVendedor = await fetchapi.ProcurarVendores(e.value)
+        const {nome} = infoVendedor[0]
+        setNomeVendedor(nome)
+        setloading(false)
+
+    }
 
     function gerarNumeroUnico() {
         return new Date().getTime(); // Retorna o timestamp atual
@@ -138,9 +166,11 @@ function NovaVenda() {
         }
         
         const objectVenda= {
-            "date": log,
+            "date" : Data,
+            "status" : statusVenda,
             "id_cliente" : +idCliente,
             "id_produto" : +idProduto,
+            "id_vendedor" : idVendedor,
             "pagamento" : pagamento,
             "produto" : produto,
             "preço_und" : precovenda,
@@ -180,6 +210,11 @@ function NovaVenda() {
         venda.map((venda) => {
             venda.rastreio = `${ratrear}${localeVenda}`
         })
+
+        venda.map((venda) => {
+            venda.status = statusVenda
+        })
+        
         setDesable(true)
         setFaturado(true)
     }
@@ -257,8 +292,19 @@ function NovaVenda() {
                     </div>
                     
                     <button className="calcularNovaVenda" onClick={() => calcularPrice()} disabled={desable}>Calcular</button>
-                    {/*AREA DE VENDEDOR*/}
-
+                    <Select className="SelectNovaVenda" placeholder="Vendedor" options={optionsVendedores} onChange={(e) => renderInfoVendedores(e)} isDisabled={desable}/>
+                        <label className="NovaVendaLabel">
+                            <p className="NovanVendaStrong"><strong>Vendedor: </strong></p>
+                            <p>{nomeVendedor}</p>
+                        </label>
+                        <label className="statusVenda">
+                            <strong>Status: </strong>
+                            <select className="SelectStatusVenda" onChange={(e) => setStatusVenda(e.target.value)}>
+                                <option value="concluida">concluida</option>
+                                <option value="entregar">entregar</option>
+                                <option value="pagar e entregar">pagar e entregar</option>
+                            </select>
+                        </label>
                     <div className="PreçoNovaVenda">
                         <h1>Preço : {services.formatarCurrency(preçoComDesconto)}</h1>
                         <button className="lançarPreçoNovaVenda" onClick={() => LançarAVenda()} disabled={desable}>Lançar</button>

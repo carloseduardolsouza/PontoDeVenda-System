@@ -1,10 +1,12 @@
 import "./itensTableVendasOpen.css"
 
 import DetalhesPendentes from "../DetalhesPendentes/DetalhesPendentes.jsx";
+import services from "../../services/services.js";
 
 import { useState } from "react";
 
-function ItensTableVendas() {
+function ItensTableVendas({venda}) {
+    console.log(venda)
     const [openDetalhesPendes , setOpenDetalhesPendes] = useState(false)
 
     const ExitDetalhes = () => {
@@ -22,12 +24,12 @@ function ItensTableVendas() {
             {openDetalhesPendes && (
                 <DetalhesPendentes data={data}/>
                 )}
-            <p className="RespostTable">{"COMODA CAPRI"}</p>
-            <p className="RespostTable">{"R$ 230,00"}</p>
-            <p className="RespostTable">{"01"}</p>
-            <p className="RespostTable">{"R$ 00,00"}</p>
-            <p className="RespostTable">{"R$ 230,00"}</p>
-            <p className="RespostTable">{"PIX"}</p>
+            <p className="RespostTable">{venda.produto}</p>
+            <p className="RespostTable">{services.formatarCurrency(venda.preço_und)}</p>
+            <p className="RespostTable">{venda.quantidade}</p>
+            <p className="RespostTable">{venda.desconto}</p>
+            <p className="RespostTable">{services.formatarCurrency(venda.preço)}</p>
+            <p className="RespostTable">{venda.pagamento}</p>
             <button className="RespostTable bttnRespostTableAbertoss" onClick={() => {setOpenDetalhesPendes(true)}}>Detalhes</button>
         </div>
      );

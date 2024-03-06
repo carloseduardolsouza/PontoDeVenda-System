@@ -16,8 +16,10 @@ function Vendas() {
 
     const [históricoOpen , setHistóricoOpen] = useState(true)
     const [vendasReceber , setVendasReceber] = useState(false)
+    const [embreve , setEmBreve] = useState(true)
 
     const [resultVendas , setResultVendas] = useState([])
+    const [resultVendasPendentes , setResultVendasPendentes] = useState([])
     const [loadingVendas , setloadingVendas] = useState(true)
 
     useEffect(() => {
@@ -26,6 +28,13 @@ function Vendas() {
             setloadingVendas(false)
         })
     }, [])
+
+    useEffect(() => {
+        fetchapi.procurarVendaPendente().then((response) => {
+            setResultVendasPendentes(response)
+        })
+    }, [])
+
     return ( 
         <div id="VENDAS">
             <header className="HeaderVendas">
@@ -56,21 +65,24 @@ function Vendas() {
                             <p className="itemTabelTitle">Total</p>
                             <p className="itemTabelTitle">Data</p>
                         </div>
-                        {loadingVendas && <Loading/> || resultVendas.reverse().map((vendas) => <ItensTable data={vendas}/>)}
+                        {loadingVendas && <Loading/> || resultVendas.map((vendas) => <ItensTable data={vendas}/>)}
                     </table>
                     </div>
                 ) || vendasReceber && (
-                    <table className="TableVendas">
-                        <div className="TableHeader">
-                            <p className="itemTabelTitle">Cliente</p>
-                            <p className="itemTabelTitle">produto</p>
-                            <p className="itemTabelTitle">N.Parcela</p>
-                            <p className="itemTabelTitle">valor</p>
-                            <p className="itemTabelTitle">vencimento</p>
-                            <p className="itemTabelTitle">Ações</p>
-                        </div>
-                        <ItensTabelVendasAReceber/>
-                    </table>
+                    <div>
+                        <h1>EM BREVE</h1>
+                        {/*<table className="TableVendas">
+                            <div className="TableHeader">
+                                <p className="itemTabelTitle">Cliente</p>
+                                <p className="itemTabelTitle">produto</p>
+                                <p className="itemTabelTitle">N.Parcela</p>
+                                <p className="itemTabelTitle">valor</p>
+                                <p className="itemTabelTitle">vencimento</p>
+                                <p className="itemTabelTitle">Ações</p>
+                            </div>
+                            <ItensTabelVendasAReceber/>
+                    </table>*/}
+                    </div>
                 ) || (
                         <table className="TableVendas">
                         <div className="TableHeader">
@@ -82,8 +94,7 @@ function Vendas() {
                             <p className="itemTabelTitle">Pagamento</p>
                             <p className="itemTabelTitle">Ações</p>
                         </div>
-                        <ItensTablePendentes/>
-                        <ItensTablePendentes/>
+                        {loadingVendas && <Loading/> || resultVendasPendentes.map((venda) => <ItensTablePendentes venda={venda}/>)}
                     </table>
                 )}
             </main>

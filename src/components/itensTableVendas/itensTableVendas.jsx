@@ -18,7 +18,7 @@ function itensTableVendas({data}) {
             <p className="RespostTable">{quantidade}</p>
             <p className="RespostTable">{desconto}</p>
             <p className="RespostTable">{services.formatarCurrency(preço)}</p>
-            <p className="RespostTable">{date}</p>
+            <p className="RespostTable">{services.formatarData(date)}</p>
         </div>
      );
 }

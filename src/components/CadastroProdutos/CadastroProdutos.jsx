@@ -119,12 +119,12 @@ function CadastroProdutos() {
                 </la>
                     <la>
                         <p>Marca: </p>
-                        <input type="text" onChange={(e) => escrever("marca" , e)} value={marca}/>
+                        <input type="text" onChange={(e) => escrever("marca" , e)} value={marca} required/>
                     </la>
 
                     <la>
                         <p>Descrição: </p>
-                        <textarea id="texto" rows="4" cols="50" onChange={(e) => escrever("descrição" , e)} value={descrição}/>
+                        <textarea id="texto" rows="4" cols="50" onChange={(e) => escrever("descrição" , e)} value={descrição} required/>
                     </la>
 
                     <la>

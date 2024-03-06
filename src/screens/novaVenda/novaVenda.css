@@ -6,6 +6,21 @@
     outline: none;
 }
 
+.statusVenda {
+    position: absolute;
+    bottom: 10px;
+    left: 450px;
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 20px;
+}
+
+.SelectStatusVenda {
+    font-size: 20px;
+}
+
 .SelectNovaVenda {
     margin-top: 15px;
     margin-bottom: 15px;

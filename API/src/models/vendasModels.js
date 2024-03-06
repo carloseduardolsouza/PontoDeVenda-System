@@ -9,8 +9,10 @@ const procurarVendaId = async (id) => {
 const novaVenda = async (dados) => {
     const {
         date,
+        status,
         id_cliente,
         id_produto,
+        id_vendedor,
         produto,
         preço,
         preço_und,
@@ -21,8 +23,8 @@ const novaVenda = async (dados) => {
         rastreio
     } = dados
 
-    const query = 'INSERT INTO vendas (preço_und , date , id_cliente , id_produto , produto , preço , desconto , quantidade , pagamento , total , rastreio) VALUES (?,?,?,?,?,?,?,?,?,?,?)'
-    const values = [preço_und , date , +id_cliente , +id_produto ,produto, +preço , +desconto , +quantidade , pagamento , +total , rastreio]
+    const query = 'INSERT INTO vendas (status , id_vendedor , preço_und , date , id_cliente , id_produto , produto , preço , desconto , quantidade , pagamento , total , rastreio) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)'
+    const values = [status , id_vendedor , preço_und , date , +id_cliente , +id_produto ,produto, +preço , +desconto , +quantidade , pagamento , +total , rastreio]
 
     const novaVenda = await connection.execute(query , values)
 }
@@ -30,7 +32,13 @@ const novaVenda = async (dados) => {
 const procurarVenda = async () => {
     const query = `SELECT * FROM vendas`
     const [vendas] = await connection.execute(query)
-    return vendas
+    return vendas.reverse()
+}
+
+const procurarVendaPendente = async () => {
+    const query = `SELECT * FROM vendas WHERE status <> 'concluida'`
+    const [vendas] = await connection.execute(query)
+    return vendas.reverse()
 }
 
 const procurarVendaCliente = async (id) => {
@@ -73,5 +81,6 @@ module.exports = {
     procurarVenda,
     deletarVenda,
     procurarVendaCliente,
-    editarVenda
+    editarVenda,
+    procurarVendaPendente
 }

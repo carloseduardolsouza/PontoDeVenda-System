@@ -256,6 +256,17 @@ const procurarVendaCliente = async (id) => {
     }
 }
 
+const procurarVendaPendente = async () => {
+    try {
+        const response = await fetch(`http://localhost:3322/procurarVendaPendente`).then((response) => {return response});
+        const data = await response.json()
+        return data
+    } catch (error) {
+        alert('A API PROVAVELMENTE ESTA INATIVA, ATIVE E TENTE NOVAMENTE');
+        return []
+    }
+}
+
 const DeletarVenda = async (p) => {
     try {
         const response = await fetch(`http://localhost:3322/deletarVenda/${p}`, {
@@ -275,6 +286,17 @@ const DeletarVenda = async (p) => {
     }
 };
 
+const ProcurarVendores = async (p) => {
+    try {
+        const clientes = await fetch(`http://localhost:3322/procurarVendedor/${p}`).then((response) => {return response});
+        const data = await clientes.json()
+        return data
+    } catch (error) {
+        alert('A API PROVAVELMENTE ESTA INATIVA, ATIVE E TENTE NOVAMENTE');
+        return []
+    }
+}
+
 
 export default {
     NovoCliente,
@@ -291,8 +313,11 @@ export default {
 
     NovaVenda,
     ProcurarVendas,
+    procurarVendaPendente,
     ProcurarVendasId,
     procurarVendaCliente,
-    DeletarVenda
+    DeletarVenda,
+
+    ProcurarVendores
 
 }

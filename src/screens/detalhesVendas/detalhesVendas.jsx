@@ -15,6 +15,8 @@ function DetalhesVendas() {
     const {rastreio} = useParams()
 
     const [resultVendas , setResultVendas] = useState([])
+    const [resultCliente , setResultCliente] = useState([])
+    const [resultVendedor , setResultVendedor] = useState([])
     const [loadingVendas , setloadingVendas] = useState(true)
     const [deletando , setDeletando] = useState(false)
 
@@ -22,16 +24,32 @@ function DetalhesVendas() {
     useEffect(() => {
         fetchapi.ProcurarVendasId(rastreio).then((response) => {
             setResultVendas(response)
-            setloadingVendas(false)
         })
     }, [])
+
+    useEffect(() => {
+        if(resultVendas && resultVendas.length > 0) {
+            fetchapi.ProcurarClienteId(resultVendas[0].id_cliente).then((response) => {
+                setResultCliente(response[0])
+            })
+        }
+    }, [resultVendas])
+
+    useEffect(() => {
+        if(resultVendas && resultVendas.length > 0) {
+            fetchapi.ProcurarVendores(resultVendas[0].id_vendedor).then((response) => {
+                setResultVendedor(response[0])
+                setloadingVendas(false)
+            })
+        }
+    }, [resultCliente])
 
     const deleteVenda =  () => {
         setDeletando(true)
         fetchapi.DeletarVenda(rastreio)
 
         setTimeout(() => {
-            window.location.href = "/"
+            window.location.href = "/vendas"
         }, 2000)
     }
 
@@ -44,10 +62,10 @@ function DetalhesVendas() {
             <div>
 
                 <div className="detalhesVendaInfoCliente">
-                    <p><strong>data: </strong>{resultVendas[0].date}</p>
-                    <p><strong>cliente: </strong>{"Carlos Souza"}</p>
-                    <p><strong>status: </strong>{"Concluida"}</p>
-                    <p><strong>vendedor(a): </strong>{"Marcia"}</p>
+                    <p><strong>data: </strong>{services.formatarData(resultVendas[0].date)}</p>
+                    <p><strong>cliente: </strong><a href={`/detalhesClientes/${resultVendas[0].id_cliente}`}>{resultCliente.name}</a></p>
+                    <p><strong>status: </strong>{resultVendas[0].status}</p>
+                    <p><strong>vendedor(a): </strong>{resultVendedor.nome}</p>
                 </div>
                 <div className="detalhesVendaAreaButton">
                     <button className="detalhesVendaButton NFE-sVenda"><LiaFileInvoiceDollarSolid /> NFE-s</button>
