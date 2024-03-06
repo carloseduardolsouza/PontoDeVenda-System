@@ -1,6 +1,10 @@
 import {useState } from "react";
 import Provider from "./context/provider";
 
+//Home
+    import { GoHome } from "react-icons/go";
+    import { GoHomeFill } from "react-icons/go";
+
 //configurações
     import { BsGear } from "react-icons/bs";
     import { BsGearFill } from "react-icons/bs";
@@ -55,10 +59,13 @@ import caixaa from "./screens/caixa/caixa"
 import estatísticass from "./screens/estatísticas/estatísticas"
 import configurações from "./screens/configurações/configurações"
 import detalhesVendas from "./screens/detalhesVendas/detalhesVendas";
+import detalhesGerenciarEstoque from "./screens/detalhesGerenciarEstoque/detalhesGerenciarEstoque";
+import Homescreen from "./screens/Homescreen/Homescreen";
 
 
 function App() {
-    const [vendas , setVendas] = useState(true)
+    const [home , setHome] = useState(true)
+    const [vendas , setVendas] = useState(false)
     const [clientes , setClientes] = useState(false)
     const [produtos , setProdutos] = useState(false)
     const [estoque , setEstoque] = useState(false)
@@ -99,8 +106,25 @@ function App() {
                 <RiMenu2Fill className="iconsMenuLateral"/>
             </div>
             <Link to="/" className="MenuLateralBox" onClick={() => {
+                setVendas(false)
+                setHome(true)
+                setClientes(false)
+                setProdutos(false)
+                setEstoque(false)
+                setContasPagar(false)
+                setEstatísticas(false)
+                setCaixa(false)
+                setConfigs(false)
+            }}>
+                {(home && <GoHomeFill className="iconsMenuLateral"/>) || (
+                    <GoHome className="iconsMenuLateral"/>
+                    )}
+                <p style={style}>Home</p>
+            </Link>
+            <Link to="/vendas" className="MenuLateralBox" onClick={() => {
                 setVendas(true)
                 setClientes(false)
+                setHome(false)
                 setProdutos(false)
                 setEstoque(false)
                 setContasPagar(false)
@@ -118,6 +142,7 @@ function App() {
                 setClientes(true)
                 setProdutos(false)
                 setEstoque(false)
+                setHome(false)
                 setContasPagar(false)
                 setEstatísticas(false)
                 setCaixa(false)
@@ -133,6 +158,7 @@ function App() {
                 setClientes(false)
                 setProdutos(true)
                 setEstoque(false)
+                setHome(false)
                 setContasPagar(false)
                 setEstatísticas(false)
                 setCaixa(false)
@@ -150,6 +176,7 @@ function App() {
                 setEstoque(true)
                 setContasPagar(false)
                 setEstatísticas(false)
+                setHome(false)
                 setCaixa(false)
                 setConfigs(false)
             }}>
@@ -162,6 +189,7 @@ function App() {
                 setVendas(false)
                 setClientes(false)
                 setProdutos(false)
+                setHome(false)
                 setEstoque(false)
                 setContasPagar(true)
                 setEstatísticas(false)
@@ -180,6 +208,7 @@ function App() {
                 setEstoque(false)
                 setContasPagar(false)
                 setEstatísticas(false)
+                setHome(false)
                 setCaixa(true)
                 setConfigs(false)
             }}>
@@ -192,6 +221,7 @@ function App() {
                 setVendas(false)
                 setClientes(false)
                 setProdutos(false)
+                setHome(false)
                 setEstoque(false)
                 setContasPagar(false)
                 setEstatísticas(true)
@@ -209,6 +239,7 @@ function App() {
                 setClientes(false)
                 setProdutos(false)
                 setEstoque(false)
+                setHome(false)
                 setContasPagar(false)
                 setEstatísticas(false)
                 setCaixa(false)
@@ -223,7 +254,8 @@ function App() {
             </div>
         </div>
         <Routes>
-          <Route path="/" Component={Vendas}/>
+          <Route path="/" Component={Homescreen}/>
+          <Route path="/vendas" Component={Vendas}/>
           <Route path="/clientes" Component={Clientes}/>
           <Route path="/produtos" Component={Produtos} />
           <Route path="/novaVenda" Component={novaVenda} />
@@ -238,6 +270,7 @@ function App() {
           <Route path="/estatísticas" Component={estatísticass}/>
           <Route path="/configurações" Component={configurações}/>
           <Route path="/detalhesVenda/:rastreio" Component={detalhesVendas}/>
+          <Route path="/detalhesGerenciarEstoqueReposição/:id" Component={detalhesGerenciarEstoque}/>
         </Routes>
       </Router>
     </div>

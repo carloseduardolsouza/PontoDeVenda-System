@@ -8,7 +8,9 @@ function itensTableVendas() {
             <p className="RespostTable">{"02"}</p>
             <p className="RespostTable">{"PIX"}</p>
             <p className="RespostTable">{'R$ 460,00'}</p>
-            <button className="RespostTable buitão">Detalhes</button>
+            <button className="RespostTable buitão" onClick={() => {
+                window.location.href = "/detalhesGerenciarEstoqueReposição/1"
+            }}>Detalhes</button>
         </div>
      );
 }
