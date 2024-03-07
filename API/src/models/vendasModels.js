@@ -24,7 +24,7 @@ const novaVenda = async (dados) => {
     } = dados
 
     const query = 'INSERT INTO vendas (status , id_vendedor , preço_und , date , id_cliente , id_produto , produto , preço , desconto , quantidade , pagamento , total , rastreio) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)'
-    const values = [status , id_vendedor , preço_und , date , +id_cliente , +id_produto ,produto, +preço , +desconto , +quantidade , pagamento , +total , rastreio]
+    const values = [status , id_vendedor , preço_und , date , +id_cliente , +id_produto ,produto, +preço , desconto , +quantidade , pagamento , +total , rastreio]
 
     const novaVenda = await connection.execute(query , values)
 }

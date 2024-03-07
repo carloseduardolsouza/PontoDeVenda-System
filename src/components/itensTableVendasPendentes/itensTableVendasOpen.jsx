@@ -42,12 +42,12 @@ function ItensTableVendas({venda , arrayVendas}) {
                 <DetalhesPendentes data={data} arrayVendas={arrayVendas}/>
                 )}
             <p className="RespostTable">{venda.produto}</p>
-            <p className="RespostTable">{services.formatarCurrency(venda.preço_und)}</p>
-            <p className="RespostTable">{venda.quantidade}</p>
-            <p className="RespostTable">{venda.desconto}</p>
-            <p className="RespostTable">{services.formatarCurrency(venda.preço)}</p>
-            <p className="RespostTable">{venda.pagamento}</p>
-            <button className="RespostTable bttnRespostTableAbertoss" onClick={() => {setOpenDetalhesPendes(true)}}>Detalhes</button>
+            <p className="RespostTable PreçoVendasScreenTable">{services.formatarCurrency(venda.preço_und)}</p>
+            <p className="RespostTable QuantidadeVendasScreenTable">{venda.quantidade}</p>
+            <p className="RespostTable DescontoVendasScreenTable">{venda.desconto}</p>
+            <p className="RespostTable TotalVendasScreenTable">{services.formatarCurrency(venda.preço)}</p>
+            <p className="RespostTable PagamentoVendasScreenTables">{venda.pagamento}</p>
+            <button className="RespostTable AçõesVendasScreenTables" onClick={() => {setOpenDetalhesPendes(true)}}>Detalhes</button>
         </div>
      );
 }

@@ -27,8 +27,13 @@
     color: white;
     border-radius: 4px;
     width: 230px;
+    font-size: 13px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
+}
+
+.endress {
+    width: 1700px;
 }

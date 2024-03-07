@@ -23,6 +23,26 @@
     text-align: center;
 }
 
+.Data {
+    width: 40%;
+}
+
+.QuantidadeVendasScreenTable {
+    width: 30%;
+}
+
+.PreçoVendasScreenTable {
+    width: 40%;
+}
+
+.DescontoVendasScreenTable {
+    width: 40%;
+}
+
+.TotalVendasScreenTable {
+    width: 40%;
+}
+
 a.RespostTable {
     color: black;
 }

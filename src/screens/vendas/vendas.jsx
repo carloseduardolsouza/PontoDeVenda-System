@@ -59,11 +59,11 @@ function Vendas() {
                     <table className="TableVendas">
                         <div className="TableHeader">
                             <p className="itemTabelTitle">Produto</p>
-                            <p className="itemTabelTitle">Preço</p>
-                            <p className="itemTabelTitle">Quantidade</p>
-                            <p className="itemTabelTitle">Desconto</p>
-                            <p className="itemTabelTitle">Total</p>
-                            <p className="itemTabelTitle">Data</p>
+                            <p className="itemTabelTitle PreçoVendasScreenTable">Preço</p>
+                            <p className="itemTabelTitle QuantidadeVendasScreenTable">Quantidade</p>
+                            <p className="itemTabelTitle DescontoVendasScreenTable">Desconto</p>
+                            <p className="itemTabelTitle TotalVendasScreenTable">Total</p>
+                            <p className="itemTabelTitle Data">Data</p>
                         </div>
                         {loadingVendas && <Loading/> || resultVendas.map((vendas) => <ItensTable data={vendas}/>)}
                     </table>
@@ -87,12 +87,12 @@ function Vendas() {
                         <table className="TableVendas">
                         <div className="TableHeader">
                             <p className="itemTabelTitle">Produto</p>
-                            <p className="itemTabelTitle">Preço</p>
-                            <p className="itemTabelTitle">Quantidade</p>
-                            <p className="itemTabelTitle">Desconto</p>
-                            <p className="itemTabelTitle">Total</p>
-                            <p className="itemTabelTitle">Pagamento</p>
-                            <p className="itemTabelTitle">Ações</p>
+                            <p className="itemTabelTitle PreçoVendasScreenTable">Preço</p>
+                            <p className="itemTabelTitle QuantidadeVendasScreenTable">Quantidade</p>
+                            <p className="itemTabelTitle DescontoVendasScreenTable">Desconto</p>
+                            <p className="itemTabelTitle TotalVendasScreenTable">Total</p>
+                            <p className="itemTabelTitle PagamentoVendasScreenTables">Pagamento</p>
+                            <p className="itemTabelTitle AçõesVendasScreenTables">Ações</p>
                         </div>
                         {loadingVendas && <Loading/> || resultVendasPendentes.map((venda) => <ItensTablePendentes venda={venda} arrayVendas={setResultVendasPendentes}/>)}
                     </table>

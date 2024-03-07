@@ -25,6 +25,10 @@
     color: white;
 }
 
+.AçoesVendasScreenTable {
+    width: 30%;
+}
+
 .FilterDateVendas {
     font-size: 15px;
     height: 30px;

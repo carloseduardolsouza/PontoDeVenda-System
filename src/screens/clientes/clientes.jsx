@@ -52,7 +52,7 @@ function Clientes() {
                 <div className="HeaderClientes">
                     <p className="HeaderClientesP"><strong>Nome</strong></p>
                     <p className="HeaderClientesP"><strong>Numero</strong></p>
-                    <p className="HeaderClientesP"><strong>Endereço</strong></p>
+                    <p className="HeaderClientesP endereçoHeader"><strong>Endereço</strong></p>
                     <p className="HeaderClientesP"><strong>Credito</strong></p>
                     <p className="HeaderClientesP açoes"><strong>Ações</strong></p>
                 </div>
