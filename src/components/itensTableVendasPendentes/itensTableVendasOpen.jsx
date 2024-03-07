@@ -2,27 +2,44 @@ import "./itensTableVendasOpen.css"
 
 import DetalhesPendentes from "../DetalhesPendentes/DetalhesPendentes.jsx";
 import services from "../../services/services.js";
+import fetchapi from "../../api/fetchapi.js"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function ItensTableVendas({venda}) {
-    console.log(venda)
+function ItensTableVendas({venda , arrayVendas}) {
     const [openDetalhesPendes , setOpenDetalhesPendes] = useState(false)
+    const [infoClient , setInfoCliente] = useState([])
+    const [loadingPendente , setLoadingPendente] = useState(true)
 
     const ExitDetalhes = () => {
         setOpenDetalhesPendes(false)
     }
 
+    useEffect(() => {
+        fetchapi.ProcurarClienteId(venda.id_cliente).then((response) => {
+            setInfoCliente(response[0])
+            setLoadingPendente(false)
+        })
+    },[])
+
     const data = {
         ExitDetalhes: () => {
             setOpenDetalhesPendes(false)
-        }
+        },
+        id: venda.id,
+        Produto: venda.produto,
+        Total: venda.total,
+        Pagamento: venda.pagamento,
+        Ação: venda.status,
+        Cliente: infoClient.name,
+        Endereço: infoClient.endereço,
+        id_cliente: infoClient.id
     }
 
     return ( 
         <div className="ItensTableVendas">
             {openDetalhesPendes && (
-                <DetalhesPendentes data={data}/>
+                <DetalhesPendentes data={data} arrayVendas={arrayVendas}/>
                 )}
             <p className="RespostTable">{venda.produto}</p>
             <p className="RespostTable">{services.formatarCurrency(venda.preço_und)}</p>

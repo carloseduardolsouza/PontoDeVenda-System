@@ -94,7 +94,7 @@ function Vendas() {
                             <p className="itemTabelTitle">Pagamento</p>
                             <p className="itemTabelTitle">Ações</p>
                         </div>
-                        {loadingVendas && <Loading/> || resultVendasPendentes.map((venda) => <ItensTablePendentes venda={venda}/>)}
+                        {loadingVendas && <Loading/> || resultVendasPendentes.map((venda) => <ItensTablePendentes venda={venda} arrayVendas={setResultVendasPendentes}/>)}
                     </table>
                 )}
             </main>

@@ -31,6 +31,7 @@ router.get("/procurarVendaPendente" , vendasControllers.procurarVendaPendente)
 router.get("/procurarVendaCliente/:id" , vendasControllers.procurarVendaCliente)
 router.get("/procurarVenda" , vendasControllers.procurarVenda)
 router.put("/editarVenda/:id" , vendasControllers.editarVenda)
+router.put("/concluirVenda/:id" , vendasControllers.concluirVenda)
 router.post("/novaVenda" , vendasControllers.novaVenda)
 router.delete("/deletarVenda/:id" , vendasControllers.deletarVenda)
 

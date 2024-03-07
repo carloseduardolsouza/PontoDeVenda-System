@@ -47,6 +47,7 @@ function NovaVenda() {
     const [alert , setAlert] = useState(false)
     const [desable , setDesable] = useState(false)
     const [venda , setVenda] = useState([])
+    const [descontoFormatado , setDescontoFormatado] = useState()
 
     useEffect(() => {
         fetchapi.ProcurarCliente('all').then((response) => {
@@ -149,9 +150,12 @@ function NovaVenda() {
             var preçodaporcentagem = (desconto / 100) * (precovenda * quantidade)
             var porcentagemPorcentagem = (precovenda * quantidade) - preçodaporcentagem
             setPreçoComDesconto(porcentagemPorcentagem)
+            setDescontoFormatado(`${desconto}% / ${services.formatarCurrency(preçodaporcentagem)}`)
         } else {
             var porcentagemReais = (precovenda * quantidade) - desconto
+            var preçodareais = (desconto / precovenda) * 100   
             setPreçoComDesconto(porcentagemReais)
+            setDescontoFormatado(`${preçodareais.toFixed(1)}% / ${services.formatarCurrency(desconto)}`)
         }
     }
 
@@ -174,9 +178,9 @@ function NovaVenda() {
             "pagamento" : pagamento,
             "produto" : produto,
             "preço_und" : precovenda,
-            "quantidade" : +quantidade,
-            "preço" : +preçoComDesconto,
-            "desconto" : +desconto,
+            "quantidade" : quantidade,
+            "preço" : preçoComDesconto,
+            "desconto" : descontoFormatado,
             "rastreio" : '',
             "total" : ''
         }
@@ -306,6 +310,7 @@ function NovaVenda() {
                             </select>
                         </label>
                     <div className="PreçoNovaVenda">
+                        <h3>Desconto: {descontoFormatado}</h3>
                         <h1>Preço : {services.formatarCurrency(preçoComDesconto)}</h1>
                         <button className="lançarPreçoNovaVenda" onClick={() => LançarAVenda()} disabled={desable}>Lançar</button>
                     </div>

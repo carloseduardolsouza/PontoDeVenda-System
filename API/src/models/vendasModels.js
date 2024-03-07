@@ -75,6 +75,12 @@ const editarVenda = async (id , dados) => {
     return editarVenda;
 }
 
+const concluirVenda = async (id) => {
+    const query = 'UPDATE vendas SET status = ? WHERE id = ?'
+    const [concluirVenda] = await connection.execute(query, ["concluida",id])
+    return concluirVenda
+}
+
 module.exports = {
     procurarVendaId,
     novaVenda,
@@ -82,5 +88,6 @@ module.exports = {
     deletarVenda,
     procurarVendaCliente,
     editarVenda,
-    procurarVendaPendente
+    procurarVendaPendente,
+    concluirVenda
 }

@@ -3,10 +3,6 @@ import "./ItensTableProdutos.css"
 import { useState } from "react";
 import services from "../../services/services";
 
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-
 function ItensTableProdutos({data}) {
     const [openDetalhes , setOpenDetalhes] = useState(false)
 

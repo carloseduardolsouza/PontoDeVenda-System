@@ -297,6 +297,29 @@ const ProcurarVendores = async (p) => {
     }
 }
 
+const concluirVenda = async (id) => {
+    try {
+        const response = await fetch(`http://localhost:3322/concluirVenda/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+        });
+        
+        if (!response.ok) {
+            throw new Error('Erro ao tentar adicionar novo cliente');
+        }
+
+        return response;
+    } catch (error) {
+        // Aqui você pode tratar o erro da forma desejada
+        console.error('Erro ao tentar fazer a requisição:', error.message);
+        // Por exemplo, você pode exibir uma mensagem de erro para o usuário
+        alert('A API PROVAVELMENTE ESTA INATIVA, ATIVE E TENTE NOVAMENTE');
+    }
+}
+
 
 export default {
     NovoCliente,
@@ -315,6 +338,7 @@ export default {
     ProcurarVendas,
     procurarVendaPendente,
     ProcurarVendasId,
+    concluirVenda,
     procurarVendaCliente,
     DeletarVenda,
 

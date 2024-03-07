@@ -1,27 +1,45 @@
 import "./DetalhesPendentes.css"
+import services from "../../services/services";
+import fetchapi from "../../api/fetchapi"
 
-function DetalhesPendentes({data}) {
+function DetalhesPendentes({data , arrayVendas}) {
     const {
-        ExitDetalhes
+        ExitDetalhes,
+        Produto,
+        Total,
+        Pagamento,
+        Ação,
+        Cliente,
+        Endereço,
+        id_cliente,
+        id
     } = data
+
+    const concluirVenda = async () => {
+        await fetchapi.concluirVenda(id)
+        await fetchapi.procurarVendaPendente().then((response) => {
+            arrayVendas(response)
+        })
+        ExitDetalhes()
+    }
 
     return ( 
         <div id="DetalhesPendentes">
             <button className="ExitPendentesDetalhes" onClick={() => ExitDetalhes()}>x</button>
                 <p><strong>Cliente</strong></p>
-                <p>{"CARLOS EDUARDO LOURENÇO DE SOUZA"}</p>
+                <a href={`/detalhesClientes/${id_cliente}`}>{Cliente}</a>
                 <p><strong>Endereço</strong></p>
-                <p>{"R.2 , Q.2 , Lt.13 , JARDIM PETRÓPOLIS"}</p>
+                <p>{Endereço}</p>
                 <p><strong>Produto</strong></p>
-                <p>{"COMODA CAPRI"}</p>
+                <p>{Produto}</p>
                 <p><strong>TOTAL</strong></p>
-                <p>{"R$ 230,00"}</p>
+                <p>{services.formatarCurrency(Total)}</p>
                 <p><strong>Pagamento</strong></p>
-                <p>{"PIX"}</p>
+                <p>{Pagamento}</p>
                 <p><strong>Ação a realizar</strong></p>
-                <p>{"Pagamento e entrega"}</p>
+                <p>{Ação}</p>
                 <label className="switch">
-                    <input type="checkbox"/>
+                    <input type="checkbox" onChange={() => concluirVenda()}/>
                     <span className="slider"></span>
                 </label>
         </div>

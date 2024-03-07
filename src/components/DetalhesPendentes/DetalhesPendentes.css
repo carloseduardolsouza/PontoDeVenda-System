@@ -25,6 +25,10 @@
   }
 }
 
+#DetalhesPendentes a {
+  color: black;
+}
+
 .ExitPendentesDetalhes {
     position: absolute;
     top: 10px;

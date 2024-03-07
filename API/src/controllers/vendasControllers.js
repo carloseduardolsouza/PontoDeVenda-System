@@ -39,6 +39,12 @@ const editarVenda = async (req , res) => {
     return res.status(200).json()
 }
 
+const concluirVenda = async (req, res) => {
+    const {id} = req.params
+    const concluirVenda = await vendasModels.concluirVenda(id)
+    return res.status(200).json()
+}
+
 module.exports = {
     procurarVendaId,
     novaVenda,
@@ -46,5 +52,6 @@ module.exports = {
     deletarVenda,
     procurarVendaCliente,
     editarVenda,
+    concluirVenda,
     procurarVendaPendente
 }
