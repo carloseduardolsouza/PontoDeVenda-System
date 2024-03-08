@@ -76,6 +76,19 @@
   margin-top: 40px;
 }
 
+.NotficationHome {
+  background-color: black;
+  color: white;
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
 .MainHomeDeashBoard > article {
   background-color: #eee;
   width: 45%;
@@ -85,4 +98,7 @@
   font-size: 20px;
   border-radius: 20px;
   margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

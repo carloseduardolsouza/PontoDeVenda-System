@@ -35,21 +35,21 @@ function Homescreen() {
       <CartesianGrid strokeDasharray="3 3" />
       <Tooltip />
       <Legend />
-      <Line type="monotone" dataKey="Receitas" stroke="#8884d8" />
-      <Line type="monotone" dataKey="Despesas" stroke="#82ca9d" />
+      <Line type="monotone" dataKey="Receitas" stroke="#31c331" />
+      <Line type="monotone" dataKey="Despesas" stroke="#de2727" />
     </LineChart>
 
         <div className="ButtonHeaderDeashBoard">
           <button><GiTakeMyMoney/> Funcionários</button>
           <button><FaTruck/> Fornecedores</button>
-          <button><MdAttachMoney/> Fluxo de Caixa</button>
-          <button><FaComputer/> PDV</button>
-          <button><FaChartLine/> Métricas</button>
+          <button onClick={() => window.location.href = "/caixa"}><MdAttachMoney/> Fluxo de Caixa</button>
+          <button onClick={() => window.location.href = "/novaVenda"}><FaComputer/> PDV</button>
+          <button onClick={() => window.location.href = "/estatísticas"}><FaChartLine/> Métricas</button>
         </div>
 
         <div className="LoyautCardMétricasBox">
           <article className="cardMétricasBox green">
-            <h2>Vendas</h2>
+            <h2>Receitas</h2>
             <h1>{"R$ 10.000,00"}</h1>
             <div className="linha"/>
             <div className="displayFlex">
@@ -118,14 +118,19 @@ function Homescreen() {
       <main className="MainHomeDeashBoard">
         <article>
           <h1>Vendas este mês</h1>
+          <h1 className="NotficationHome">{"100"}</h1>
+
         </article>
 
         <article>
           <h1>Contas a pagar</h1>
+          <h1 className="NotficationHome">{"10"}</h1>
         </article>
 
         <article>
           <h1>Vendas Pendentes</h1>
+          <h1 className="NotficationHome">{"10"}</h1>
+
         </article>
       </main>
     </div>

@@ -4,7 +4,7 @@ function createWindow() {
     const win = new BrowserWindow({
         title: "CashInBox",
         webPreferences: false,
-        fullscreen: false,
+        fullscreen: true,
         width: 1200,
         height: 900,
 
