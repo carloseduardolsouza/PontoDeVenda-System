@@ -1,0 +1,61 @@
+/* src/CashFlow.css */
+
+.cashflow-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .transaction-list {
+    margin-top: 20px;
+  }
+  
+  .transaction-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .transaction-item:last-child {
+    border-bottom: none;
+  }
+  
+  .transaction-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .transaction-date {
+    font-size: 14px;
+    color: #999;
+  }
+  
+  .transaction-description {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .transaction-category {
+    font-size: 14px;
+    color: #007bff;
+  }
+  
+  .transaction-amount {
+    font-size: 18px;
+  }
+  
+  .income {
+    background-color: rgba(0, 255, 0, 0.1);
+    color: #009900;
+  }
+  
+  .expense {
+    background-color: rgba(255, 0, 0, 0.1);
+    color: #ff0000;
+  }
+  

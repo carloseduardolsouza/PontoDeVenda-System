@@ -31,7 +31,7 @@ function NovaVenda() {
     const [telefoneInfoClient , setTelefoneInfoClient] = useState("'TELEFONE'")
     const [idCliente , setIdCliente] = useState()
     const [idProduto , setIdProduto] = useState()
-    const [idVendedor , setIdVendedor] = useState()
+    const [idVendedor , setIdVendedor] = useState(0)
     const [INFOclient , setINFOclient] = useState({"name": "DESCONHECIDO","telefone": "DESCONHECIDO"})
 
     const [desconto , setDesconto] = useState(0)

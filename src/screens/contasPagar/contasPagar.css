@@ -1,0 +1,68 @@
+/* src/ContasAPagar.css */
+
+.contas-a-pagar-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contas-list {
+    margin-top: 20px;
+  }
+  
+  .conta-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .conta-item:last-child {
+    border-bottom: none;
+  }
+  
+  .conta-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .conta-fornecedor {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .conta-valor {
+    font-size: 16px;
+    color: #ff0000; /* Vermelho para contas a pagar */
+    margin-top: 5px;
+  }
+  
+  .conta-details {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .status {
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    min-width: 90px;
+    text-align: center;
+  }
+  
+  .pendente {
+    background-color: #ffc107;
+    color: #fff;
+  }
+  
+  .pago {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
