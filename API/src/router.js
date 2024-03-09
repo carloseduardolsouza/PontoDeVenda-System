@@ -12,6 +12,7 @@ const produtosControllers = require('./controllers/produtosControllers');
 const vendasControllers = require('./controllers/vendasControllers')
 const vendedorControllers = require('./controllers/vendedorControllers')
 
+
 router.post("/novoCliente" , clientesControllers.novoCliente)
 router.get("/procurarCliente/:id" , clientesControllers.procurarCliente)
 router.get("/procurarClienteId/:id" , clientesControllers.procurarClienteId)

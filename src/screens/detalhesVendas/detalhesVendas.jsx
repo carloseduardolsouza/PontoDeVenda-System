@@ -9,6 +9,7 @@ import { useState , useEffect } from "react";
 import Loading from "../../components/AçãoRealizada/AçãoRealizada"
 import Deletando from "../../components/Deletando/Deletando"
 import services from "../../services/services"
+import Notinhas from "../../Arquivos/Notinha/Notinha";
 import ItemDetalhesVendas from "../../components/ItemDetalhesVendas/ItemDetalhesVendas";
 
 function DetalhesVendas() {
@@ -19,6 +20,7 @@ function DetalhesVendas() {
     const [resultVendedor , setResultVendedor] = useState([])
     const [loadingVendas , setloadingVendas] = useState(true)
     const [deletando , setDeletando] = useState(false)
+    const [nFEs , setNFEs] = useState(false)
 
 
     useEffect(() => {
@@ -53,10 +55,20 @@ function DetalhesVendas() {
         }, 2000)
     }
 
+    const ImprimirNotinha = () => {
+    }
+
     return ( 
         <div id="detalhesVenda">
             <h2>Detalhes Venda</h2>
             {deletando && <Deletando/>}
+            {nFEs && 
+            <div className="NFEsTrue">
+                <p onClick={() => ImprimirNotinha()}>Notinha</p>
+                <p>Nota Fiscal</p>
+                <p>Cupom Fiscal</p>
+            </div>
+            }
             {loadingVendas && <Loading/> || (
 
             <div>
@@ -68,7 +80,9 @@ function DetalhesVendas() {
                     <p><strong>vendedor(a): </strong>{resultVendedor.nome}</p>
                 </div>
                 <div className="detalhesVendaAreaButton">
-                    <button className="detalhesVendaButton NFE-sVenda"><LiaFileInvoiceDollarSolid /> NFE-s</button>
+                    <button className="detalhesVendaButton NFE-sVenda" onClick={() => {
+                        if(nFEs) {setNFEs(false)}else{setNFEs(true)}
+                    }}><LiaFileInvoiceDollarSolid /> NFE-s</button>
                     <button className="detalhesVendaButton EditarVenda"><FaEdit/> Editar</button>
                     <button className="detalhesVendaButton DeletarVenda" onClick={() => deleteVenda()}><MdDeleteOutline/> Deletar Venda</button>
                 </div>

@@ -5,10 +5,14 @@ import { GiTakeMyMoney } from "react-icons/gi";
 import { MdAttachMoney } from "react-icons/md";
 import { FaComputer } from "react-icons/fa6";
 import { FaChartLine } from "react-icons/fa";
-
+import { IoNotifications } from "react-icons/io5";
 import { IoMdArrowDropup } from "react-icons/io";
+import { useState } from "react";
+import BarNotification from "../../components/BarNotification/BarNotification"
 
 function Homescreen() {
+  const [notification , setNotification] = useState(false)
+
   const data = [
     { name: 'Jan', Despesas: 4000, Receitas: 2400},
     { name: 'Fev', Despesas: 3000, Receitas: 1398},
@@ -18,9 +22,11 @@ function Homescreen() {
     { name: 'Jun', Despesas: 2390, Receitas: 3800},
     { name: 'Jul', Despesas: 3490, Receitas: 4300},
   ];
-
+  
   return ( 
     <div id="Homescreen">
+      {notification && <BarNotification functio={setNotification}/>}
+      <div className="NotificationHomeScreen" onClick={() => setNotification(true)}><IoNotifications/></div>
       <h1>{"Lider Móveis"}</h1>
       <header className="HeaderHomeDeashBoard">
         
@@ -118,18 +124,18 @@ function Homescreen() {
       <main className="MainHomeDeashBoard">
         <article>
           <h1>Vendas este mês</h1>
-          <h1 className="NotficationHome">{"100"}</h1>
+          <h1 className="NotficationHome">{"0"}</h1>
 
         </article>
 
         <article>
           <h1>Contas a pagar</h1>
-          <h1 className="NotficationHome">{"10"}</h1>
+          <h1 className="NotficationHome">{"0"}</h1>
         </article>
 
         <article>
           <h1>Vendas Pendentes</h1>
-          <h1 className="NotficationHome">{"10"}</h1>
+          <h1 className="NotficationHome">{"0"}</h1>
 
         </article>
       </main>

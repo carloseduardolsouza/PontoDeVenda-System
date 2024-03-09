@@ -52,6 +52,7 @@ const editarProduto = async (id , dados) => {
         comição,
         defal,
         ipi,
+        estoque_min,
         type
     } = dados
 
@@ -64,6 +65,13 @@ const editarProduto = async (id , dados) => {
         const query = 'UPDATE produtos SET  preçocompra = ?, margem = ?, preçovenda = ?, emestoque = ? WHERE id = ?';
     
         const [editarProduto] = await connection.execute(query, [ preçocompra, margem , preçovenda, emestoque, id]); 
+        
+        return editarProduto;
+    }
+    if(type == "opções") {
+        const query = 'UPDATE produtos SET  comição = ?, estoque_min = ? WHERE id = ?';
+    
+        const [editarProduto] = await connection.execute(query, [ comição, estoque_min , id]); 
         
         return editarProduto;
     }

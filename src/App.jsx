@@ -61,6 +61,7 @@ import configurações from "./screens/configurações/configurações"
 import detalhesVendas from "./screens/detalhesVendas/detalhesVendas";
 import detalhesGerenciarEstoque from "./screens/detalhesGerenciarEstoque/detalhesGerenciarEstoque";
 import Homescreen from "./screens/Homescreen/Homescreen";
+import Notinha from "./Arquivos/Notinha/Notinha";
 
 
 function App() {

@@ -1,15 +1,12 @@
     - fornecedores
-    - integrar geração de recibo
 
-22 - dar funcionalidade visual ao clicar em botão NFE-s
-16 - arrumar para quando deletar o produto excluir tambem as imagens dele
-13 - dar funcionalidade a pagina de opções nos produtos
-17 - fazer pagina de definições(configurações)
-20 - integrar comicionamento aos vendedores de acordo com cada produto
-15 - fazer geração de recibo na api 
-14 - dar funcionalidade aos butões em detalhes de vendas
-19 - integrar questão de parcela e juros na venda
-21 - dar funcionalidade em editar venda 
+1 - arrumar para quando deletar o produto excluir tambem as imagens dele
+2 - fazer pagina de definições(configurações)
+3 - integrar comicionamento aos vendedores de acordo com cada produto
+4 - fazer geração de recibo na api 
+    - integrar geração de recibo
+5 - dar funcionalidade em editar venda 
+6 - integrar questão de parcela e juros na venda
 
     1 - Criar pagina de caixa
         1 - area de detalhes de compras em gerenciar estoque

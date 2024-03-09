@@ -1,0 +1,55 @@
+.header {
+    margin: 9px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.BoxInfo {
+    border: 1px solid black;
+    padding: 3px;
+}
+.LogoLider {
+    width: 70px;
+}
+
+.table {
+border: 1px black solid;
+margin-top: 10px;
+width: 100%;
+}
+.table th {
+background-color: #000000;
+color: #fff;
+}
+.table td {
+background-color: #eee;
+color: #0c0c0c;
+text-align: center;
+}
+.PreFooter {
+    display: flex;
+    justify-content: space-around;
+}
+.PtNotinha {
+    height: 49vh;
+}
+.dotted {
+    border-bottom: 1px dotted black;
+}
+footer {
+    border: 1px solid black;
+    height: 60px;
+}
+.footer {
+    display: flex;
+    justify-content: space-around;
+}
+.footer > p {
+    width: 350px;
+    text-align: center;
+    height: 20px;
+    border-top: 1px solid black;
+}
+footer > .div {
+    height: 40px;
+}

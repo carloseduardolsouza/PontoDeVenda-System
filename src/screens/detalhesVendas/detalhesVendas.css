@@ -71,6 +71,37 @@
     color: red;
 }
 
+.NFEsTrue {
+    position: absolute;
+    top: 55px;
+    right: 375px;
+    width: 200px;
+    border: 1px solid black;
+    z-index: 1;
+    background-color: white;
+    animation: entradaNFE .3s ;
+    height: 98px;
+}
+
+@keyframes entradaNFE {
+    0% {
+        height: 1px;
+    }
+    100% {
+        height: 98px;
+    }
+}
+
+.NFEsTrue > p {
+    padding: 3px;
+}
+
+.NFEsTrue > p:hover {
+    background-color: #eee;
+    transition: .3s;
+    cursor: pointer;
+}
+
 .DeletarVenda:hover {
     background-color: red;
     color: white;

@@ -2,6 +2,14 @@
   margin-left: 55px;
 }
 
+.NotificationHomeScreen {
+  position: absolute;
+  font-size: 25px;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
 .HeaderHomeDeashBoard {
   display: flex;
   justify-content: space-between;

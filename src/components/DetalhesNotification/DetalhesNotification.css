@@ -1,0 +1,15 @@
+#DetalhesNotification {
+    background-color: white;
+    padding: 3px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.OKDetalhesNotification {
+    padding: 3px;
+    width: 100%;
+    background-color: #1eb41e;
+    border: 3px;
+    color: white;
+    cursor: pointer;
+}
