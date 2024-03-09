@@ -1,0 +1,13 @@
+#configurações {
+    margin-left: 55px;
+}
+
+#configurações header {
+    display: flex;
+    margin-top: 15px;
+}
+
+#configurações header p {
+    margin-right: 20px;
+    cursor: pointer;
+}

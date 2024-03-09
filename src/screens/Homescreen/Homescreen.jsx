@@ -46,7 +46,7 @@ function Homescreen() {
     </LineChart>
 
         <div className="ButtonHeaderDeashBoard">
-          <button><GiTakeMyMoney/> Funcionários</button>
+          <button onClick={() => window.location.href = "/gerenciarFuncionarios"}><GiTakeMyMoney/> Funcionários</button>
           <button><FaTruck/> Fornecedores</button>
           <button onClick={() => window.location.href = "/caixa"}><MdAttachMoney/> Fluxo de Caixa</button>
           <button onClick={() => window.location.href = "/novaVenda"}><FaComputer/> PDV</button>
@@ -56,64 +56,64 @@ function Homescreen() {
         <div className="LoyautCardMétricasBox">
           <article className="cardMétricasBox green">
             <h2>Receitas</h2>
-            <h1>{"R$ 10.000,00"}</h1>
+            <h1>{"R$ 00,00"}</h1>
             <div className="linha"/>
             <div className="displayFlex">
               <div>
                 <p>Ultimo més</p>
-                <strong>{"R$ 8.000,00"}</strong>
+                <strong>{"R$ 00,00"}</strong>
               </div>
               <div>
                 <p><IoMdArrowDropup/></p>
-                <strong>{"20%"}</strong>
+                <strong>{"0%"}</strong>
               </div>
             </div>
           </article>
 
           <article className="cardMétricasBox red">
           <h2>Despesas</h2>
-            <h1>{"R$ 10.000,00"}</h1>
+            <h1>{"R$ 00,00"}</h1>
             <div className="linha"/>
             <div className="displayFlex">
               <div>
                 <p>Ultimo més</p>
-                <strong>{"R$ 8.000,00"}</strong>
+                <strong>{"R$ 00,00"}</strong>
               </div>
               <div>
                 <p><IoMdArrowDropup/></p>
-                <strong>{"20%"}</strong>
+                <strong>{"0%"}</strong>
               </div>
             </div>
           </article>
 
           <article className="cardMétricasBox orange">
           <h2>Vendas Online</h2>
-            <h1>{"R$ 10.000,00"}</h1>
+            <h1>{"R$ 00,00"}</h1>
             <div className="linha"/>
             <div className="displayFlex">
               <div>
                 <p>Ultimo més</p>
-                <strong>{"R$ 8.000,00"}</strong>
+                <strong>{"R$ 00,00"}</strong>
               </div>
               <div>
                 <p><IoMdArrowDropup/></p>
-                <strong>{"20%"}</strong>
+                <strong>{"0%"}</strong>
               </div>
             </div>
           </article>
 
           <article className="cardMétricasBox orange">
           <h2>Vendas Presencial</h2>
-            <h1>{"R$ 10.000,00"}</h1>
+            <h1>{"R$ 00,00"}</h1>
             <div className="linha"/>
             <div className="displayFlex">
               <div>
                 <p>Ultimo més</p>
-                <strong>{"R$ 8.000,00"}</strong>
+                <strong>{"R$ 00,00"}</strong>
               </div>
               <div>
                 <p><IoMdArrowDropup/></p>
-                <strong>{"20%"}</strong>
+                <strong>{"0%"}</strong>
               </div>
             </div>
           </article>

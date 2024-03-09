@@ -11,7 +11,7 @@ const clientesControllers = require('./controllers/clientesControllers')
 const produtosControllers = require('./controllers/produtosControllers');
 const vendasControllers = require('./controllers/vendasControllers')
 const vendedorControllers = require('./controllers/vendedorControllers')
-
+const services = require('./services/services')
 
 router.post("/novoCliente" , clientesControllers.novoCliente)
 router.get("/procurarCliente/:id" , clientesControllers.procurarCliente)
@@ -35,6 +35,8 @@ router.put("/editarVenda/:id" , vendasControllers.editarVenda)
 router.put("/concluirVenda/:id" , vendasControllers.concluirVenda)
 router.post("/novaVenda" , vendasControllers.novaVenda)
 router.delete("/deletarVenda/:id" , vendasControllers.deletarVenda)
+
+router.get("/estastisticas", services.estastisticas)
 
 router.get("/procurarVendedor/:id" , vendedorControllers.procurarVendedor)
 

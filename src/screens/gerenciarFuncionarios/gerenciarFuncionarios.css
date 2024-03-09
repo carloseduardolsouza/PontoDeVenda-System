@@ -1,0 +1,13 @@
+#gerenciarFuncionarios {
+    margin-left: 55px;
+}
+
+#gerenciarFuncionarios h2 {
+    margin-bottom: 30px;
+}
+
+.mainGerenciarFuncionarios {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

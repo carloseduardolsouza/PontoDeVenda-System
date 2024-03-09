@@ -1,0 +1,44 @@
+#cardFuncionarios {
+    position: relative;
+    width: 330px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px 1px #0000004a;
+    background-color: #eee;
+    margin-bottom: 30px;
+}
+
+.Options {
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.AreaDaMeta {
+    width: 100%;
+}
+
+#cardFuncionarios img {
+    width: 140px;
+    border-radius: 50%;
+}
+
+.formMeta {
+    border: 10px;
+    height: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.Metas {
+    height: 100%;
+    background-color: red;
+    border-radius: 10px;
+}

@@ -62,6 +62,7 @@ import detalhesVendas from "./screens/detalhesVendas/detalhesVendas";
 import detalhesGerenciarEstoque from "./screens/detalhesGerenciarEstoque/detalhesGerenciarEstoque";
 import Homescreen from "./screens/Homescreen/Homescreen";
 import Notinha from "./Arquivos/Notinha/Notinha";
+import gerenciarFuncionarios from "./screens/gerenciarFuncionarios/gerenciarFuncionarios";
 
 
 function App() {
@@ -271,6 +272,7 @@ function App() {
           <Route path="/estatísticas" Component={estatísticass}/>
           <Route path="/configurações" Component={configurações}/>
           <Route path="/detalhesVenda/:rastreio" Component={detalhesVendas}/>
+          <Route path="/gerenciarFuncionarios" Component={gerenciarFuncionarios}/>
           <Route path="/detalhesGerenciarEstoqueReposição/:id" Component={detalhesGerenciarEstoque}/>
         </Routes>
       </Router>
