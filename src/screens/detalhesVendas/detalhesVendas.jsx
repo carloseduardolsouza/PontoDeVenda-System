@@ -56,54 +56,60 @@ function DetalhesVendas() {
     }
 
     const ImprimirNotinha = () => {
+        window.print()
     }
 
     return ( 
         <div id="detalhesVenda">
-            <h2>Detalhes Venda</h2>
-            {deletando && <Deletando/>}
-            {nFEs && 
-            <div className="NFEsTrue">
-                <p onClick={() => ImprimirNotinha()}>Notinha</p>
-                <p>Nota Fiscal</p>
-                <p>Cupom Fiscal</p>
-            </div>
-            }
             {loadingVendas && <Loading/> || (
+                <div>
 
-            <div>
-
-                <div className="detalhesVendaInfoCliente">
-                    <p><strong>data: </strong>{services.formatarData(resultVendas[0].date)}</p>
-                    <p><strong>cliente: </strong><a href={`/detalhesClientes/${resultVendas[0].id_cliente}`}>{resultCliente.name}</a></p>
-                    <p><strong>status: </strong>{resultVendas[0].status}</p>
-                    <p><strong>vendedor(a): </strong>{resultVendedor.nome}</p>
+                    <div className="Notinhas"><Notinhas produtos={resultVendas} cliente={resultCliente}/></div>
+                <div className="tirarImprimir">
+                <h2>Detalhes Venda</h2>
+                {deletando && <Deletando/>}
+                {nFEs && 
+                <div className="NFEsTrue">
+                    <p onClick={() => ImprimirNotinha()}>Notinha</p>
+                    <p>Nota Fiscal</p>
+                    <p>Cupom Fiscal</p>
                 </div>
-                <div className="detalhesVendaAreaButton">
-                    <button className="detalhesVendaButton NFE-sVenda" onClick={() => {
-                        if(nFEs) {setNFEs(false)}else{setNFEs(true)}
-                    }}><LiaFileInvoiceDollarSolid /> NFE-s</button>
-                    <button className="detalhesVendaButton EditarVenda"><FaEdit/> Editar</button>
-                    <button className="detalhesVendaButton DeletarVenda" onClick={() => deleteVenda()}><MdDeleteOutline/> Deletar Venda</button>
-                </div>
-                <div className="displayflexdetalhesVenda">
+                }
                     <div>
-                        {resultVendas.map((venda) => <ItemDetalhesVendas venda={venda}/>)}
-                        
+    
+                    <div className="detalhesVendaInfoCliente">
+                        <p><strong>data: </strong>{services.formatarData(resultVendas[0].date)}</p>
+                        <p><strong>cliente: </strong><a href={`/detalhesClientes/${resultVendas[0].id_cliente}`}>{resultCliente.name}</a></p>
+                        <p><strong>status: </strong>{resultVendas[0].status}</p>
+                        <p><strong>vendedor(a): </strong>{resultVendedor.nome}</p>
                     </div>
-                    <div>
-                        <div className="infosdetalhesVenda">
-                            <p><strong>parcela: </strong>{"1/1"}</p>
-                            <p><strong>Pagamento: </strong>{resultVendas[0].pagamento}</p>
-                            <p><strong>Juros: </strong>{"R$ 00,00"}</p>
-                            <h2>Total: {services.formatarCurrency(resultVendas[0].total)}</h2>
+                    <div className="detalhesVendaAreaButton">
+                        <button className="detalhesVendaButton NFE-sVenda" onClick={() => {
+                            if(nFEs) {setNFEs(false)}else{setNFEs(true)}
+                        }}><LiaFileInvoiceDollarSolid /> NFE-s</button>
+                        <button className="detalhesVendaButton EditarVenda"><FaEdit/> Editar</button>
+                        <button className="detalhesVendaButton DeletarVenda" onClick={() => deleteVenda()}><MdDeleteOutline/> Deletar Venda</button>
+                    </div>
+                    <div className="displayflexdetalhesVenda">
+                        <div>
+                            {resultVendas.map((venda) => <ItemDetalhesVendas venda={venda}/>)}
+                            
+                        </div>
+                        <div>
+                    
+                            <div className="infosdetalhesVenda">
+                                <p><strong>parcela: </strong>{"1/1"}</p>
+                                <p><strong>Pagamento: </strong>{resultVendas[0].pagamento}</p>
+                                <p><strong>Juros: </strong>{"R$ 00,00"}</p>
+                                <h2>Total: {services.formatarCurrency(resultVendas[0].total)}</h2>
+                            </div>
                         </div>
                     </div>
                 </div>
+                </div>
+                </div>
+                )}
             </div>
-            )}
-            
-        </div>
      );
 }
 

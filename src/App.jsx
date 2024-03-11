@@ -1,4 +1,4 @@
-import {useState } from "react";
+import { useState  } from "react";
 import Provider from "./context/provider";
 
 //Home
@@ -61,8 +61,8 @@ import configurações from "./screens/configurações/configurações"
 import detalhesVendas from "./screens/detalhesVendas/detalhesVendas";
 import detalhesGerenciarEstoque from "./screens/detalhesGerenciarEstoque/detalhesGerenciarEstoque";
 import Homescreen from "./screens/Homescreen/Homescreen";
-import Notinha from "./Arquivos/Notinha/Notinha";
 import gerenciarFuncionarios from "./screens/gerenciarFuncionarios/gerenciarFuncionarios";
+import AppContext from "./context/AppContext";
 
 
 function App() {
