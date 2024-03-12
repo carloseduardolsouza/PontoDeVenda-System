@@ -1,33 +1,29 @@
 import "./cardFuncionarios.css"
-import user from "../../assets/user.jpg"
+import { FaInfoCircle } from "react-icons/fa";
 import { useState } from "react";
+import services from "../../services/services"
 
 function CardFuncionarios({data}) {
     const {
-        nome
+        nome,
+        comições,
+        nvendas,
+        cargo
     } = data
     const [progress, setProgress] = useState(0);
 
     return ( 
         <div id="cardFuncionarios">
-            <div className="Options">...</div>
-            <img src={user} alt="user" />
-            <p>{nome}</p>
-            <p>{"VENDEDOR"}</p>
-            <div className="linha"/>
+            <div className="InfoFuncionariosDiv">
+                <h2>{nome}</h2>
+                <h4>{cargo}</h4>
+            </div>
             <div>
-                <p><strong>Vendas: </strong>{"50"} vendas</p>
-                <p><strong>Comições: </strong>{"R$ 300,00"}</p>
+                <p><strong>Contratação: </strong>{"10102005"}</p>
+                <p><strong>N.Vendas: </strong>{nvendas} vendas</p>
+                <p><strong>Comição: </strong>{services.formatarCurrency(comições)}</p>
             </div>
-            <div className="AreaDaMeta">
-                <strong>Metas</strong>
-                <div>
-                    vendas :
-                <div className="formMeta">
-                    <div style={{width: `${progress}%`}} className="Metas"></div>
-                </div>
-                </div>
-            </div>
+            <button className="GearButtonCardFuncionarios"><FaInfoCircle /></button>
         </div>
      );
 }

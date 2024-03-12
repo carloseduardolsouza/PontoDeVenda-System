@@ -2,11 +2,35 @@
     margin-left: 55px;
 }
 
-.InfodetalhesGerenciarEstoque {
-    background-color: #eee;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 20px;
-    max-width: 80%;
-    margin-top: 20px;
+.header {
+    margin: 9px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.BoxInfo {
+    border: 1px solid black;
+    padding: 3px;
+}
+.LogoLider {
+    width: 70px;
+}
+
+.table {
+border: 1px black solid;
+margin-top: 10px;
+width: 100%;
+}
+.table th {
+background-color: #000000;
+color: #fff;
+}
+.table td {
+background-color: #eee;
+color: #0c0c0c;
+text-align: center;
+}
+.PreFooter {
+    display: flex;
+    justify-content: space-around;
 }

@@ -142,7 +142,7 @@ function NovaVenda() {
     }
 
     const calcularPrice = () => {
-        if(id == "" || id == undefined || id == null) {
+        if(idProduto == "" || idProduto == undefined || idProduto == null) {
             setAlert(true)
             return
         }

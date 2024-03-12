@@ -62,10 +62,11 @@ import detalhesVendas from "./screens/detalhesVendas/detalhesVendas";
 import detalhesGerenciarEstoque from "./screens/detalhesGerenciarEstoque/detalhesGerenciarEstoque";
 import Homescreen from "./screens/Homescreen/Homescreen";
 import gerenciarFuncionarios from "./screens/gerenciarFuncionarios/gerenciarFuncionarios";
-import AppContext from "./context/AppContext";
+import fornecedores from "./screens/fornecedores/fornecedores";
 
 
 function App() {
+
     const [home , setHome] = useState(true)
     const [vendas , setVendas] = useState(false)
     const [clientes , setClientes] = useState(false)
@@ -274,6 +275,7 @@ function App() {
           <Route path="/detalhesVenda/:rastreio" Component={detalhesVendas}/>
           <Route path="/gerenciarFuncionarios" Component={gerenciarFuncionarios}/>
           <Route path="/detalhesGerenciarEstoqueReposição/:id" Component={detalhesGerenciarEstoque}/>
+          <Route path="/fornecedores" Component={fornecedores}/>
         </Routes>
       </Router>
     </div>

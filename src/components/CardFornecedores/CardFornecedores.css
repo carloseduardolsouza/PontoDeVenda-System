@@ -1,0 +1,42 @@
+#CardFornecedores {
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 20px;
+    width: 45%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.DetalhesCardFornecedores {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 3px;
+    width: 100px;
+    border-radius: 10px;
+    border: 1px solid orange;
+    color: white;
+    background-color: orange;
+    cursor: pointer;
+}
+
+.CatalagoCardFornecedores {
+    width: 40%;
+    border-radius: 10px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.tableCardFornecedores {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.tableCardFornecedores td {
+    text-align: center;
+}
+
+.tableCardFornecedores thead {
+    background-color: white;
+}

@@ -1,6 +1,4 @@
 import IntensEstoque from "../../components/IntensEstoque/IntensEstoque";
-
-import { HiOutlineHomeModern } from "react-icons/hi2";
 import { FaSearch } from "react-icons/fa";
 
 import { useEffect , useState } from "react";

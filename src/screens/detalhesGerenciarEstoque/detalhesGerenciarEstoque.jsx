@@ -1,24 +1,38 @@
 import "./detalhesGerenciarEstoque.css"
 
 function detalhesGerenciarEstoque() {
-    return ( 
+    return (
         <div id="detalhesGerenciarEstoque">
-            <h2>{"10/10/2005"}</h2>
-            <div className="InfodetalhesGerenciarEstoque">
-                <p><strong>Produto: </strong>{"Comoda Dhara"}</p>
-                <p><strong>Quantidade: </strong>{"10"}</p>
-                <p><strong>Preço: </strong>{"R$ 200,00"}</p>
-                <p><strong>IPI: </strong>{"2,1%"}</p>
-                <p><strong>Desconto: </strong>{"R$ 00,00"}</p>
-                <p><strong>Fornedor: </strong>{"Realiza Distribuidora"}</p>
-                <p><strong>Pagamento: </strong>{"PIX"}</p>
-                <h2>Total: {"R$ 2.000,00"}</h2>
+            <header>
+                <strong>CNPJ: {"53.594.918/0001-72"}</strong><br />
+                <strong>{"R. Géneral Joaquim Ínacio, Setor Central , N.684"}</strong><br />
+                <strong>{"(62) 9 9551-8934"}</strong>
+            </header>
+            <main>
+                <div>
+                    <p><strong>Pagamento: </strong>{}</p>
+                </div>
+            </main>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Unidade</th>
+                        <th>Vl. unitário</th>
+                        <th>Desconto</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+            <div className="PreFooter">
+                <h3>Qtde. itens: {}</h3>
+                <h3>Valor Total: {}</h3>
             </div>
-            <p><strong>Status: </strong>{"PAGO"}</p>
-            <button>Editar</button>
-            <button>Excluir</button>
         </div>
-     );
+    );
 }
 
 export default detalhesGerenciarEstoque;

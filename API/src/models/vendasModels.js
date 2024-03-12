@@ -23,6 +23,21 @@ const novaVenda = async (dados) => {
         rastreio
     } = dados
 
+    const sherComição = await connection.execute(`SELECT comição FROM produtos WHERE id = ${id_produto}`)
+    const sherVendedor = await connection.execute(`SELECT comições , nvendas FROM vendedores WHERE id = ${id_vendedor}`)
+
+    const comição = +sherComição[0][0].comição
+    const comiçõesExist = +sherVendedor[0][0].comições
+    const NVendas = +sherVendedor[0][0].nvendas
+    const calculo = (comição / 100) * preço_und
+
+    var NVenda = NVendas
+    NVenda += 1
+
+    var response = comiçõesExist
+    response += (calculo * quantidade)
+
+    const insetComição = await connection.execute(`UPDATE vendedores SET comições = ${response.toFixed(2)} , nvendas = ${NVenda} WHERE id = ${id_vendedor}`)
     const query = 'INSERT INTO vendas (status , id_vendedor , preço_und , date , id_cliente , id_produto , produto , preço , desconto , quantidade , pagamento , total , rastreio) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)'
     const values = [status , id_vendedor , preço_und , date , +id_cliente , +id_produto ,produto, +preço , desconto , +quantidade , pagamento , +total , rastreio]
 

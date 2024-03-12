@@ -1,44 +1,41 @@
 #cardFuncionarios {
-    position: relative;
-    width: 330px;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border-radius: 20px;
-    box-shadow: 1px 1px 10px 1px #0000004a;
+    width: 30%;
     background-color: #eee;
-    margin-bottom: 30px;
+    border-radius: 20px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
 }
 
-.Options {
+#cardFuncionarios p {
+    font-size: 18px;
+}
+
+.GearButtonCardFuncionarios {
     position: absolute;
-    top: 0px;
-    right: 20px;
-    font-size: 25px;
+    right: 0px;
+    bottom: 0px;
+    outline: none;
+    color: white;
     cursor: pointer;
+    background-color: #363636;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 10px 0px 25px 0px;
 }
 
-.AreaDaMeta {
-    width: 100%;
+.InfoFuncionariosDiv {
+    border-bottom: 1px solid #363636;
+    margin-bottom: 7px;
 }
 
-#cardFuncionarios img {
-    width: 140px;
-    border-radius: 50%;
+.InfoFuncionariosDiv h2 {
+    margin-bottom: -10px;
 }
 
-.formMeta {
-    border: 10px;
-    height: 10px;
-    border: 1px solid black;
-    border-radius: 10px;
-    width: 100%;
-}
-
-.Metas {
-    height: 100%;
-    background-color: red;
-    border-radius: 10px;
+.InfoFuncionariosDiv h4 {
+    margin: 0px;
+    color: #464646;
 }

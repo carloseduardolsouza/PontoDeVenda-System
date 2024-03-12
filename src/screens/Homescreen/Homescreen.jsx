@@ -47,7 +47,7 @@ function Homescreen() {
 
         <div className="ButtonHeaderDeashBoard">
           <button onClick={() => window.location.href = "/gerenciarFuncionarios"}><GiTakeMyMoney/> Funcionários</button>
-          <button><FaTruck/> Fornecedores</button>
+          <button onClick={() => window.location.href = "/fornecedores"}><FaTruck/> Fornecedores</button>
           <button onClick={() => window.location.href = "/caixa"}><MdAttachMoney/> Fluxo de Caixa</button>
           <button onClick={() => window.location.href = "/novaVenda"}><FaComputer/> PDV</button>
           <button onClick={() => window.location.href = "/estatísticas"}><FaChartLine/> Métricas</button>

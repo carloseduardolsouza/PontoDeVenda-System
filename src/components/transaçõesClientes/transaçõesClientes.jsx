@@ -21,13 +21,13 @@ function TransaçõesClientes() {
     return ( 
         <div id="transaçõesClientes">
             <table className="TableVendas">
-                        <div className="TableHeader">
+            <div className="TableHeader">
                             <p className="itemTabelTitle">Produto</p>
-                            <p className="itemTabelTitle">Preço</p>
-                            <p className="itemTabelTitle">Quantidade</p>
-                            <p className="itemTabelTitle">Desconto</p>
-                            <p className="itemTabelTitle">Total</p>
-                            <p className="itemTabelTitle">Data</p>
+                            <p className="itemTabelTitle PreçoVendasScreenTable">Preço</p>
+                            <p className="itemTabelTitle QuantidadeVendasScreenTable">Quantidade</p>
+                            <p className="itemTabelTitle DescontoVendasScreenTable">Desconto</p>
+                            <p className="itemTabelTitle TotalVendasScreenTable">Total</p>
+                            <p className="itemTabelTitle Data">Data</p>
                         </div>
                         {loadingVendas && <Loading/> || resultVendas.map((venda) => <ItensTable data={venda}/>)}
             </table>

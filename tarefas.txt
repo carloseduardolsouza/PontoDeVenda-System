@@ -1,13 +1,13 @@
+5 - fazer pagina de detalhes de fornecedores
 1 - fazer pagina de configurações
-2 - fazer pagina de contas a pagar
 3 - fazer pagina de detalhes em reposição
-4 - continuar e terminar pagina de funcionarios
-5 - fazer pagina de fornecedores
-1 - arrumar para quando deletar o produto excluir tambem as imagens dele
 2 - fazer pagina de definições(configurações)
-3 - integrar comicionamento aos vendedores de acordo com cada produto
-4 - fazer geração de recibo na api 
-    - integrar geração de recibo
+1 - fazer pagina de detalhes de funcionarios
+2 - fazer pagina de contas a pagar
+
+2 - dar funcionalidade ao filtro de historico de vendas
+3 - arrumar quebras da api em NOVA VENDA
+1 - arrumar para quando deletar o produto excluir tambem as imagens dele
 5 - dar funcionalidade em editar venda 
 
     1 - Criar pagina de caixa

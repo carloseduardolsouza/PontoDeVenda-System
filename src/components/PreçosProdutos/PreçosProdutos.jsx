@@ -106,18 +106,21 @@ function PreçosProdutos({id}) {
                 <h3>{resultProdutos.produto}</h3>
                 <label>
                     <p>Quantidade: </p>
-                    <input type="number" onChange={(e) => setQuantidade(+e.target.value)} required/>
+                    <input type="number" onChange={(e) => setQuantidade(+e.target.value)} value={quantidade} required/>
                 </label>
                 <label>
                     <p>preço: </p>
-                    <input type="number" onChange={(e) => setPreço(+e.target.value)} required/>
+                    <input type="number" onChange={(e) => setPreço(+e.target.value)} value={preço} required/>
                 </label>
                 <label>
                     <p>markup: </p> 
-                    <input type="number" onChange={(e) => setMarkup(+e.target.value)} required/>
+                    <input type="number" onChange={(e) => setMarkup(+e.target.value)} value={markup} required/>
                 </label>
                 <button className="calcularBttsetInfoGerenceiarEstoque" type="button" onClick={() => calcular()}>Calcular preço de venda</button>
-                <h2>Preço de venda: {services.formatarCurrency(preçodevenda)}</h2>
+                <div className="displayFlexPreçoVenda">
+                    <h2>Preço de venda: R$</h2>
+                    <input type="number" value={preçodevenda} className="InputPreçoVenda" onChange={(e) => setPreçodevenda(e.target.value)}/>
+                </div>
                 <button type="submit" className="lançarBttsetInfoGerenceiarEstoque">Lançar no estoque</button>
             </form> || 
 

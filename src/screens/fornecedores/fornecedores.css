@@ -1,8 +1,8 @@
-#gerenciarFuncionarios {
+#fornecedores {
     margin-left: 55px;
 }
 
-.mainGerenciarFuncionarios {
+.AreaCardFornecedores {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;

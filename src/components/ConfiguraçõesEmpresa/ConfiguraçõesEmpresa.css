@@ -1,0 +1,14 @@
+#ConfiguraçõesEmpresa {
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 20px;
+    font-size: 19px;
+}
+
+.ConfiguraçõesEmpresaEditarBtt {
+    width: 200px;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
