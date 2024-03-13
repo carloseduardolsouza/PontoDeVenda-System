@@ -36,10 +36,11 @@ const novaVenda = async (dados) => {
 
     var response = comiçõesExist
     response += (calculo * quantidade)
+    var comiçãos = (calculo * quantidade)
 
     const insetComição = await connection.execute(`UPDATE vendedores SET comições = ${response.toFixed(2)} , nvendas = ${NVenda} WHERE id = ${id_vendedor}`)
-    const query = 'INSERT INTO vendas (status , id_vendedor , preço_und , date , id_cliente , id_produto , produto , preço , desconto , quantidade , pagamento , total , rastreio) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)'
-    const values = [status , id_vendedor , preço_und , date , +id_cliente , +id_produto ,produto, +preço , desconto , +quantidade , pagamento , +total , rastreio]
+    const query = 'INSERT INTO vendas (comição , status , id_vendedor , preço_und , date , id_cliente , id_produto , produto , preço , desconto , quantidade , pagamento , total , rastreio) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)'
+    const values = [comiçãos.toFixed(2) , status , id_vendedor , preço_und , date , +id_cliente , +id_produto ,produto, +preço , desconto , +quantidade , pagamento , +total , rastreio]
 
     const novaVenda = await connection.execute(query , values)
 }
@@ -63,9 +64,19 @@ const procurarVendaCliente = async (id) => {
 }
 
 const deletarVenda = async (id) => {
-    const query = `DELETE FROM vendas WHERE rastreio = ${id}`
+    await connection.execute(`DELETE FROM vendas WHERE rastreio = ${id}`)
 
-    const deletarVenda = await connection.execute(query)
+    var comiçãos = 0 
+
+    const [sherAllVenda] = await connection.execute(`SELECT * FROM vendas WHERE rastreio = ${id}`)
+    const sherLenghtVendedor = await connection.execute(`SELECT * FROM vendas WHERE id_vendedor = ${idVendedor}`)
+    const idVendedor = sherAllVenda[0].id_vendedor
+
+    sherLenghtVendedor[0].map((comição) => {
+        comiçãos += +comição.comição
+    })
+
+    await connection.execute(`UPDATE vendedores SET nvendas = ${sherLenghtVendedor[0].length} , comições = ${comiçãos} WHERE id = ${idVendedor}`)
 }
 
 const editarVenda = async (id , dados) => {

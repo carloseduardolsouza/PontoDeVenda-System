@@ -30,9 +30,15 @@ function DetalhesVendas() {
     }, [])
 
     useEffect(() => {
-        if(resultVendas && resultVendas.length > 0) {
+        if(resultVendas && resultVendas.length > 0 && resultVendas[0].id_cliente != 0) {
             fetchapi.ProcurarClienteId(resultVendas[0].id_cliente).then((response) => {
                 setResultCliente(response[0])
+            })
+        } else {
+            setResultCliente({
+                'name' : 'DESCONHECIDO',
+                'endereço' : 'DESCONHECIDO',
+                'telefone' : 'DESCONHECIDO'
             })
         }
     }, [resultVendas])

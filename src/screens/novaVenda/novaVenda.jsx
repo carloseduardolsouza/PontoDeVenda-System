@@ -186,7 +186,7 @@ function NovaVenda() {
         }
 
         if(idCliente == "" || idCliente == undefined || idCliente == null) {
-            objectVenda.id_cliente = 1
+            objectVenda.id_cliente = 0
         }
 
         if(pagamento == "" || pagamento == undefined || pagamento == null) {
@@ -209,6 +209,10 @@ function NovaVenda() {
             setAlert(true)
             return
         }
+        if(idVendedor == 0) {
+            setAlert(true)
+            return
+        }
         const ratrear = `${Data.getDate()}${Data.getMonth()}${Data.getFullYear()}`
 
         venda.map((venda) => {
@@ -217,6 +221,10 @@ function NovaVenda() {
 
         venda.map((venda) => {
             venda.status = statusVenda
+        })
+
+        venda.map((venda) => {
+            venda.id_vendedor = idVendedor
         })
         
         setDesable(true)
@@ -238,7 +246,7 @@ function NovaVenda() {
             <main className="MainNovaVenda">
                 <div>
                 <div>
-                {alert && <Alerta parametro={"Selecione um Produto"} functio={setAlert}/>}
+                {alert && <Alerta parametro={"Verifique as informações"} functio={setAlert}/>}
                 {loading && <AçãoRealizada/> || (
                     <Select className="SelectNovaVenda" placeholder="Cliente" options={optionsClientes} onChange={(e) => renderInfoClient(e)} isDisabled={desable}/>
                 )}
