@@ -64,19 +64,26 @@ const procurarVendaCliente = async (id) => {
 }
 
 const deletarVenda = async (id) => {
+    const [sherAllVenda] = await connection.execute(`SELECT * FROM vendas WHERE rastreio = ${id}`)
+    const idVendedor = sherAllVenda[0].id_vendedor
+
     await connection.execute(`DELETE FROM vendas WHERE rastreio = ${id}`)
 
     var comiçãos = 0 
+    const [sherAllVendaCorrect] = await connection.execute(`SELECT * FROM vendas WHERE rastreio = ${id}`)
 
-    const [sherAllVenda] = await connection.execute(`SELECT * FROM vendas WHERE rastreio = ${id}`)
-    const sherLenghtVendedor = await connection.execute(`SELECT * FROM vendas WHERE id_vendedor = ${idVendedor}`)
-    const idVendedor = sherAllVenda[0].id_vendedor
 
-    sherLenghtVendedor[0].map((comição) => {
-        comiçãos += +comição.comição
-    })
+    if(sherAllVendaCorrect.length <= 1) {
+        const sherLenghtVendedor = await connection.execute(`SELECT * FROM vendas WHERE id_vendedor = ${idVendedor}`)
+        sherLenghtVendedor[0].map((comição) => {
+            comiçãos += +comição.comição
+        })
+        await connection.execute(`UPDATE vendedores SET nvendas = ${sherLenghtVendedor[0].length} , comições = ${comiçãos} WHERE id = ${idVendedor}`)
+    } else  {
+        await connection.execute(`UPDATE vendedores SET nvendas = ${0} , comições = ${0} WHERE id = ${idVendedor}`)
+    }
 
-    await connection.execute(`UPDATE vendedores SET nvendas = ${sherLenghtVendedor[0].length} , comições = ${comiçãos} WHERE id = ${idVendedor}`)
+
 }
 
 const editarVenda = async (id , dados) => {
