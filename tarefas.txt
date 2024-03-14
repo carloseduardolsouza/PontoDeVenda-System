@@ -1,17 +1,18 @@
-5 - fazer pagina de detalhes de fornecedores
-1 - fazer pagina de configurações
-3 - fazer pagina de detalhes em reposição
-2 - fazer pagina de definições(configurações)
-1 - fazer pagina de detalhes de funcionarios
-2 - fazer pagina de contas a pagar
+- fazer pagina de definições(configurações)
+- fazer pagina de detalhes em reposição
+- fazer pagina de detalhes de fornecedores
+- fazer pagina de detalhes de funcionarios
+- fazer pagina de configurações
+- fazer pagina cadastro de Funcionários
+- fazer pagina de contas a pagar
+- fazer página de detalhes de funcionários
 
-2 - dar funcionalidade ao filtro de historico de vendas
-3 - arrumar quebras da api em NOVA VENDA
-1 - arrumar para quando deletar o produto excluir tambem as imagens dele
-5 - dar funcionalidade em editar venda 
-
-    1 - Criar pagina de caixa
-        1 - area de detalhes de compras em gerenciar estoque
-        2 - dar funcionalidade a tabela de gerenciar estoque
-        
-6 - integrar questão de parcela e juros na venda
+- penssar em logica de notificação
+- penssar em logica de metricas 
+- arrumar quebras da api em NOVA VENDA
+- arrumar para quando deletar o produto excluir tambem as imagens dele
+- dar funcionalidade em vendas este mes , contas a pagar e vendas pendentes
+- dar funcionalidade em editar venda 
+- dar funcionalidade ao filtro de historico de vendas
+- dar funcionalidade em procurar funcionários
+- dar funcionalidade em filtro de mes em histórico de vendas
