@@ -5,6 +5,7 @@ import services from "../../services/services"
 
 function CardFuncionarios({data}) {
     const {
+        id,
         nome,
         comições,
         nvendas,
@@ -23,7 +24,7 @@ function CardFuncionarios({data}) {
                 <p><strong>N.Vendas: </strong>{nvendas} vendas</p>
                 <p><strong>Comição: </strong>{services.formatarCurrency(comições)}</p>
             </div>
-            <button className="GearButtonCardFuncionarios"><FaInfoCircle /></button>
+    <button className="GearButtonCardFuncionarios" onClick={() => window.location.href = `/detalhesFuncionarios/${id}`}><FaInfoCircle /></button>
         </div>
      );
 }

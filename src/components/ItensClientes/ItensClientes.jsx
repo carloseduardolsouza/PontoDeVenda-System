@@ -17,7 +17,7 @@ function ItensClientes({data}) {
             <p className="ItensClientesP">{name}</p>
             <a href={urlWpp} className="ItensClientesP" target="_blank">{services.formatarNumeroCelular(telefone)}</a>
             <p className="ItensClientesP endress">{endereço}</p>
-            <p className="ItensClientesP credito">{"R$ 00,00"}</p>
+            <p className="ItensClientesP">{"R$ 00,00"}</p>
             <a href={link} className="ItensClientesP button">Detalhes</a>
         </div>
      );

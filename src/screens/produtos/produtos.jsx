@@ -41,10 +41,6 @@ function Produtos() {
             </header>
             <article className="ArticleProduto">
                 <form onSubmit={(e) => renderClientes(e)}>
-                    <button className="AddProduto" onClick={(e) => {
-                        e.preventDefault()
-                        window.location.href = "/cadastrarProduto"
-                    }} type="button">+</button>
                     <input type="text"  className="InputProduto" placeholder="Procurar Produto..." onChange={(e) => setPesquisar(e.target.value)}/>
                     <button className="Search" type="submit"><FaSearch/></button>
                 </form>

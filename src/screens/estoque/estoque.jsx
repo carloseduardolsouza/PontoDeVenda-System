@@ -36,6 +36,10 @@ function Estoque() {
             <h2>Estoque</h2>
             <div>
             <form onSubmit={(e) => renderEstoque(e)}>
+            <button className="AddProduto" onClick={(e) => {
+                        e.preventDefault()
+                        window.location.href = "/cadastrarProduto"
+                    }} type="button">+</button>
                     <input type="text"  className="InputClientes" placeholder="Procurar no Estoque..." onChange={(e) => changePesquisa(e)}/>
                     <button className="Search" type="submit"><FaSearch /></button>
                 </form>

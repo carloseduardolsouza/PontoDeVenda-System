@@ -27,7 +27,7 @@ function NovoCliente() {
             setNascimento("desconhecido")
         }
         if(endereço == "" || endereço == undefined || endereço == null) {
-            setEndereço("desconhecido")
+            setEndereço("Desconhecido")
         }
         if(cpf == "" || cpf == undefined || cpf == null) {
             setCpf("desconhecido")

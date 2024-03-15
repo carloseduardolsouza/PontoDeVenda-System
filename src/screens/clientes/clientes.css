@@ -50,7 +50,7 @@
 .HeaderClientes {
     display: flex;
     justify-content: space-around;
-    width: 1300px;
+    width: 100%;
     margin: auto;
 }
 
@@ -61,12 +61,13 @@
 
 .tableClientes {
     border: #363636 solid 2px;
+    width: 100%;
 }
 
 .açoes {
-    width: 230px;
+    width: 30%;
 }
 
-.endereçoHeader {
-    width: 1700px;
+.nome {
+    background-color: red;
 }

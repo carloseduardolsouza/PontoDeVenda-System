@@ -7,6 +7,8 @@
 - fazer pagina de contas a pagar
 - fazer página de detalhes de funcionários
 
+- arrumar tabela de cliente deixar 100%
+- arrumar formatação de nomes de clientes
 - penssar em logica de notificação
 - penssar em logica de metricas 
 - arrumar quebras da api em NOVA VENDA
