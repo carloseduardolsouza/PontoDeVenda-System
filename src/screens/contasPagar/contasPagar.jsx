@@ -1,60 +1,56 @@
+import NaoPagasContasPagar from "../../components/NaoPagasContasPagar/NaoPagasContasPagar";
+import PagasContasPagar from "../../components/PagasContasPagar/PagasContasPagar";
+import TodasContasPagar from "../../components/TodasContasPagar/TodasContasPagar";
+import VencidasContasPagar from "../../components/VencidasContasPagar/VencidasContasPagar";
 import "./contasPagar.css"
+import { useState } from "react";
 
-// src/ContasAPagar.js
-import React from 'react';
+function ContasPagar() {
+  const [todas , setTodas] = useState(true)
+  const [npagas , setNpagas] = useState(false)
+  const [vencidas , setVencidas] = useState(false)
+  const [pagas , setPagas] = useState(false)
 
-const contasAPagar = [
-  {
-    id: 1,
-    fornecedor: 'Fornecedor A',
-    valor: 500.00,
-    dataVencimento: '2024-03-15',
-    status: 'Pendente',
-  },
-  {
-    id: 2,
-    fornecedor: 'Fornecedor B',
-    valor: 300.00,
-    dataVencimento: '2024-03-20',
-    status: 'Pendente',
-  },
-  {
-    id: 3,
-    fornecedor: 'Fornecedor C',
-    valor: 800.00,
-    dataVencimento: '2024-03-25',
-    status: 'Pendente',
-  },
-];
-
-const ContasAPagar = () => {
-  const formatCurrency = (value) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-    }).format(value);
-  };
-
-  return (
-    <div className="contas-a-pagar-container">
-      <h2>Contas a Pagar</h2>
-      <div className="contas-list">
-        {contasAPagar.map((conta) => (
-          <div key={conta.id} className="conta-item">
-            <div className="conta-info">
-              <div className="conta-fornecedor">{conta.fornecedor}</div>
-              <div className="conta-valor">{formatCurrency(conta.valor)}</div>
-              <div className="conta-details">
-                <div>Status: {conta.status}</div>
-                <div>Vencimento: {conta.dataVencimento}</div>
-              </div>
-            </div>
-            <div className={`status ${conta.status.toLowerCase()}`}>{conta.status}</div>
-          </div>
-        ))}
+  return ( 
+    <div id="contasPagar">
+      <h2>Contas a pagar</h2>
+      <div className="Action">
+        <button>Adicionar Conta</button>
       </div>
+      <nav className="NavcontasPagar">
+        <p onClick={() => {
+          setTodas(true)
+          setNpagas(false)
+          setVencidas(false)
+          setPagas(false)
+        }}>Todas</p>
+        <p onClick={() => {
+          setTodas(false)
+          setNpagas(true)
+          setVencidas(false)
+          setPagas(false)
+        }}>Não pagas</p>
+        <p onClick={() => {
+          setTodas(false)
+          setNpagas(false)
+          setVencidas(true)
+          setPagas(false)
+        }}>Vencidas</p>
+        <p onClick={() => {
+          setTodas(false)
+          setNpagas(false)
+          setVencidas(false)
+          setPagas(true)
+        }}>Pagas</p>
+      </nav>
+      {
+        todas && <TodasContasPagar/> ||
+        npagas && <NaoPagasContasPagar/> ||
+        vencidas && <VencidasContasPagar/> ||
+        pagas && <PagasContasPagar/> 
+      }
     </div>
-  );
-};
+   );
+}
 
-export default ContasAPagar;
+export default ContasPagar;

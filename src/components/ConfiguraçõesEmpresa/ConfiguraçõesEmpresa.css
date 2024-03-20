@@ -12,3 +12,15 @@
     border-radius: 10px;
     cursor: pointer;
 }
+
+.displayFlexConfigEmpresa {
+    display: flex;
+    width: 500px;
+}
+
+.displayFlexConfigEmpresa input {
+    margin-left: 10px;
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 19px;
+}

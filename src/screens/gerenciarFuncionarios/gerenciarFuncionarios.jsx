@@ -19,7 +19,7 @@ function GerenciarFuncionarios() {
         <div id="gerenciarFuncionarios">
             <h2>Funcionarios</h2>
             <form>
-                    <button className="AddCliente" type="button">+</button>
+                    <button className="AddCliente" type="button" onClick={() => window.location.href = "/NovoFuncionario"}>+</button>
                     <input type="text"  className="InputClientes" placeholder="Procurar Cliente..."/>
                     <button className="Search" type="submit"><FaSearch /></button>
                 </form>

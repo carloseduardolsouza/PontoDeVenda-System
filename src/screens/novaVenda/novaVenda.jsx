@@ -237,6 +237,13 @@ function NovaVenda() {
         }
       };
 
+    const deleteItem = (idIndex) => {
+        const novaVenda = [...venda]; // Cria uma nova referência para o array
+        novaVenda.splice(idIndex, 1); // Remove o item
+        setVenda(novaVenda); // Atualiza o estado com o novo array
+    }
+    
+
     return ( 
         <div id="NOVAVENDA" tabIndex={0} onKeyDown={handleKeyDown}>
             <header>
@@ -324,7 +331,7 @@ function NovaVenda() {
                     </div>
                 </div>
                 <div className="ProdutosNovaVenda">
-                    {venda.map((venda) => <ProdutosNovaVenda data={venda}/>)}
+                    {venda.map((venda , index) => <ProdutosNovaVenda data={venda} index={index} deleter={deleteItem}/>)}
                     <button className="FaturarNovaVenda" onClick={() => Feature()} disabled={desable}>(F2) - Faturar</button>
                 </div>
             </main>

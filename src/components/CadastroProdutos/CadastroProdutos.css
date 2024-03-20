@@ -11,6 +11,20 @@
     cursor: pointer;
 }
 
+input:disabled {
+  background-color: #f2f2f2; /* Altere a cor de fundo quando estiver desativado */
+  color: #999; /* Altere a cor do texto quando estiver desativado */
+  border: 1px solid #ccc; /* Adicione uma borda quando estiver desativado */
+  cursor: not-allowed; /* Altere o cursor para indicar que está desativado */
+  opacity: 0.6; /* Reduza a opacidade para indicar desativado */
+}
+
+.InputCheckBox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
 .zindex {
     z-index: 3;
 }

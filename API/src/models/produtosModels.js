@@ -12,12 +12,13 @@ const novoProduto = async (dados , imagens) => {
         descrição,
         marca,
         comição,
+        referencia,
         defal,
         ipi
     } = dados
 
-    const query = 'INSERT INTO produtos (produto , preçocompra , margem , preçovenda , emestoque , descrição , imagem , marca, comição, defal ,ipi) VALUES (?,?,?,?,?,?,?,?,?,?,?)'
-    const values = [produto , preçocompra , margem ,preçovenda, emestoque , descrição , imagens , marca, comição, defal ,ipi]
+    const query = 'INSERT INTO produtos (produto , referencia , preçocompra , margem , preçovenda , emestoque , descrição , imagem , marca, comição, defal ,ipi) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)'
+    const values = [produto , referencia , preçocompra , margem ,preçovenda, emestoque , descrição , imagens , marca, comição, defal ,ipi]
 
     const cadastrarClientes = await connection.execute(query , values)
 }
