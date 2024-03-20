@@ -38,6 +38,8 @@ router.delete("/deletarVenda/:id" , vendasControllers.deletarVenda)
 
 router.get("/estastisticas", services.estastisticas)
 
+router.put("/editarProdutoAutomatico" , services.editarProdutoAutomatico)
+
 router.get("/procurarVendedor/:id" , vendedorControllers.procurarVendedor)
 
 module.exports = router;

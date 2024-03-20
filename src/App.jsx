@@ -64,6 +64,7 @@ import Homescreen from "./screens/Homescreen/Homescreen";
 import gerenciarFuncionarios from "./screens/gerenciarFuncionarios/gerenciarFuncionarios";
 import fornecedores from "./screens/fornecedores/fornecedores";
 import detalhesFuncionarios from "./screens/detalhesFuncionarios/detalhesFuncionarios";
+import NovoFuncionario from "./screens/NovoFuncionario/NovoFuncionario";
 
 
 function App() {
@@ -278,6 +279,7 @@ function App() {
           <Route path="/detalhesGerenciarEstoqueReposição/:id" Component={detalhesGerenciarEstoque}/>
           <Route path="/fornecedores" Component={fornecedores}/>
           <Route path="/detalhesFuncionarios/:id" Component={detalhesFuncionarios}/>
+          <Route path="/NovoFuncionario" Component={NovoFuncionario}/>
         </Routes>
       </Router>
     </div>

@@ -1,0 +1,27 @@
+#NovoFuncionario {
+    margin-left: 55px
+}
+
+.MainNewFuncionario {
+    background-color: #54545446;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.LabelInfoFuncionario {
+    font-size: 18px;
+    margin-bottom: 5px;
+    width: 500px;
+}
+
+.LabelInfoFuncionario input {
+    width: 100%;
+    font-size: 18px;
+}
+
+.NomeCpfFuncionario {
+    display: flex;
+    justify-content: space-between;
+}

@@ -17,6 +17,7 @@ function CadastroProdutos() {
 
     const [images, setImages] = useState([]);
     const [openImagens , setOpenImagens] = useState(false)
+    const [ref , setRef] = useState(true)
 
     const [imageReq , setImageReq] = useState()
 
@@ -27,6 +28,7 @@ function CadastroProdutos() {
     const [concluido , setConcluindo] = useState(false)
 
     const [isDisabled, setIsDisabled] = useState(true);
+    const [referencia , setReferencia] = useState('')
 
     const escrever = (p , e) => {
         if(p == "produto") {
@@ -70,6 +72,7 @@ function CadastroProdutos() {
         const dados = {
             "produto" : produto,
             "preçocompra" : "00",
+            "referencia": referencia,
             "margem" : "00",
             "preçovenda": "00",
             "emestoque" : "0",
@@ -94,6 +97,8 @@ function CadastroProdutos() {
         setImages([])
         setOpenImagens(false)
         setIsDisabled(true)
+        setReferencia('')
+        setRef(true)
 
         setTimeout(() => {
             setConcluindo(false);
@@ -115,16 +120,24 @@ function CadastroProdutos() {
                 {concluido && <Concluindo/>}
                 <la>
                     <p>Nome: </p>
-                    <input type="text" className="nomeNovoProduto" onChange={(e) => escrever("produto", e)} value={produto} required/>
+                    <input type="text" className="nomeNovoProduto" onChange={(e) => escrever("produto", e)} value={produto} required
+                    placeholder="Nome do produto..."/>
                 </la>
                     <la>
                         <p>Marca: </p>
-                        <input type="text" onChange={(e) => escrever("marca" , e)} value={marca} required/>
+                        <input type="text" onChange={(e) => escrever("marca" , e)} value={marca} required placeholder="Categoria do produto..."/>
+                    </la>
+                    
+                    <la>
+                        <p>Referencia: </p>
+                        <input type="text" disabled={ref} placeholder="Referencia de Tabela" onChange={(e) => setReferencia(e.target.value)} className="RefInput"/>
+                        <input type="checkbox" onChange={(e) => setRef(!e.target.checked)} value={ref} className="InputCheckBox"/>
                     </la>
 
                     <la>
                         <p>Descrição: </p>
-                        <textarea id="texto" rows="4" cols="50" onChange={(e) => escrever("descrição" , e)} value={descrição} required/>
+                        <textarea id="texto" rows="4" cols="50" onChange={(e) => escrever("descrição" , e)} value={descrição} required
+                        placeholder="descrição do produto..."/>
                     </la>
 
                     <la>

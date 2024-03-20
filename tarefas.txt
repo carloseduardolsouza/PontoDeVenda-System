@@ -1,8 +1,6 @@
-- fazer pagina de definições(configurações)
 - fazer pagina de detalhes em reposição
 - fazer pagina de detalhes de fornecedores
 - fazer pagina de detalhes de funcionarios
-- fazer pagina de configurações
 - fazer pagina cadastro de Funcionários
 - fazer pagina de contas a pagar
 - fazer página de detalhes de funcionários
@@ -11,7 +9,6 @@
 - arrumar formatação de nomes de clientes
 - penssar em logica de notificação
 - penssar em logica de metricas 
-- arrumar quebras da api em NOVA VENDA
 - arrumar para quando deletar o produto excluir tambem as imagens dele
 - dar funcionalidade em vendas este mes , contas a pagar e vendas pendentes
 - dar funcionalidade em editar venda 
