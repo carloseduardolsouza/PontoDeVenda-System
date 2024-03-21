@@ -30,14 +30,16 @@ function NovoFuncionario() {
 
                 <label className="LabelInfoFuncionario">
                     <strong>Cargo</strong>
-                    <select></select>
+                    <select className="SelectNovoFuncionario">
+                        <option value="Vendedor">Vendedor</option>
+                    </select>
                 </label>
 
                 <label className="LabelInfoFuncionario">
                     <strong>Email</strong>
-                    <input type="text" />
+                    <input type="email" />
                 </label>
-                <button>Lançar Contratação</button>
+                <button id="LançarFuncionario">Lançar Contratação</button>
             </div>
         </div>
      );

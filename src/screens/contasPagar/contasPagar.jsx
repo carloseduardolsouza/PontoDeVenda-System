@@ -2,6 +2,7 @@ import NaoPagasContasPagar from "../../components/NaoPagasContasPagar/NaoPagasCo
 import PagasContasPagar from "../../components/PagasContasPagar/PagasContasPagar";
 import TodasContasPagar from "../../components/TodasContasPagar/TodasContasPagar";
 import VencidasContasPagar from "../../components/VencidasContasPagar/VencidasContasPagar";
+import AdicionarContaPagar from "../../components/AdicionarContaPagar/AdicionarContaPagar";
 import "./contasPagar.css"
 import { useState } from "react";
 
@@ -11,12 +12,15 @@ function ContasPagar() {
   const [vencidas , setVencidas] = useState(false)
   const [pagas , setPagas] = useState(false)
 
+  const [addConta , setAddConta] = useState(false)
+
   return ( 
     <div id="contasPagar">
       <h2>Contas a pagar</h2>
       <div className="Action">
-        <button>Adicionar Conta</button>
+        <button onClick={() => setAddConta(true)}>Adicionar Conta</button>
       </div>
+      {addConta && <AdicionarContaPagar functio={setAddConta}/>}
       <nav className="NavcontasPagar">
         <p onClick={() => {
           setTodas(true)

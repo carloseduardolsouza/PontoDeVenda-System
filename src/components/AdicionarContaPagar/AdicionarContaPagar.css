@@ -1,0 +1,65 @@
+#AdicionarContaPagar {
+    width: 500px;
+    padding: 10px;
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    background: rgba(255, 255, 255, 0.3); /* Cor com transparência */
+      border-radius: 10px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Sombra */
+      backdrop-filter: blur(10px); /* Desfoque */
+      -webkit-backdrop-filter: blur(10px); /* Desfoque para navegadores Webkit (Safari, Chrome, etc.) */
+      border: 1px solid rgba(255, 255, 255, 0.18); /* Borda */
+
+    font-size: 17px;
+}
+
+#AdicionarContaPagar section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    max-width: 400px;
+}
+
+#checkBoxNovaConta {
+    width: 10%;
+}
+
+#VoltarContaPagarNova {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 25px;
+    background-color: #00000000;
+    cursor: pointer;
+    border: none;
+}
+
+.InputNovaContaPagar{
+    font-size: 17px;
+    width: 100%;
+}
+
+.SelectNovaContaPagar {
+    font-size: 17px;
+}
+
+#AdicionarContaPagar select {
+    font-size: 17px;
+}
+
+.outraCateg {
+    display: flex;
+}
+
+.ConcluirNovaContaPagar {
+    width: 200px;
+    border-radius: 20px;
+    padding: 5px;
+    margin-top: 10px;
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: #00000000;
+}
