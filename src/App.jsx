@@ -32,10 +32,6 @@ import Provider from "./context/provider";
     import { FaMoneyBill1 } from "react-icons/fa6";
     import { FaRegMoneyBillAlt } from "react-icons/fa";
 
-//estatísticas
-    import { BsBarChartLineFill } from "react-icons/bs";
-    import { BsBarChartLine } from "react-icons/bs";
-
 //Caixa
     import { FaCashRegister } from "react-icons/fa6";
 
@@ -56,7 +52,6 @@ import detalhesProdutos from "./screens/detalhesProdutos/detalhesProdutos";
 import gerenciarEstoque from "./screens/gerenciarEstoque/gerenciarEstoque";
 import contasaPagar from "./screens/contasPagar/contasPagar"
 import caixaa from "./screens/caixa/caixa"
-import estatísticass from "./screens/estatísticas/estatísticas"
 import configurações from "./screens/configurações/configurações"
 import detalhesVendas from "./screens/detalhesVendas/detalhesVendas";
 import detalhesGerenciarEstoque from "./screens/detalhesGerenciarEstoque/detalhesGerenciarEstoque";
@@ -75,7 +70,6 @@ function App() {
     const [produtos , setProdutos] = useState(false)
     const [estoque , setEstoque] = useState(false)
     const [contasPagar , setContasPagar] = useState(false)
-    const [estatísticas , setEstatísticas] = useState(false)
     const [caixa , setCaixa] = useState(false)
     const [configs , setConfigs] = useState(false)
 
@@ -117,7 +111,6 @@ function App() {
                 setProdutos(false)
                 setEstoque(false)
                 setContasPagar(false)
-                setEstatísticas(false)
                 setCaixa(false)
                 setConfigs(false)
             }}>
@@ -133,7 +126,6 @@ function App() {
                 setProdutos(false)
                 setEstoque(false)
                 setContasPagar(false)
-                setEstatísticas(false)
                 setCaixa(false)
                 setConfigs(false)
             }}>
@@ -149,7 +141,6 @@ function App() {
                 setEstoque(false)
                 setHome(false)
                 setContasPagar(false)
-                setEstatísticas(false)
                 setCaixa(false)
                 setConfigs(false)
             }}>
@@ -165,7 +156,6 @@ function App() {
                 setEstoque(false)
                 setHome(false)
                 setContasPagar(false)
-                setEstatísticas(false)
                 setCaixa(false)
                 setConfigs(false)
             }}>
@@ -180,7 +170,6 @@ function App() {
                 setProdutos(false)
                 setEstoque(true)
                 setContasPagar(false)
-                setEstatísticas(false)
                 setHome(false)
                 setCaixa(false)
                 setConfigs(false)
@@ -197,7 +186,6 @@ function App() {
                 setHome(false)
                 setEstoque(false)
                 setContasPagar(true)
-                setEstatísticas(false)
                 setCaixa(false)
                 setConfigs(false)
             }}>
@@ -212,7 +200,6 @@ function App() {
                 setProdutos(false)
                 setEstoque(false)
                 setContasPagar(false)
-                setEstatísticas(false)
                 setHome(false)
                 setCaixa(true)
                 setConfigs(false)
@@ -222,22 +209,6 @@ function App() {
                     )}
                 <p style={style}>Caixa</p>
             </Link>
-            <Link to="/estatísticas" className="MenuLateralBox" onClick={() => {
-                setVendas(false)
-                setClientes(false)
-                setProdutos(false)
-                setHome(false)
-                setEstoque(false)
-                setContasPagar(false)
-                setEstatísticas(true)
-                setCaixa(false)
-                setConfigs(false)
-            }}>
-                {(estatísticas && <BsBarChartLineFill className="iconsMenuLateral"/>) || (
-                    <BsBarChartLine className="iconsMenuLateral"/>
-                    )}
-                <p style={style}>Estatísticas</p>
-            </Link>
 
             <Link to="/configurações" className="MenuLateralBox Preferencias" onClick={() => {
                 setVendas(false)
@@ -246,7 +217,6 @@ function App() {
                 setEstoque(false)
                 setHome(false)
                 setContasPagar(false)
-                setEstatísticas(false)
                 setCaixa(false)
                 setConfigs(true)
             }}>
@@ -272,7 +242,6 @@ function App() {
           <Route path="/gerenciarEstoque/:id" Component={gerenciarEstoque}/>
           <Route path="/contasPagar" Component={contasaPagar}/>
           <Route path="/caixa" Component={caixaa}/>
-          <Route path="/estatísticas" Component={estatísticass}/>
           <Route path="/configurações" Component={configurações}/>
           <Route path="/detalhesVenda/:rastreio" Component={detalhesVendas}/>
           <Route path="/gerenciarFuncionarios" Component={gerenciarFuncionarios}/>

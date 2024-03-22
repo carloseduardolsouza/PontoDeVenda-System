@@ -1,19 +1,23 @@
 import CaixaAtual from "../../components/CaixaAtual/CaixaAtual";
+import CaixasAnteriores from "../../components/CaixasAnteriores/CaixasAnteriores"
+import { useState } from "react";
 import "./caixa.css"
 
-function caixa() {
+function Caixa() {
+  const [caixaAtual , setCaixaAtual] = useState(true)
+
   return ( 
     <div id="caixa">
       <h2>Caixa</h2>
       <nav className="MenuCaixa">
-        <p>Caixa Atual</p>
-        <p>Caixas Anteriores</p>
+        <p onClick={() => setCaixaAtual(true)}>Caixa Atual</p>
+        <p onClick={() => setCaixaAtual(false)}>Caixas Anteriores</p>
       </nav>
       <main>
-        <CaixaAtual/>
+        {caixaAtual && <CaixaAtual/> || <CaixasAnteriores/>}
       </main>
     </div>
    );
 }
 
-export default caixa;
+export default Caixa;
