@@ -1,8 +1,20 @@
 const connection = require('../models/connection')
 
-const estastisticas = (req , res) => {
+const estastisticas = async (req , res) => {
     var receita = 0
     var despesas = 0
+
+    const [vendas] = await connection.execute(`SELECT * FROM vendas`)
+    vendas.forEach((venda) => {
+        receita += +venda.total;
+    });
+
+    const response = {
+        'receita': receita
+    }
+
+    res.json(response)
+    
 }
 
 const editarProdutoAutomatico = async (req , res) => {

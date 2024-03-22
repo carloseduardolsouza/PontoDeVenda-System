@@ -1,14 +1,14 @@
-- fazer pagina de detalhes em reposição
-- fazer pagina de detalhes de fornecedores
-- fazer pagina de detalhes de funcionarios
-- fazer página de detalhes de funcionários
-
-- arrumar formatação de nomes de clientes
-- penssar em logica de notificação
-- penssar em logica de metricas 
-- arrumar para quando deletar o produto excluir tambem as imagens dele
-- dar funcionalidade em vendas este mes , contas a pagar e vendas pendentes
-- dar funcionalidade em editar venda 
-- dar funcionalidade ao filtro de historico de vendas
+- arrumar estilo de contratar funcionários
 - dar funcionalidade em procurar funcionários
-- dar funcionalidade em filtro de mes em histórico de vendas
+- fazer pagina de detalhes de funcionários
+- fazer pagina de cadastrar fornecedor
+- fazer pagina de detalhes de fornecedor
+- terminar pagina de fluxo de caixa
+- dar funcionalidade em filtro de pesquisa de vendas
+- dar funcionalidade em editar venda
+- arrumar formatação de nome de novo cliente 
+- arrumar espaço vazio de endereço para desconhecido
+- colocar aba em cadastrar produto para ja editar estoque
+- finalizar em adicionar nova conta a pagar 
+- dar funcionalidade em contas a pagar
+- 

@@ -63,7 +63,6 @@ import NovoFuncionario from "./screens/NovoFuncionario/NovoFuncionario";
 
 
 function App() {
-
     const [home , setHome] = useState(true)
     const [vendas , setVendas] = useState(false)
     const [clientes , setClientes] = useState(false)
@@ -80,19 +79,19 @@ function App() {
         display: windowDisplay
     }
 
-    const [menuOpened , setMenuOpened] = useState(false)
 
-    const menuOpen = () => {
-        if(menuOpened == true) {
+    const menuOpen = (params) => {
+        if(params == false) {
             setWindowDisplay('none')
             setWindowWidth('45px')
-            setMenuOpened(false)
         }
 
-        if(menuOpened == false){
-            setWindowDisplay('block')
+        if(params == true){
             setWindowWidth('160px')
-            setMenuOpened(true)
+
+            setTimeout(() => {
+                setWindowDisplay('block')
+            }, 190)
         }
     }
 
@@ -100,8 +99,8 @@ function App() {
     <Provider>
     <div className="App">
       <Router>
-      <div className="MenuLateralBoxArea" style={{width: windowWidth}}>
-            <div className="MenuLateralBox Outline" onClick={() => menuOpen()}>
+      <div className="MenuLateralBoxArea" style={{width: windowWidth}} onMouseEnter={() => menuOpen(true)} onMouseLeave={() => menuOpen(false)}>
+            <div className="MenuLateralBox Outline">
                 <RiMenu2Fill className="iconsMenuLateral"/>
             </div>
             <Link to="/" className="MenuLateralBox" onClick={() => {

@@ -320,6 +320,20 @@ const concluirVenda = async (id) => {
     }
 }
 
+const métricas = async () => {
+    try {
+        const resposta = await fetch('http://localhost:3322/estastisticas');
+        if (!resposta.ok) {
+            throw new Error('Falha ao buscar dados');
+        }
+        return resposta.json();
+    } catch (erro) {
+        // Lidar com o erro, por exemplo, mostrar uma mensagem de alerta
+        alert('A API PROVAVELMENTE ESTÁ INATIVA, ATIVE E TENTE NOVAMENTE');
+        throw erro; // Opcionalmente relançar o erro para tratamento adicional
+    }
+};
+
 
 export default {
     NovoCliente,
@@ -342,6 +356,8 @@ export default {
     procurarVendaCliente,
     DeletarVenda,
 
-    ProcurarVendores
+    ProcurarVendores,
+
+    métricas
 
 }

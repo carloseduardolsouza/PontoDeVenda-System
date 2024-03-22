@@ -8,7 +8,6 @@ import fetchapi from "../../api/fetchapi";
 import Loading from "../../components/AçãoRealizada/AçãoRealizada"
 
 import { useState , useEffect } from "react"
-import ItensTabelVendasAReceber from "../../components/ItensTabelVendasAReceber/ItensTabelVendasAReceber";
 
 function Vendas() {
     const Data = new Date()
@@ -16,7 +15,6 @@ function Vendas() {
 
     const [históricoOpen , setHistóricoOpen] = useState(true)
     const [vendasReceber , setVendasReceber] = useState(false)
-    const [embreve , setEmBreve] = useState(true)
 
     const [resultVendas , setResultVendas] = useState([])
     const [resultVendasPendentes , setResultVendasPendentes] = useState([])
@@ -71,17 +69,6 @@ function Vendas() {
                 ) || vendasReceber && (
                     <div>
                         <h1>EM BREVE</h1>
-                        {/*<table className="TableVendas">
-                            <div className="TableHeader">
-                                <p className="itemTabelTitle">Cliente</p>
-                                <p className="itemTabelTitle">produto</p>
-                                <p className="itemTabelTitle">N.Parcela</p>
-                                <p className="itemTabelTitle">valor</p>
-                                <p className="itemTabelTitle">vencimento</p>
-                                <p className="itemTabelTitle">Ações</p>
-                            </div>
-                            <ItensTabelVendasAReceber/>
-                    </table>*/}
                     </div>
                 ) || (
                         <table className="TableVendas">

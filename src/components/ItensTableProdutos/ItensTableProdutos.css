@@ -1,5 +1,5 @@
 #ItensTableProdutos {
-    width: 600px;
+    width: 650px;
     background-color: #e7e7e7;
     padding: 5px;
     margin-bottom: 15px;
@@ -9,8 +9,8 @@
 }
 
 .ImageProduto {
-    width: 200px;
-    height: 200px;
+    min-width: 200px;
+    min-height: 200px;
     background-size: cover;
     margin-right: 10px;
     cursor: pointer;
@@ -23,7 +23,7 @@
     border: none;
     border-radius: 5px;
     color: white;
-    width: 50%;
+    width: 200px;
     cursor: pointer;
     margin-top: 15px;
 }

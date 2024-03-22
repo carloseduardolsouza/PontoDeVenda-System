@@ -4,14 +4,16 @@ import { FaTruck } from "react-icons/fa";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { MdAttachMoney } from "react-icons/md";
 import { FaComputer } from "react-icons/fa6";
-import { FaChartLine } from "react-icons/fa";
 import { IoNotifications } from "react-icons/io5";
 import { IoMdArrowDropup } from "react-icons/io";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import BarNotification from "../../components/BarNotification/BarNotification"
+import fetchapi from "../../api/fetchapi";
+import services from "../../services/services";
 
 function Homescreen() {
   const [notification , setNotification] = useState(false)
+  const [receitas , setReceitas] = useState()
 
   const data = [
     { name: 'Jan', Despesas: 4000, Receitas: 2400},
@@ -22,6 +24,10 @@ function Homescreen() {
     { name: 'Jun', Despesas: 2390, Receitas: 3800},
     { name: 'Jul', Despesas: 3490, Receitas: 4300},
   ];
+
+  useEffect(() => {
+    fetchapi.métricas().then((response) => setReceitas(response.receita))
+  }, [])
   
   return ( 
     <div id="Homescreen">
@@ -50,13 +56,12 @@ function Homescreen() {
           <button onClick={() => window.location.href = "/fornecedores"}><FaTruck/> Fornecedores</button>
           <button onClick={() => window.location.href = "/caixa"}><MdAttachMoney/> Fluxo de Caixa</button>
           <button onClick={() => window.location.href = "/novaVenda"}><FaComputer/> PDV</button>
-          <button onClick={() => window.location.href = "/estatísticas"}><FaChartLine/> Métricas</button>
         </div>
 
         <div className="LoyautCardMétricasBox">
           <article className="cardMétricasBox green">
             <h2>Receitas</h2>
-            <h1>{"R$ 00,00"}</h1>
+            <h1>{services.formatarCurrency(receitas)}</h1>
             <div className="linha"/>
             <div className="displayFlex">
               <div>
