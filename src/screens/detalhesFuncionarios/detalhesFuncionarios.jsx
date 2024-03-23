@@ -5,11 +5,11 @@ function detalhesFuncionarios() {
     return ( 
         <div id="detalhesFuncionarios">
             <h2>Detalhes Funcionarios</h2>
-            <header>
+            <nav>
                 <p>Funcionario</p>
                 <p>Detalhes</p>
                 <p>Vendas</p>
-            </header>
+            </nav>
             <InfoFuncionario/>
         </div>
      );
