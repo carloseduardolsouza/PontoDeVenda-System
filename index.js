@@ -20,7 +20,7 @@ function createWindow() {
     closable: true, // permite fechar a janela
   });
 
-  win.loadURL("http://localhost:4000/");
+  win.loadURL("http://localhost:3000/");
 
   // Minimiza a janela ao clicar no botão de fechar
   win.on('close', (event) => {
